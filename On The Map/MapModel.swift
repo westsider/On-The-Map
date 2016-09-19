@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 // MARK: struct for meme data model
-
+// for git
 struct StduentInfo {
     var topTextField: String!
     var bottomtextFiield: String!
