@@ -203,15 +203,18 @@
 					A6D16BA71D8F51740074A14D = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = RTLF7UB597;
+						LastSwiftMigration = 0800;
 					};
 					A6D16BBD1D8F51740074A14D = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = RTLF7UB597;
+						LastSwiftMigration = 0800;
 						TestTargetID = A6D16BA71D8F51740074A14D;
 					};
 					A6D16BC81D8F51740074A14D = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = RTLF7UB597;
+						LastSwiftMigration = 0800;
 						TestTargetID = A6D16BA71D8F51740074A14D;
 					};
 				};
@@ -420,6 +423,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "TradeStrat.On-The-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -431,6 +435,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "TradeStrat.On-The-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -442,6 +447,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "TradeStrat.On-The-MapTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/On The Map.app/On The Map";
 			};
 			name = Debug;
@@ -454,6 +460,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "TradeStrat.On-The-MapTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/On The Map.app/On The Map";
 			};
 			name = Release;
@@ -465,6 +472,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "TradeStrat.On-The-MapUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "On The Map";
 			};
 			name = Debug;
@@ -476,6 +484,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "TradeStrat.On-The-MapUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "On The Map";
 			};
 			name = Release;
@@ -499,6 +508,7 @@
 				A6D16BD41D8F51740074A14D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A6D16BD51D8F51740074A14D /* Build configuration list for PBXNativeTarget "On The MapTests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +517,7 @@
 				A6D16BD71D8F51740074A14D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A6D16BD81D8F51740074A14D /* Build configuration list for PBXNativeTarget "On The MapUITests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +526,7 @@
 				A6D16BDA1D8F51740074A14D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
