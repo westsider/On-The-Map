@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		A6D16BAC1D8F51740074A14D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BAB1D8F51740074A14D /* AppDelegate.swift */; };
-		A6D16BAE1D8F51740074A14D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BAD1D8F51740074A14D /* FirstViewController.swift */; };
-		A6D16BB01D8F51740074A14D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BAF1D8F51740074A14D /* SecondViewController.swift */; };
+		A6D16BAE1D8F51740074A14D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BAD1D8F51740074A14D /* MapViewController.swift */; };
+		A6D16BB01D8F51740074A14D /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BAF1D8F51740074A14D /* ListViewController.swift */; };
 		A6D16BB31D8F51740074A14D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6D16BB11D8F51740074A14D /* Main.storyboard */; };
 		A6D16BB51D8F51740074A14D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6D16BB41D8F51740074A14D /* Assets.xcassets */; };
 		A6D16BB81D8F51740074A14D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6D16BB61D8F51740074A14D /* LaunchScreen.storyboard */; };
 		A6D16BC31D8F51740074A14D /* On_The_MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BC21D8F51740074A14D /* On_The_MapTests.swift */; };
 		A6D16BCE1D8F51740074A14D /* On_The_MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BCD1D8F51740074A14D /* On_The_MapUITests.swift */; };
+		A6D16BDC1D8F60590074A14D /* Functions From Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BDB1D8F60590074A14D /* Functions From Class.swift */; };
+		A6D16BDE1D8F953A0074A14D /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BDD1D8F953A0074A14D /* MapModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +39,8 @@
 /* Begin PBXFileReference section */
 		A6D16BA81D8F51740074A14D /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D16BAB1D8F51740074A14D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A6D16BAD1D8F51740074A14D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		A6D16BAF1D8F51740074A14D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		A6D16BAD1D8F51740074A14D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A6D16BAF1D8F51740074A14D /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		A6D16BB21D8F51740074A14D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A6D16BB41D8F51740074A14D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6D16BB71D8F51740074A14D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		A6D16BC91D8F51740074A14D /* On The MapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "On The MapUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D16BCD1D8F51740074A14D /* On_The_MapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_The_MapUITests.swift; sourceTree = "<group>"; };
 		A6D16BCF1D8F51740074A14D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6D16BDB1D8F60590074A14D /* Functions From Class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Functions From Class.swift"; sourceTree = "<group>"; };
+		A6D16BDD1D8F953A0074A14D /* MapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,11 +103,13 @@
 		A6D16BAA1D8F51740074A14D /* On The Map */ = {
 			isa = PBXGroup;
 			children = (
-				A6D16BAB1D8F51740074A14D /* AppDelegate.swift */,
-				A6D16BAD1D8F51740074A14D /* FirstViewController.swift */,
-				A6D16BAF1D8F51740074A14D /* SecondViewController.swift */,
 				A6D16BB11D8F51740074A14D /* Main.storyboard */,
+				A6D16BDB1D8F60590074A14D /* Functions From Class.swift */,
+				A6D16BDD1D8F953A0074A14D /* MapModel.swift */,
+				A6D16BAD1D8F51740074A14D /* MapViewController.swift */,
+				A6D16BAF1D8F51740074A14D /* ListViewController.swift */,
 				A6D16BB41D8F51740074A14D /* Assets.xcassets */,
+				A6D16BAB1D8F51740074A14D /* AppDelegate.swift */,
 				A6D16BB61D8F51740074A14D /* LaunchScreen.storyboard */,
 				A6D16BB91D8F51740074A14D /* Info.plist */,
 			);
@@ -262,9 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6D16BB01D8F51740074A14D /* SecondViewController.swift in Sources */,
+				A6D16BDC1D8F60590074A14D /* Functions From Class.swift in Sources */,
+				A6D16BDE1D8F953A0074A14D /* MapModel.swift in Sources */,
+				A6D16BB01D8F51740074A14D /* ListViewController.swift in Sources */,
 				A6D16BAC1D8F51740074A14D /* AppDelegate.swift in Sources */,
-				A6D16BAE1D8F51740074A14D /* FirstViewController.swift in Sources */,
+				A6D16BAE1D8F51740074A14D /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
