@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39C0E7F21D959B830075AA20 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C0E7F11D959B830075AA20 /* Constants.swift */; };
+		39C0E7F41D959BDB0075AA20 /* LogOnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C0E7F31D959BDB0075AA20 /* LogOnViewController.swift */; };
+		39C0E7F61D95EB770075AA20 /* GDCBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C0E7F51D95EB770075AA20 /* GDCBlackBox.swift */; };
 		A6D16BAC1D8F51740074A14D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BAB1D8F51740074A14D /* AppDelegate.swift */; };
 		A6D16BAE1D8F51740074A14D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BAD1D8F51740074A14D /* MapViewController.swift */; };
 		A6D16BB01D8F51740074A14D /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BAF1D8F51740074A14D /* ListViewController.swift */; };
@@ -15,7 +18,6 @@
 		A6D16BB81D8F51740074A14D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6D16BB61D8F51740074A14D /* LaunchScreen.storyboard */; };
 		A6D16BC31D8F51740074A14D /* On_The_MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BC21D8F51740074A14D /* On_The_MapTests.swift */; };
 		A6D16BCE1D8F51740074A14D /* On_The_MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BCD1D8F51740074A14D /* On_The_MapUITests.swift */; };
-		A6D16BDC1D8F60590074A14D /* Functions From Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BDB1D8F60590074A14D /* Functions From Class.swift */; };
 		A6D16BDE1D8F953A0074A14D /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BDD1D8F953A0074A14D /* MapModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		39C0E7F11D959B830075AA20 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		39C0E7F31D959BDB0075AA20 /* LogOnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOnViewController.swift; sourceTree = "<group>"; };
+		39C0E7F51D95EB770075AA20 /* GDCBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GDCBlackBox.swift; sourceTree = "<group>"; };
 		A6D16BA81D8F51740074A14D /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D16BAB1D8F51740074A14D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6D16BAD1D8F51740074A14D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -51,7 +56,6 @@
 		A6D16BC91D8F51740074A14D /* On The MapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "On The MapUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D16BCD1D8F51740074A14D /* On_The_MapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_The_MapUITests.swift; sourceTree = "<group>"; };
 		A6D16BCF1D8F51740074A14D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6D16BDB1D8F60590074A14D /* Functions From Class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Functions From Class.swift"; sourceTree = "<group>"; };
 		A6D16BDD1D8F953A0074A14D /* MapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,12 +108,14 @@
 			isa = PBXGroup;
 			children = (
 				A6D16BB11D8F51740074A14D /* Main.storyboard */,
-				A6D16BDB1D8F60590074A14D /* Functions From Class.swift */,
+				39C0E7F31D959BDB0075AA20 /* LogOnViewController.swift */,
+				39C0E7F11D959B830075AA20 /* Constants.swift */,
 				A6D16BDD1D8F953A0074A14D /* MapModel.swift */,
 				A6D16BAD1D8F51740074A14D /* MapViewController.swift */,
 				A6D16BAF1D8F51740074A14D /* ListViewController.swift */,
 				A6D16BB41D8F51740074A14D /* Assets.xcassets */,
 				A6D16BAB1D8F51740074A14D /* AppDelegate.swift */,
+				39C0E7F51D95EB770075AA20 /* GDCBlackBox.swift */,
 				A6D16BB61D8F51740074A14D /* LaunchScreen.storyboard */,
 				A6D16BB91D8F51740074A14D /* Info.plist */,
 			);
@@ -197,7 +203,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Warren Hansen";
 				TargetAttributes = {
 					A6D16BA71D8F51740074A14D = {
@@ -271,11 +277,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6D16BDC1D8F60590074A14D /* Functions From Class.swift in Sources */,
 				A6D16BDE1D8F953A0074A14D /* MapModel.swift in Sources */,
 				A6D16BB01D8F51740074A14D /* ListViewController.swift in Sources */,
 				A6D16BAC1D8F51740074A14D /* AppDelegate.swift in Sources */,
 				A6D16BAE1D8F51740074A14D /* MapViewController.swift in Sources */,
+				39C0E7F61D95EB770075AA20 /* GDCBlackBox.swift in Sources */,
+				39C0E7F41D959BDB0075AA20 /* LogOnViewController.swift in Sources */,
+				39C0E7F21D959B830075AA20 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,8 +352,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -390,8 +400,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -410,6 +422,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

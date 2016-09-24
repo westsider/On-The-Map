@@ -12,6 +12,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    //var sharedSession = NSURLSession.sharedSession() // compiler doesnt like this
+    var account: String? = nil
+    var registered: Bool? = nil
+    var key: String? = nil
+    var sessionID: String? = nil
+    var expiration: String? = nil
+    //var config = Config()   // compiler doesnt like this
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -43,4 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+
 
