@@ -93,30 +93,29 @@ class LogOnViewController: UIViewController {
             let newData = data.subdata(in: Range(r)) /* subset response data! */
             print(" ")
             print("HERE IS MY KEY + SESSION ID:----------------------------------------------------------------------")
-            print(NSString(data: newData, encoding: String.Encoding.utf8.rawValue))
+            print(NSString(data: newData, encoding: String.Encoding.utf8.rawValue)!)
             print(" ")
 
             // parse the data
-            let parsedResult: Any
+            let parsedResult: [String:AnyObject]
             do {
-                parsedResult = try JSONSerialization.jsonObject(with: newData, options: .allowFragments)
-                print(" ")
-                print("HERE IS MY PARSED RESULT:--------------------------------------------------------------------")
-                print(parsedResult)
-                print()
+                parsedResult = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as! [String:AnyObject]
             } catch {
                 displayError(error: "Could not parse the data as JSON: '\(data)'")
                 return
             }
-            // get the account ID
-            if let jsonResult = parsedResult as? [String: Any] {
-                print(" ")
-                print("HERE IS MY PARSED KEY + ID ONLY:--------------------------------------------------------------------")
+
+            if let jsonResult = parsedResult["account"] as? [String: AnyObject] {
                 let accountKey = jsonResult["key"]
-                let sessionID = jsonResult["id"]
-                print("Account: \(accountKey)")
-                print("session: \(sessionID)")
+                print("Account-Key: \(accountKey!)")
+                print(" ")
             }
+            if let jsonResult = parsedResult["session"] as? [String: AnyObject] {
+                let sessionID = jsonResult["id"]
+                print("Session-ID: \(sessionID!)")
+                print(" ")
+            }
+            
         }
         task.resume()
         
