@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-// MARK: struct for meme data model
+// MARK: struct for  data model - under construction
 
 struct StduentInfo {
     var topTextField: String!
@@ -18,20 +18,20 @@ struct StduentInfo {
     var memedImage: UIImage!
 }
 
-// MARK: - TMDBMovie
 
-struct TMDBMovie {
-    
-    // MARK: Properties
-    
-    let title: String
-    let id: Int
-    let posterPath: String?
-    let releaseYear: String?
-    
-    // MARK: Initializers
-    
-    // construct a TMDBMovie from a dictionary
+//
+//struct TMDBMovie {
+//    
+//    // MARK: Properties
+//    
+//    let title: String
+//    let id: Int
+//    let posterPath: String?
+//    let releaseYear: String?
+//    
+//     MARK: Initializers
+//    
+//     construct a TMDBMovie from a dictionary
 //    init(dictionary: [String:AnyObject]) {
 //        title = dictionary[TMDBClient.JSONResponseKeys.MovieTitle] as! String
 //        id = dictionary[TMDBClient.JSONResponseKeys.MovieID] as! Int
@@ -43,7 +43,7 @@ struct TMDBMovie {
 //            releaseYear = ""
 //        }
 //    }
-    
+//    
 //    static func moviesFromResults(results: [[String:AnyObject]]) -> [TMDBMovie] {
 //        
 //        var movies = [TMDBMovie]()
@@ -55,4 +55,4 @@ struct TMDBMovie {
 //        
 //        return movies
 //    }
-}
+//}
