@@ -4,11 +4,17 @@
 //
 //  Created by Warren Hansen on 9/23/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
-//  Getting the request token V2 beinning is app delegate
+//  stuck on 2/3 neew to rewatch the lesson from absolute start
+
 
 import UIKit
+import Foundation
 
-class LogOnViewController: UIViewController {
+class LogOnViewController: UIViewController  {
+    
+    
+   // var abc = UdacityClient.foobar(a:10)
+    
     
     var appDelagate: AppDelegate!
     
@@ -26,13 +32,27 @@ class LogOnViewController: UIViewController {
     
     var sessionID = ""
     
+    var userName = "whansen1@mac.com"
+    
+    var password = "wh2403wh"
+    
     @IBAction func logInAction(_ sender: AnyObject) {
+        self.userEmail.text! = "whansen1@mac.com"
+        self.userPassword.text! = "wh2403wh"
+        userName = self.userEmail.text!
+        password = self.userPassword.text!
         
-        logInToUdacity()
+        let loginResult = UdacityClient().logInToUdacity(user: userName, password: password)
+        
+        self.debugWindow.text = loginResult
+        
+        //logInToUdacity(user: userName, password: password)
+        
+        //logInToUdacity(user: userName, password: password)
     }
     
     @IBAction func loginFacebookAction(_ sender: AnyObject) {
-         debugWindow.text = "FaceBook Login Not Available"
+         debugWindow.text = "FaceBook API Not Available Yet"
     }
     
     // MARK: Configure UI
@@ -50,29 +70,42 @@ class LogOnViewController: UIViewController {
         }
     }
     
+/*
     // MARK: Make Network Request on Udacity
-    private func logInToUdacity () {
-        // let methodParameters = {   var pass = self.userPassword.text; var email = self.userEmail }
-        
-        let email = self.userEmail.text!
-        let password = self.userPassword.text!
+    private func logInToUdacity (user: String, password: String) {
+//         let methodParameters = {   UdacityClient.pass = self.userPassword.text; var email = self.userEmail }
         
         if self.userEmail.text!.isEmpty || userPassword.text!.isEmpty {
             debugWindow.text = "Username or Password Empty."
         } else {
             setUIEnabled(enabled: false)
             
-            // create url and request
+            // 2/3 create url and request, I am stuck on how to use the app delagate to format my
+            /*
+ /* 1. Set the parameters */
+ let methodParameters = [
+ Constants.TMDBParameterKeys.ApiKey: Constants.TMDBParameterValues.ApiKey
+ ]
+ 
+ /* 2/3. Build the URL, Configure the request */
+ let request = NSURLRequest(URL: appDelegate.tmdbURLFromParameters(methodParameters, withPathExtension: "/authentication/token/new"))
+ 
+ /* 4. Make the request */
+ let task = appDelegate.sharedSession.dataTaskWithRequest(request) { (data, response, error) in
+ 
+ 
+ */
             let request = Constants.Udacity.APIBaseURL
             request.httpMethod = Constants.UdacityParameterValues.Method
             request.addValue(Constants.UdacityParameterKeys.AppJson, forHTTPHeaderField: Constants.UdacityParameterKeys.Accept)
             request.addValue(Constants.UdacityParameterKeys.AppJson, forHTTPHeaderField: Constants.UdacityParameterKeys.Content)
             //request.httpBody = Constants.UdacityParameterValues.JsonBody.data(using: String.Encoding.utf8)
-            request.httpBody = "{\"udacity\": {\"username\": \"\(email)\", \"password\": \"\(password)\"}}".data(using: String.Encoding.utf8)
+            request.httpBody = "{\"udacity\": {\"username\": \"\(user)\", \"password\": \"\(password)\"}}".data(using: String.Encoding.utf8)
             print("THIS IS THE REQUEST: \(request)")
+            // aka task 3 typrs data, download, upload
             let session = URLSession.shared
             
-            // create network request
+            // 4 create network request
             let task = session.dataTask(with: request as URLRequest) { data, response, error in
                 
                 // if an error occurs, print it and re-enable the UI
@@ -144,39 +177,14 @@ class LogOnViewController: UIViewController {
         }
          //self.debugWindow.text = "Account-Key: \(self.accountKey) Session-ID: \(self.sessionID)"
     }
-    
+ */
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // get the app delgate
         appDelagate = UIApplication.shared.delegate as! AppDelegate!
     }
     
-    // MARK: Helper for Escaping Parameters in URL
-    
-    private func escapedParameters(_ parameters: [String:Any]) -> String {
-        
-        if parameters.isEmpty {
-            return ""
-        } else {
-            var keyValuePairs = [String]()
-            
-            for (key, value) in parameters {
-                
-                // make sure that it is a string value
-                let stringValue = "\(value)"
-                
-                // escape it
-                let escapedValue = stringValue.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-                
-                // append it
-                keyValuePairs.append(key + "=" + "\(escapedValue!)")
-                
-            }
-            
-            return "?\(keyValuePairs.joined(separator: "&"))"
-        }
-    }
+
     
 }
 

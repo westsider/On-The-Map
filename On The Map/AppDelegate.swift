@@ -14,11 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     //var sharedSession = NSURLSession.sharedSession() // compiler doesnt like this
-    var account: String? = nil
-    var registered: Bool? = nil
-    var key: String? = nil
-    var sessionID: String? = nil
-    var expiration: String? = nil
+
     //var config = Config()   // compiler doesnt like this
 
 
@@ -49,8 +45,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    
+    
+    
 }
-
-
-
+/*
+// MARK: Create URL from Parameters
+extension AppDelegate {
+    
+    func tmdbURLFromParameters(parameters: [String:AnyObject], withPathExtension: String? = nil) -> NSURL {
+        
+                    let components = NSURLComponents()
+        //            components.scheme = Constants.TMDB.ApiScheme
+        //            components.host = Constants.TMDB.ApiHost
+        //            components.path = Constants.TMDB.ApiPath + (withPathExtension ?? "")
+        //            components.queryItems = [NSURLQueryItem]()
+        //
+        //            for (key, value) in parameters {
+        //                let queryItem = NSURLQueryItem(name: key, value: "\(value)")
+        //                components.queryItems!.append(queryItem)
+        //            }
+        
+        //  return components.URL!
+    }
+//}
+ */
