@@ -5,7 +5,7 @@
 //  Created by Warren Hansen on 9/26/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
 
-//  im sure im not calling my login correctly, 
+//  im sure im not calling my login correctly,
 //  how return any errors or login
 //  how save account key and session id
 
@@ -23,9 +23,9 @@ class UdacityClient {
     var expiration: String? = nil
     
     // MARK: Make Network Request on Udacity
-    func logInToUdacity (user: String, password: String) -> String {
-
-         /* 1. Set the parameters
+    func logInToUdacity (user: String, password: String) -> (String, String) {
+        
+        /* 1. Set the parameters
          let methodParameters = [
          Constants.TMDBParameterKeys.ApiKey: Constants.TMDBParameterValues.ApiKey
          ]
@@ -37,13 +37,14 @@ class UdacityClient {
         request.httpMethod = Constants.UdacityParameterValues.Method
         request.addValue(Constants.UdacityParameterKeys.AppJson, forHTTPHeaderField: Constants.UdacityParameterKeys.Accept)
         request.addValue(Constants.UdacityParameterKeys.AppJson, forHTTPHeaderField: Constants.UdacityParameterKeys.Content)
-        //request.httpBody = Constants.UdacityParameterValues.JsonBody.data(using: String.Encoding.utf8)
         request.httpBody = "{\"udacity\": {\"username\": \"\(user)\", \"password\": \"\(password)\"}}".data(using: String.Encoding.utf8)
-        print("THIS IS THE REQUEST: \(request)")
+        
         // aka task 3 types data, download, upload
         let session = URLSession.shared
         
         // 4 create network request
+        //  let sendNetwork = disptch_queue_create("sendNetwork",nil)
+        //dispatch_async(session)
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             
             // if an error occurs, print it and re-enable the UI
@@ -51,6 +52,7 @@ class UdacityClient {
                 print(error)
                 print("URL at time of error: \(request)")
                 performUIUpdatesOnMain {
+                    //dispatch_async(DISPATCH_QUEUE_PRIORITY_DEFAULT, { () -> Void in
                     //self.setUIEnabled(enabled: true)
                     //self.debugWindow.text = "API Error: " + error
                 }
@@ -106,16 +108,18 @@ class UdacityClient {
             
             // getting somewhere - not sure how to update main or return error
             performUIUpdatesOnMain {
-//                if self.accountKey != nil {
-//                    return "Account-Key: \(self.accountKey) Session-ID: \(self.sessionID)"
-//                } else {
-//                    return "Error Logging In"
-//                }
+                //                if self.accountKey != nil {
+                //                    return "Account-Key: \(self.accountKey) Session-ID: \(self.sessionID)"
+                //                } else {
+                //                    return "Error Logging In"
+                //                }
             }
         }
         task.resume()
-
-        return "Output string test" // need to return any errors
+        if sessionID != nil {
+            return (self.accountKey!, self.sessionID!) // need to return any errors
+        }
+        return ("Loging In... ", "Waiting for Data")
     }
     
 }

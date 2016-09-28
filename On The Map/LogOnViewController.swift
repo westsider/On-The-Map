@@ -44,11 +44,8 @@ class LogOnViewController: UIViewController  {
         
         let loginResult = UdacityClient().logInToUdacity(user: userName, password: password)
         
-        self.debugWindow.text = loginResult
+        self.debugWindow.text = loginResult.0 + loginResult.1
         
-        //logInToUdacity(user: userName, password: password)
-        
-        //logInToUdacity(user: userName, password: password)
     }
     
     @IBAction func loginFacebookAction(_ sender: AnyObject) {
