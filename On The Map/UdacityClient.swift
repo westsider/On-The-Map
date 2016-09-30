@@ -4,19 +4,14 @@
 //
 //  Created by Warren Hansen on 9/26/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
+//  Login challenge - how to return any errors or accoundID + sessionID
+//  also how to disable loging button durring completion of api call
 
-//  im sure im not calling my login correctly,
-//  how return any errors or login
-//  how save account key and session id
 
 import Foundation
 
 class UdacityClient {
-    
-    //var appDelagate: AppDelegate!
-    // Class Vars
-    
-    //var account: String? = nil
+
     var registered: Bool? = nil
     var accountKey: String? = nil  // Account-Key
     var sessionID: String? = nil //Session-ID
@@ -25,14 +20,7 @@ class UdacityClient {
     // MARK: Make Network Request on Udacity
     func logInToUdacity (user: String, password: String) -> (String, String) {
         
-        /* 1. Set the parameters
-         let methodParameters = [
-         Constants.TMDBParameterKeys.ApiKey: Constants.TMDBParameterValues.ApiKey
-         ]
-         // 2/3. Build the URL, Configure the request
-         let request = NSURLRequest(URL: appDelegate.tmdbURLFromParameters(methodParameters, withPathExtension: "/authentication/token/new"))
-         */
-        
+         // Build the URL, Configure the request
         let request = Constants.Udacity.APIBaseURL
         request.httpMethod = Constants.UdacityParameterValues.Method
         request.addValue(Constants.UdacityParameterKeys.AppJson, forHTTPHeaderField: Constants.UdacityParameterKeys.Accept)
@@ -43,8 +31,6 @@ class UdacityClient {
         let session = URLSession.shared
         
         // 4 create network request
-        //  let sendNetwork = disptch_queue_create("sendNetwork",nil)
-        //dispatch_async(session)
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             
             // if an error occurs, print it and re-enable the UI
@@ -118,8 +104,8 @@ class UdacityClient {
         task.resume()
         if sessionID != nil {
             return (self.accountKey!, self.sessionID!) // need to return any errors
-        }
-        return ("Loging In... ", "Waiting for Data")
+        } else {
+            return ("Loging In... ", "Waiting for Data") }
     }
     
 }
