@@ -32,15 +32,11 @@ class LogOnViewController: UIViewController  {
     
     var sessionID = ""
     
-    var userName = "whansen1@mac.com"
-    
-    var password = "wh2403wh"
     
     @IBAction func logInAction(_ sender: AnyObject) {
-        self.userEmail.text! = "whansen1@mac.com"
-        self.userPassword.text! = "wh2403wh"
-        userName = self.userEmail.text!
-        password = self.userPassword.text!
+
+        let userName = self.userEmail.text!
+        let password = self.userPassword.text!
         
         let loginResult = UdacityClient().logInToUdacity(user: userName, password: password)
         
