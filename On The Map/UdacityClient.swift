@@ -96,7 +96,7 @@ class UdacityClient {
                 self.sessionID = jsonResult["id"] as? String
                 print("Session-ID: \(self.sessionID)")
                 print(" ")
-                
+                completionHandler(self.sessionID as AnyObject?, nil)
             }
 
         }
