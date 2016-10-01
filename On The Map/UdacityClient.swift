@@ -4,13 +4,14 @@
 //
 //  Created by Warren Hansen on 9/26/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
-//  Login challenge - how to return  errors.... or accoundID + sessionID
-//  also how to disable loging button durring completion of api call
+//  get this working then break it down into functions
+//  login, parse, getuserID, geAccountInfo
 
 import Foundation
 
 //typealias CompletionHandler = (_ result:AnyObject?,_ error: NSError?)-> Void
-typealias CompletionHandler = (_ result:AnyObject?,_ error: String?)-> Void
+//typealias CompletionHandler = (_ result:AnyObject?,_ error: String?)-> Void
+typealias CompletionHandler = (_ result:String?,_ error: String?)-> Void
 
 class UdacityClient {
 
@@ -96,7 +97,7 @@ class UdacityClient {
                 self.sessionID = jsonResult["id"] as? String
                 print("Session-ID: \(self.sessionID)")
                 print(" ")
-                completionHandler(self.sessionID as AnyObject?, nil)
+                completionHandler(self.sessionID, nil)
             }
 
         }
