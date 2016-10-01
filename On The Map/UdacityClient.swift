@@ -9,7 +9,8 @@
 
 import Foundation
 
-typealias CompletionHandler = (_ result:AnyObject?,_ error: NSError?)-> Void
+//typealias CompletionHandler = (_ result:AnyObject?,_ error: NSError?)-> Void
+typealias CompletionHandler = (_ result:AnyObject?,_ error: String?)-> Void
 
 class UdacityClient {
 
@@ -17,9 +18,11 @@ class UdacityClient {
     var accountKey: String? = nil  // Account-Key
     var sessionID: String? = nil //Session-ID
     var expiration: String? = nil
+    var apiError:String? = nil
+
     
     // MARK: Make Network Request on Udacity
-    func logInToUdacity (user: String, password: String,  completionHandler: CompletionHandler) {
+    func logInToUdacity (user: String, password: String,  completionHandler: @escaping CompletionHandler) {
         
         // MARK: TODO: make this  taskForGet function
         // Build the URL, Configure the request
@@ -42,7 +45,8 @@ class UdacityClient {
                 performUIUpdatesOnMain {
                     //dispatch_async(DISPATCH_QUEUE_PRIORITY_DEFAULT, { () -> Void in
                     //self.setUIEnabled(enabled: true)
-                    //self.debugWindow.text = "API Error: " + error
+                    self.apiError = "API Error: " + error
+                    completionHandler(nil, error)
                 }
             }
             

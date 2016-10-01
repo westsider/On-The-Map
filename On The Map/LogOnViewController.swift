@@ -38,7 +38,7 @@ class LogOnViewController: UIViewController  {
         let password = self.userPassword.text!
 
         UdacityClient().logInToUdacity(user: userName, password: password, completionHandler: { (success, error) -> Void in
-            debugWindow.text = "Show Account-Key and SessionID Here"
+            self.debugWindow.text = error
         })
     
     }
