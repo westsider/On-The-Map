@@ -36,18 +36,21 @@ class LogOnViewController: UIViewController  {
         
         let userName = self.userEmail.text!
         let password = self.userPassword.text!
-
+        setUIEnabled(enabled: false)
         
         UdacityClient().logInToUdacity(user: userName, password: password, completionHandler: { (success, error) -> Void in
             if error != nil {
                 self.debugWindow.text = error
+                self.setUIEnabled(enabled: true)
                 // MARK: TODO Pust this to alert VC
             }
             if success != nil {
                 print(success!)
                 performUIUpdatesOnMain{
                 self.debugWindow.text = success!
+                self.setUIEnabled(enabled: true)
                 }
+                
             }
         })
         
