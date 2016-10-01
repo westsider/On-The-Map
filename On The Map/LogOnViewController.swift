@@ -31,14 +31,14 @@ class LogOnViewController: UIViewController  {
     
     var sessionID = ""
     
-    // log in button + log in function call to client
+    // log in button + log in function call to my custom API
     @IBAction func logInAction(_ sender: AnyObject) {
 
         let userName = self.userEmail.text!
         let password = self.userPassword.text!
 
         UdacityClient().logInToUdacity(user: userName, password: password, completionHandler: { (success, error) -> Void in
-
+            debugWindow.text = "Show Account-Key and SessionID Here"
         })
     
     }

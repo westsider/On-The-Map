@@ -21,7 +21,8 @@ class UdacityClient {
     // MARK: Make Network Request on Udacity
     func logInToUdacity (user: String, password: String,  completionHandler: CompletionHandler) {
         
-         // Build the URL, Configure the request
+        // MARK: TODO: make this  taskForGet function
+        // Build the URL, Configure the request
         let request = Constants.Udacity.APIBaseURL
         request.httpMethod = Constants.UdacityParameterValues.Method
         request.addValue(Constants.UdacityParameterKeys.AppJson, forHTTPHeaderField: Constants.UdacityParameterKeys.Accept)
@@ -71,6 +72,7 @@ class UdacityClient {
             print(NSString(data: newData, encoding: String.Encoding.utf8.rawValue)!)
             print(" ")
             
+            // MARK:  make this parseJSON Function
             // parse the data
             let parsedResult: [String:AnyObject]
             do {
@@ -79,7 +81,7 @@ class UdacityClient {
                 displayError(error: "Could not parse the data as JSON: '\(data)'")
                 return
             }
-            
+            // MARK: TODO Make this getRequestToken func
             if let jsonResult = parsedResult["account"] as? [String: AnyObject] {
                 self.accountKey = jsonResult["key"] as? String
                 print("Account-Key: \(self.accountKey)")
