@@ -36,8 +36,8 @@ class LogOnViewController: UIViewController  {
 
         let userName = self.userEmail.text!
         let password = self.userPassword.text!
-        let loginResult = UdacityClient().logInToUdacity(user: userName, password: password)
-        self.debugWindow.text = loginResult.0 + loginResult.1
+//let loginResult = UdacityClient().logInToUdacity(user: userName, password: password)
+        //self.debugWindow.text = loginResult.0 + loginResult.1
         
     }
     

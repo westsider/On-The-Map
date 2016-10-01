@@ -4,11 +4,12 @@
 //
 //  Created by Warren Hansen on 9/26/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
-//  Login challenge - how to return any errors or accoundID + sessionID
+//  Login challenge - how to return  errors.... or accoundID + sessionID
 //  also how to disable loging button durring completion of api call
 
-
 import Foundation
+
+typealias CompletionHandler = (_ result:AnyObject?,_ error: NSError?)-> Void
 
 class UdacityClient {
 
@@ -18,7 +19,7 @@ class UdacityClient {
     var expiration: String? = nil
     
     // MARK: Make Network Request on Udacity
-    func logInToUdacity (user: String, password: String) -> (String, String) {
+    func logInToUdacity (user: String, password: String,  completionHandler: CompletionHandler) {
         
          // Build the URL, Configure the request
         let request = Constants.Udacity.APIBaseURL
@@ -91,21 +92,10 @@ class UdacityClient {
                 print(" ")
                 
             }
-            
-            // getting somewhere - not sure how to update main or return error
-            performUIUpdatesOnMain {
-                //                if self.accountKey != nil {
-                //                    return "Account-Key: \(self.accountKey) Session-ID: \(self.sessionID)"
-                //                } else {
-                //                    return "Error Logging In"
-                //                }
-            }
+
         }
         task.resume()
-        if sessionID != nil {
-            return (self.accountKey!, self.sessionID!) // need to return any errors
-        } else {
-            return ("Loging In... ", "Waiting for Data") }
+
     }
     
 }
