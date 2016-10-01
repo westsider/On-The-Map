@@ -36,6 +36,7 @@ class LogOnViewController: UIViewController  {
         
         let userName = self.userEmail.text!
         let password = self.userPassword.text!
+
         setUIEnabled(enabled: false)
         
         UdacityClient().logInToUdacity(user: userName, password: password, completionHandler: { (success, error) -> Void in

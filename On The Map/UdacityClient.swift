@@ -25,7 +25,7 @@ class UdacityClient {
     // MARK: Make Network Request on Udacity
     func logInToUdacity (user: String, password: String,  completionHandler: @escaping CompletionHandler) {
         
-        // MARK: TODO: make this  taskForGet function
+        // MARK: TODO make this  taskForGet function
         // Build the URL, Configure the request
         let request = Constants.Udacity.APIBaseURL
         request.httpMethod = Constants.UdacityParameterValues.Method
@@ -44,8 +44,6 @@ class UdacityClient {
                 print(error)
                 print("URL at time of error: \(request)")
                 performUIUpdatesOnMain {
-                    //dispatch_async(DISPATCH_QUEUE_PRIORITY_DEFAULT, { () -> Void in
-                    //self.setUIEnabled(enabled: true)
                     self.apiError = "API Error: " + error
                     completionHandler(nil, error)
                 }
@@ -77,7 +75,7 @@ class UdacityClient {
             print(NSString(data: newData, encoding: String.Encoding.utf8.rawValue)!)
             print(" ")
             
-            // MARK:  make this parseJSON Function
+            // MARK:  TODO make this parseJSON Function
             // parse the data
             let parsedResult: [String:AnyObject]
             do {
@@ -89,15 +87,15 @@ class UdacityClient {
             // MARK: TODO Make this getRequestToken func
             if let jsonResult = parsedResult["account"] as? [String: AnyObject] {
                 self.accountKey = jsonResult["key"] as? String
-                print("Account-Key: \(self.accountKey)")
+                print("Account-Key: \(self.accountKey!)")
                 print(" ")
                 
             }
             if let jsonResult = parsedResult["session"] as? [String: AnyObject] {
                 self.sessionID = jsonResult["id"] as? String
-                print("Session-ID: \(self.sessionID)")
+                print("Session-ID: \(self.sessionID!)")
                 print(" ")
-                completionHandler(self.sessionID, nil)
+                completionHandler("Swift 3.0 API Login Successful! \r\n\r\nAccount-Key: \(self.accountKey!) \r\n\r\nSession-ID: \(self.sessionID!)", nil)
             }
 
         }
