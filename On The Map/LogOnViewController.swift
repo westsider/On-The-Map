@@ -10,12 +10,12 @@ import UIKit
 import Foundation
 
 class LogOnViewController: UIViewController  {
-    
-    
-   // var abc = UdacityClient.foobar(a:10)
-    
-    
+
     var appDelagate: AppDelegate!
+    
+    let loginViewToTabViewSegue = "loginViewToTabViewSegue"
+    
+    //var loginSuccessful = false
     
     @IBOutlet weak var userEmail: UITextField!
     
@@ -34,9 +34,10 @@ class LogOnViewController: UIViewController  {
     // log in button + log in function call to my custom API
     @IBAction func logInAction(_ sender: AnyObject) {
         
-          let userName = self.userEmail.text!
-          let password = self.userPassword.text!
-
+        //  let userName = self.userEmail.text!
+        //  let password = self.userPassword.text!
+        let userName = "whansen1@mac.com"
+        let password = "wh2403wh"
         
         setUIEnabled(enabled: false)
         
@@ -51,11 +52,19 @@ class LogOnViewController: UIViewController  {
                 performUIUpdatesOnMain{
                 self.debugWindow.text = success!
                 self.setUIEnabled(enabled: true)
+                self.loginSuccessful()
                 }
-                
             }
+            
         })
         
+    }
+
+    func loginSuccessful() {
+        Parse().retrieveMapData()
+        // segue to tableview
+        //tabBarController.userModel = userModel
+        performSegue(withIdentifier: loginViewToTabViewSegue, sender: self)
     }
     
     @IBAction func loginFacebookAction(_ sender: AnyObject) {

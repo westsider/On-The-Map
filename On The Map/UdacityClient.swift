@@ -4,12 +4,16 @@
 //
 //  Created by Warren Hansen on 9/26/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
-//  break it down into functions
-//  login, parse, getuserID, geAccountInfo
-
+//  Sat - get studends location
+//  parse students location
+//  show in tableview
+//  show as pins on map
+//  Sun - Show urls on pins
+//  post my location and url
 import Foundation
 
 typealias CompletionHandler = (_ result:String?,_ error: String?)-> Void
+
 
 class UdacityClient {
 
