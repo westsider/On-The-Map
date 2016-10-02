@@ -34,10 +34,9 @@ class LogOnViewController: UIViewController  {
     // log in button + log in function call to my custom API
     @IBAction func logInAction(_ sender: AnyObject) {
         
-        //  let userName = self.userEmail.text!
-        //  let password = self.userPassword.text!
-        let userName = "whansen1@mac.com"
-        let password = "wh2403wh"
+          let userName = self.userEmail.text!
+          let password = self.userPassword.text!
+
         
         setUIEnabled(enabled: false)
         
