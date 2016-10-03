@@ -10,12 +10,8 @@ import UIKit
 import Foundation
 
 class LogOnViewController: UIViewController  {
-
-    var appDelagate: AppDelegate!
     
     let loginViewToTabViewSegue = "loginViewToTabViewSegue"
-    
-    //var loginSuccessful = false
     
     @IBOutlet weak var userEmail: UITextField!
     
@@ -25,45 +21,58 @@ class LogOnViewController: UIViewController  {
     
     @IBOutlet weak var loginButton: UIButton!
     
+    @IBOutlet weak var activityCircle: UIActivityIndicatorView!
+    
     @IBOutlet weak var loginFbButtob: UIButton!
     
+    @IBAction func accountSignUp(_ sender: AnyObject) {
+        UIApplication.shared.openURL(URL(string: "https://www.udacity.com/account/auth#!/signup")!)
+    }
     var accountKey = ""
     
     var sessionID = ""
     
-    // log in button + log in function call to my custom API
+    // MARK: log in button pressed
     @IBAction func logInAction(_ sender: AnyObject) {
         
-          let userName = self.userEmail.text!
-          let password = self.userPassword.text!
-
+        self.userEmail.text! = "whansen1@mac.com"
+        self.userPassword.text! = "wh2403wh"
         
+        // reduce the alpha and disable text entry
         setUIEnabled(enabled: false)
         
-        UdacityClient().logInToUdacity(user: userName, password: password, completionHandler: { (success, error) -> Void in
-            if error != nil {
-                self.debugWindow.text = error
-                self.setUIEnabled(enabled: true)
-                // MARK: TODO Pust this to alert VC
-            }
-            if success != nil {
-                print(success!)
-                performUIUpdatesOnMain{
-                self.debugWindow.text = success!
-                self.setUIEnabled(enabled: true)
-                self.loginSuccessful()
+        //Check for empty user and password
+        if (userEmail.text == "" || userPassword.text == "") {
+            textDisplay("Please enter a username and password.")
+
+        //get userID
+        } else {
+            textDisplay("Contacting Udacity...")
+            activityCircle.startAnimating();
+            UdacityLogin.sharedInstance().loginToUdacity(username: self.userEmail.text!, password: self.userPassword.text!) { (success, errorString) in
+                if success {
+                    
+                    //Fetching first and last name from Udacity.
+                    UdacityLogin.sharedInstance().setFirstNameLastName() { (success, errorString) in
+                        if success {
+                            
+                            //Fetching student information from Parse.
+                            MapPoints.sharedInstance().fetchData() { (success, errorString) in
+                                if success {
+                                    self.completeLogin()
+                                } else {
+                                    self.textDisplay(errorString)
+                                }
+                            }
+                        } else {
+                            self.textDisplay(errorString)
+                        }
+                    }
+                } else {
+                    self.textDisplay(errorString)
                 }
             }
-            
-        })
-        
-    }
-
-    func loginSuccessful() {
-        Parse().retrieveMapData()
-        // segue to tableview
-        //tabBarController.userModel = userModel
-        performSegue(withIdentifier: loginViewToTabViewSegue, sender: self)
+        }
     }
     
     @IBAction func loginFacebookAction(_ sender: AnyObject) {
@@ -74,24 +83,37 @@ class LogOnViewController: UIViewController  {
     private func setUIEnabled(enabled: Bool) {
         loginButton.isEnabled = true
         loginFbButtob.isEnabled = true
-        //grabImageButton.enabled = enabled
+        userEmail.isEnabled = true
+        userPassword.isEnabled = true
         
         if enabled {
             loginButton.alpha = 1.0
             loginFbButtob.alpha = 1.0
+            userEmail.alpha = 1.0
+            userPassword.alpha = 1.0
         } else {
-            loginButton.alpha = 0.5
+            loginButton.alpha = 0.3
             loginFbButtob.alpha = 0.3
+            userEmail.alpha = 0.3
+            userPassword.alpha = 0.3
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // get the app delgate
-        appDelagate = UIApplication.shared.delegate as! AppDelegate!
+    // MARK: Display text to UI.
+    func textDisplay(_ errorString: String?) {
+        DispatchQueue.main.async(execute: {
+            if let errorString = errorString {
+                self.debugWindow.text = errorString
+                //The login button in re-enabled so that the user can try again.
+                self.loginButton.isEnabled = true
+            }
+        })
     }
     
-
+    // MARK: Complete the login and present the map.
+    func completeLogin() {
+         performSegue(withIdentifier: loginViewToTabViewSegue, sender: self)
+    }
     
 }
 
