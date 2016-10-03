@@ -35,16 +35,14 @@ class LogOnViewController: UIViewController  {
     // MARK: log in button pressed
     @IBAction func logInAction(_ sender: AnyObject) {
         
-        self.userEmail.text! = "whansen1@mac.com"
-        self.userPassword.text! = "wh2403wh"
-        
         // reduce the alpha and disable text entry
         setUIEnabled(enabled: false)
         
         //Check for empty user and password
-        if (userEmail.text == "" || userPassword.text == "") {
+        if (userEmail.text == "" || userEmail.text == "user" || userPassword.text == "" || userPassword.text == "password") {
             textDisplay("Please enter a username and password.")
-
+            setUIEnabled(enabled: true)
+            return
         //get userID
         } else {
             textDisplay("Contacting Udacity...")
@@ -59,6 +57,7 @@ class LogOnViewController: UIViewController  {
                             //Fetching student information from Parse.
                             MapPoints.sharedInstance().fetchData() { (success, errorString) in
                                 if success {
+                                    self.textDisplay("Login Complete")
                                     self.completeLogin()
                                 } else {
                                     self.textDisplay(errorString)
@@ -110,11 +109,11 @@ class LogOnViewController: UIViewController  {
         })
     }
     
-    // MARK: Complete the login and present the map.
     func completeLogin() {
-         performSegue(withIdentifier: loginViewToTabViewSegue, sender: self)
+        DispatchQueue.main.async(execute: {
+            self.performSegue(withIdentifier: self.loginViewToTabViewSegue, sender: self)
+        })
     }
-    
 }
 
 
