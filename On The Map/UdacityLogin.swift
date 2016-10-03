@@ -10,13 +10,13 @@ import Foundation
 
 class UdacityLogin: NSObject {
     
-    //Information about the user, provided through the authentication process.
+    //MARK: Info about the user, provided through authentication
     var userKey = ""
     var firstName = ""
     var lastName = ""
     
     
-    //Authenticate user and get unique userKey.
+    //MARK: Auth- get userKey.
     func loginToUdacity(username: String, password: String, completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
         
         //Get Session ID.
@@ -28,10 +28,10 @@ class UdacityLogin: NSObject {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".data(using: String.Encoding.utf8)
         
-        //Initialize the session.
+        //MARK: Initialize session.
         let session = URLSession.shared
         
-        //Initialize the task for getting the data.
+        // Get Request
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             
             if error != nil {
@@ -56,7 +56,7 @@ class UdacityLogin: NSObject {
     }
     
     
-    //Using the unique UserKey, get the user's first and last name.
+    //MARK: With UserKey, get the user name.
     func setFirstNameLastName(completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
         
         //Initialize URL.

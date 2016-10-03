@@ -38,7 +38,7 @@ class LogOnViewController: UIViewController  {
         // reduce the alpha and disable text entry
         setUIEnabled(enabled: false)
         
-        //Check for empty user and password
+        //Check for empty or default user and password
         if (userEmail.text == "" || userEmail.text == "user" || userPassword.text == "" || userPassword.text == "password") {
             textDisplay("Please enter a username and password.")
             setUIEnabled(enabled: true)
