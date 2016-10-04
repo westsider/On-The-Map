@@ -5,8 +5,10 @@
 //  Created by Warren Hansen on 9/18/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
 
-//  nav buttons only show when I switch to listview then back
 //  need to gaurd against bad urls
+//  add pin function
+//  add logout
+
 
 import MapKit
 import UIKit
@@ -37,19 +39,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
  
         //Sets the map area.
         mapView?.camera.altitude = 500000;
         //Set map to center on Los Angeles
-                mapView?.centerCoordinate = CLLocationCoordinate2D(latitude: 34.052235, longitude: -118.243683)
+        mapView?.centerCoordinate = CLLocationCoordinate2D(latitude: 34.052235, longitude: -118.243683)
         //Adding a link to the annotation requires making the mapView a delegate of MKMapView.
         mapView.delegate = self
-        
         //Call to getStudents then Draw the annotations on the map.
         reloadViewController()
-      
     }
     
     

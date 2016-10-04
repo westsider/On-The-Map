@@ -15,7 +15,6 @@ class UdacityLogin: NSObject {
     var firstName = ""
     var lastName = ""
     
-    
     //MARK: Auth- get userKey.
     func loginToUdacity(username: String, password: String, completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
         
