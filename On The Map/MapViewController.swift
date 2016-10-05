@@ -49,41 +49,31 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
   
     @IBAction func tapPinButton(_ sender: AnyObject) {
-        // see if user has a pin
-        if thisUserPosted {
-            let thisAlert = "You Have Already Posted A Student Location. Would You Like to Overwrite Your Current Location?"
-            let alertController = UIAlertController(title: "Hey", message: thisAlert, preferredStyle: UIAlertControllerStyle.alert)
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
-                print("Cancel")
-            }
-            let overwriteAction = UIAlertAction(title: "Overwrite", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-                print("Overwrite")
+            // see if user has a pin
+            if thisUserPosted {
+                let thisAlert = "You Have Already Posted A Student Location. Would You Like to Overwrite Your Current Location?"
+                let alertController = UIAlertController(title: "Hey", message: thisAlert, preferredStyle: UIAlertControllerStyle.alert)
+                let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
+                    print("Cancel")
+                }
+                let overwriteAction = UIAlertAction(title: "Overwrite", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                    print("Overwrite")
+                    DispatchQueue.main.async(execute: {
+                        self.performSegue(withIdentifier: self.mapToPinSegue, sender: self)
+                    })
+                    
+                }
+                alertController.addAction(cancelAction)
+                alertController.addAction(overwriteAction)
+                self.present(alertController, animated: true, completion: nil)
                 
-//                // remove existing user pin
-//                MapPoints.sharedInstance().logOut() { (success, errorString) in
-//                    if success {
-//                        print("<<<<<<<<< Logout Complete >>>>>>>>>>>")
-//                        // segueay to add pin
-//                        DispatchQueue.main.async(execute: {
-//                            self.performSegue(withIdentifier: self.mapToPinSegue, sender: self)
-//                        })
-//                    } else {
-//                        print("<<<<<<<<< Logout FAILED  \(errorString)>>>>>>>>>>>")
-//                    }
-//                
-//                }
-           }
-            alertController.addAction(cancelAction)
-            alertController.addAction(overwriteAction)
-            self.present(alertController, animated: true, completion: nil)
-            
-        } else {
-            // if no user pin then segue to add pin VC  mapToPinSegue
-            DispatchQueue.main.async(execute: {
-                self.performSegue(withIdentifier: self.mapToPinSegue, sender: self)
-            })
+            } else {
+                // if no user pin then segue to add pin VC  mapToPinSegue
+                DispatchQueue.main.async(execute: {
+                    self.performSegue(withIdentifier: self.mapToPinSegue, sender: self)
+                })
+            }
         }
-    }
         
     
     @IBAction func tapRefreshButton(_ sender: AnyObject) {
