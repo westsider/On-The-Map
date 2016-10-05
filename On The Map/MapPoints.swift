@@ -104,32 +104,25 @@ class MapPoints: NSObject {
             
         })
         task.resume()
-        
-        
-        /*
-         // Code for deleting a record - Not currently in use.
-         
-         let request = NSMutableURLRequest(URL: NSURL(string: "\(self.DatabaseURL)/StudentLocation/UniqueObjectId")!)
-         request.HTTPMethod = "DELETE"
-         request.addValue(self.ParseID, forHTTPHeaderField: "X-Parse-Application-Id")
-         request.addValue(self.ParseAPIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
-         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-         let session = NSURLSession.sharedSession()
-         let task = session.dataTaskWithRequest(request) { data, response, error in
-         if error != nil {
-         completionHandler(success: false, errorString: "Failed to submit data.")
-         } else {
-         completionHandler(success: true, errorString: nil)
-         }
-         }
-         task.resume()
-         
-         // End code for deleting.
-         */
-        
-        
     }
     
+    //  log out
+    func logOut( completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
+        let request = NSMutableURLRequest(url: NSURL(string: "\(self.DatabaseURL)/StudentLocation/UniqueObjectId")! as URL)
+        request.httpMethod = "DELETE"
+        request.addValue(self.ParseID, forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue(self.ParseAPIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil {
+                completionHandler(false, "Failed to submit data.")
+            } else {
+                completionHandler(true, nil)
+            }
+        }
+        task.resume()
+    }
     
     //Allows other classes to reference a common instance of the mapPoints array.
     class func sharedInstance() -> MapPoints {

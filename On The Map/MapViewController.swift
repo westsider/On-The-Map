@@ -6,7 +6,9 @@
 //  Copyright © 2016 Warren Hansen. All rights reserved.
 
 //  need to gaurd against bad urls
-//  add pin function
+//  map zoom in  span = MKCoordinateSpanMake(0.4,0.4)
+//  add pin - has pin alreadey been posted? yes over write/ cancel
+//  pin map is originally text input = Hunstville, Alamama auto complete, click fin, app gepcodes location, address become button to share link, submit button on bottom
 //  add logout
 
 
@@ -15,6 +17,10 @@ import UIKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
 
+    var thisUserPosted = false
+    
+    let mapToPinSegue = "mapToPinSegue"
+    
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var refreshButton: UIBarButtonItem!
@@ -27,22 +33,70 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     UIActivityIndicatorView!
     
     @IBAction func logoutButtonTapped(_ sender: AnyObject) {
+       
+        MapPoints.sharedInstance().logOut() { (success, errorString) in
+            if success {
+                print("<<<<<<<<< Logout Complete >>>>>>>>>>>")
+                // segueay to add pin
+                DispatchQueue.main.async(execute: {
+                    self.performSegue(withIdentifier: self.mapToPinSegue, sender: self)
+                })
+            } else {
+                print("<<<<<<<<< Logout FAILED  \(errorString)>>>>>>>>>>>")
+            }
+            
+        }
     }
   
     @IBAction func tapPinButton(_ sender: AnyObject) {
+        // see if user has a pin
+        if thisUserPosted {
+            let thisAlert = "You Have Already Posted A Student Location. Would You Like to Overwrite Your Current Location?"
+            let alertController = UIAlertController(title: "Hey", message: thisAlert, preferredStyle: UIAlertControllerStyle.alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
+                print("Cancel")
+            }
+            let overwriteAction = UIAlertAction(title: "Overwrite", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                print("Overwrite")
+                
+//                // remove existing user pin
+//                MapPoints.sharedInstance().logOut() { (success, errorString) in
+//                    if success {
+//                        print("<<<<<<<<< Logout Complete >>>>>>>>>>>")
+//                        // segueay to add pin
+//                        DispatchQueue.main.async(execute: {
+//                            self.performSegue(withIdentifier: self.mapToPinSegue, sender: self)
+//                        })
+//                    } else {
+//                        print("<<<<<<<<< Logout FAILED  \(errorString)>>>>>>>>>>>")
+//                    }
+//                
+//                }
+           }
+            alertController.addAction(cancelAction)
+            alertController.addAction(overwriteAction)
+            self.present(alertController, animated: true, completion: nil)
+            
+        } else {
+            // if no user pin then segue to add pin VC  mapToPinSegue
+            DispatchQueue.main.async(execute: {
+                self.performSegue(withIdentifier: self.mapToPinSegue, sender: self)
+            })
+        }
     }
+        
     
     @IBAction func tapRefreshButton(_ sender: AnyObject) {
         refreshData()
     }
-    
-    
-    
+ 
+ 
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
  
         //Sets the map area.
-        mapView?.camera.altitude = 500000;
+        mapView?.camera.altitude = 200000;
         //Set map to center on Los Angeles
         mapView?.centerCoordinate = CLLocationCoordinate2D(latitude: 34.052235, longitude: -118.243683)
         //Adding a link to the annotation requires making the mapView a delegate of MKMapView.
@@ -83,6 +137,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             //Adds a student name and URL to the annotation.
             annotation.title = result.fullName
             annotation.subtitle = result.mediaURL
+            
+            // flag that this user is on the map
+            if result.fullName == UdacityLogin.sharedInstance().firstName + " " + UdacityLogin.sharedInstance().lastName {
+                thisUserPosted = true
+                print(" ")
+                print("<<<<<<<<< THIS USER HAS POSTED TO MAP >>>>>>>>>>>>>>>>>>>>>")
+                print(" ")
+            }
+            
             
             //Adds the annotation to the map.
             mapView.addAnnotation(annotation)

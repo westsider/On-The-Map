@@ -13,6 +13,7 @@
 		3935448A1DA1B16A0015CBF2 /* ReloadableTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393544891DA1B16A0015CBF2 /* ReloadableTab.swift */; };
 		3935448C1DA1C1A20015CBF2 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935448B1DA1C1A20015CBF2 /* TabViewController.swift */; };
 		396B276C1DA064FF008508CF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 396B276B1DA064FF008508CF /* CoreLocation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		399E51EC1DA4651400864070 /* addLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E51EB1DA4651400864070 /* addLocationViewController.swift */; };
 		39C0E7F41D959BDB0075AA20 /* LogOnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C0E7F31D959BDB0075AA20 /* LogOnViewController.swift */; };
 		39C0E7F61D95EB770075AA20 /* GDCBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C0E7F51D95EB770075AA20 /* GDCBlackBox.swift */; };
 		A6D16BAC1D8F51740074A14D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BAB1D8F51740074A14D /* AppDelegate.swift */; };
@@ -49,6 +50,7 @@
 		393544891DA1B16A0015CBF2 /* ReloadableTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReloadableTab.swift; sourceTree = "<group>"; };
 		3935448B1DA1C1A20015CBF2 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		396B276B1DA064FF008508CF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		399E51EB1DA4651400864070 /* addLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addLocationViewController.swift; sourceTree = "<group>"; };
 		39C0E7F31D959BDB0075AA20 /* LogOnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOnViewController.swift; sourceTree = "<group>"; };
 		39C0E7F51D95EB770075AA20 /* GDCBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GDCBlackBox.swift; sourceTree = "<group>"; };
 		A6D16BA81D8F51740074A14D /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,7 @@
 				39C0E7F31D959BDB0075AA20 /* LogOnViewController.swift */,
 				393544811DA19BEE0015CBF2 /* UdacityLogin.swift */,
 				A6D16BAD1D8F51740074A14D /* MapViewController.swift */,
+				399E51EB1DA4651400864070 /* addLocationViewController.swift */,
 				393544831DA1A4040015CBF2 /* MapPoints.swift */,
 				3935448B1DA1C1A20015CBF2 /* TabViewController.swift */,
 				A6D16BB11D8F51740074A14D /* Main.storyboard */,
@@ -314,6 +317,7 @@
 				A6D16BAE1D8F51740074A14D /* MapViewController.swift in Sources */,
 				39C0E7F61D95EB770075AA20 /* GDCBlackBox.swift in Sources */,
 				39C0E7F41D959BDB0075AA20 /* LogOnViewController.swift in Sources */,
+				399E51EC1DA4651400864070 /* addLocationViewController.swift in Sources */,
 				3935448A1DA1B16A0015CBF2 /* ReloadableTab.swift in Sources */,
 				393544841DA1A4040015CBF2 /* MapPoints.swift in Sources */,
 			);
