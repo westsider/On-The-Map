@@ -47,7 +47,7 @@
                                     <action selector="tapRefreshButton:" destination="9pv-A4-QxB" id="l1d-Uz-hf6"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Pin" id="Eta-lH-meJ">
+                            <barButtonItem image="pin" id="Eta-lH-meJ">
                                 <connections>
                                     <action selector="tapPinButton:" destination="9pv-A4-QxB" id="YH0-xr-OQ2"/>
                                 </connections>
@@ -173,19 +173,32 @@
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qa1-RZ-sSI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="20" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qa1-RZ-sSI">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="DOO-QU-sOy">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="ERn-8n-eNj" imageView="oAV-In-jea" rowHeight="20" style="IBUITableViewCellStyleDefault" id="DOO-QU-sOy">
+                                        <rect key="frame" x="0.0" y="92" width="375" height="20"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DOO-QU-sOy" id="0Od-zQ-iv0">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="19"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ERn-8n-eNj">
+                                                    <frame key="frameInset" minX="49" width="311" height="19"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="pin" id="oAV-In-jea">
+                                                    <frame key="frameInset" minX="15" width="19" height="19"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -208,7 +221,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="27y-eJ-NxN"/>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="refresh" id="mRE-wN-W08"/>
-                            <barButtonItem title="Pin" id="gUh-O5-7hJ"/>
+                            <barButtonItem image="pin" id="gUh-O5-7hJ"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -369,7 +382,7 @@
         <scene sceneID="err-CS-TAd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VDV-aJ-AkF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" selectedImage="map" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sab-ez-kSD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -388,7 +401,7 @@
         <scene sceneID="iYo-y9-5yv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="djV-TV-Q1f" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="List" image="List" selectedImage="List" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jRy-wh-yCw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -423,9 +436,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
+        <image name="List" width="32" height="32"/>
         <image name="greyBkg" width="414" height="736"/>
-        <image name="second" width="30" height="30"/>
+        <image name="map" width="32" height="32"/>
+        <image name="pin" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BUU-ay-OCa"/>

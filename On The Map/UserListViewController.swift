@@ -13,13 +13,14 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var tavleView: UITableView!
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return MapPoints.sharedInstance().mapPoints.count
     }
    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         
-        cell.textLabel?.text = "Test Cell"
+        let mapPoint = MapPoints.sharedInstance().mapPoints[(indexPath as NSIndexPath).row]
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
+        cell.textLabel?.text = mapPoint.fullName
         
         return cell
     }
