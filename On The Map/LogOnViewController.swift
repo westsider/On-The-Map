@@ -34,6 +34,7 @@ class LogOnViewController: UIViewController  {
     
     // MARK: log in button pressed
     @IBAction func logInAction(_ sender: AnyObject) {
+        
 
         
         // reduce the alpha and disable text entry
