@@ -97,13 +97,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3935447F1DA19AAE0015CBF2 /* Map */ = {
+		3935447F1DA19AAE0015CBF2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A6D16BAF1D8F51740074A14D /* ListViewController.swift */,
-				393544891DA1B16A0015CBF2 /* ReloadableTab.swift */,
+				39C0E7F31D959BDB0075AA20 /* LogOnViewController.swift */,
+				A6D16BAD1D8F51740074A14D /* MapViewController.swift */,
+				399E51EB1DA4651400864070 /* addLocationViewController.swift */,
+				39B54D751DA6B203005E9B39 /* UserListViewController.swift */,
+				3935448B1DA1C1A20015CBF2 /* TabViewController.swift */,
 			);
-			name = Map;
+			name = View;
 			sourceTree = "<group>";
 		};
 		396B276A1DA064FF008508CF /* Frameworks */ = {
@@ -112,6 +115,26 @@
 				396B276B1DA064FF008508CF /* CoreLocation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		39B54D7E1DA6C672005E9B39 /* Supporting FIles */ = {
+			isa = PBXGroup;
+			children = (
+				A6D16BB61D8F51740074A14D /* LaunchScreen.storyboard */,
+				A6D16BB91D8F51740074A14D /* Info.plist */,
+				39C0E7F51D95EB770075AA20 /* GDCBlackBox.swift */,
+				A6D16BAB1D8F51740074A14D /* AppDelegate.swift */,
+			);
+			name = "Supporting FIles";
+			sourceTree = "<group>";
+		};
+		39B54D7F1DA6C68B005E9B39 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				393544811DA19BEE0015CBF2 /* UdacityLogin.swift */,
+				393544831DA1A4040015CBF2 /* MapPoints.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		A6D16B9F1D8F51740074A14D = {
@@ -138,21 +161,14 @@
 		A6D16BAA1D8F51740074A14D /* On The Map */ = {
 			isa = PBXGroup;
 			children = (
-				39C0E7F31D959BDB0075AA20 /* LogOnViewController.swift */,
-				39B54D751DA6B203005E9B39 /* UserListViewController.swift */,
-				393544811DA19BEE0015CBF2 /* UdacityLogin.swift */,
-				A6D16BAD1D8F51740074A14D /* MapViewController.swift */,
-				399E51EB1DA4651400864070 /* addLocationViewController.swift */,
-				393544831DA1A4040015CBF2 /* MapPoints.swift */,
-				3935448B1DA1C1A20015CBF2 /* TabViewController.swift */,
 				A6D16BB11D8F51740074A14D /* Main.storyboard */,
-				3935447F1DA19AAE0015CBF2 /* Map */,
+				39B54D7F1DA6C68B005E9B39 /* Model */,
+				3935447F1DA19AAE0015CBF2 /* View */,
 				A6D16BB41D8F51740074A14D /* Assets.xcassets */,
 				393544871DA1A4810015CBF2 /* StudentInfo.swift */,
-				A6D16BAB1D8F51740074A14D /* AppDelegate.swift */,
-				39C0E7F51D95EB770075AA20 /* GDCBlackBox.swift */,
-				A6D16BB61D8F51740074A14D /* LaunchScreen.storyboard */,
-				A6D16BB91D8F51740074A14D /* Info.plist */,
+				393544891DA1B16A0015CBF2 /* ReloadableTab.swift */,
+				A6D16BAF1D8F51740074A14D /* ListViewController.swift */,
+				39B54D7E1DA6C672005E9B39 /* Supporting FIles */,
 			);
 			path = "On The Map";
 			sourceTree = "<group>";

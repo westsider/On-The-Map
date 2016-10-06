@@ -19,8 +19,10 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let mapPoint = MapPoints.sharedInstance().mapPoints[(indexPath as NSIndexPath).row]
+        
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         cell.textLabel?.text = mapPoint.fullName
+        cell.imageView?.image = UIImage(named: "pin")
         
         return cell
     }
