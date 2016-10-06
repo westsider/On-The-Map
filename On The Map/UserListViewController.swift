@@ -22,7 +22,7 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         cell.textLabel?.text = mapPoint.fullName
-        cell.imageView?.image = UIImage(named: "pin")
+        cell.imageView?.image = UIImage(named: "pinB")
         
         return cell
     }
