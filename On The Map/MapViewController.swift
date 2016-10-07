@@ -5,13 +5,6 @@
 //  Created by Warren Hansen on 9/18/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
 
-//  need to gaurd against bad urls
-//  map zoom in  span = MKCoordinateSpanMake(0.4,0.4)
-//  add pin - has pin alreadey been posted? yes over write/ cancel
-//  pin map is originally text input = Hunstville, Alamama auto complete, click fin, app gepcodes location, address become button to share link, submit button on bottom
-//  add logout
-
-
 import MapKit
 import UIKit
 
