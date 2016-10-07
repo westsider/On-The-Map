@@ -27,14 +27,7 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
 
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
-
-
-
 }

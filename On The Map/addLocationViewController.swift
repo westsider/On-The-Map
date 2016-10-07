@@ -5,8 +5,7 @@
 //  Created by Warren Hansen on 10/4/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
 //
-// pin success
-// kicked back to home not map?
+
 
 import UIKit
 import MapKit
@@ -24,6 +23,8 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var submitLinkButton: UIButton!
+    
+    @IBOutlet weak var topViewBackgroung: UIView!
     
     @IBAction func submitLinkAction(_ sender: AnyObject) {
         
@@ -89,6 +90,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         
         //These items aren't revealed until the user successfully finds a location.
         mapView.isHidden = true
+        topViewBackgroung.isHidden = true
         submitLinkButton.isHidden = true
         enterLink.isHidden = true
         //workingMessage.isHidden = true
@@ -123,6 +125,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
                 
                 //Displays the map.
                 self.mapView.isHidden = false
+                self.topViewBackgroung.isHidden = false
                 
                 //Places the annotation on the map.
                 self.mapView?.addAnnotation(pointAnnotation)
@@ -131,7 +134,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
                 self.mapView?.centerCoordinate = coordinates
                 
                 //Sets the zoom level on the map.
-                self.mapView?.camera.altitude = 3000000;
+                self.mapView?.camera.altitude = 1000;
                 
                 //Sets the coordinates parameter that is used if the user decides to submit this location.
                 self.coordinates = coordinates
@@ -178,5 +181,57 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         }
         return false
     }
+//    // MARK: Lifecycle Function
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        subscribeToKeyboardNotifications()
+//    }
+//    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        unSubscribeToKeyboardNotofications()
+//    }
+//    
+//    // MARK:  Set up view shift up behavior for keyboard text entry
+//    //  NSNotification subscriptions and selectors
+//    func subscribeToKeyboardNotifications() {
+//        NotificationCenter.default.addObserver(self, selector: #selector(LogOnViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        
+//        NotificationCenter.default.addObserver(self, selector: #selector(LogOnViewController.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//    }
+//    
+//    func unSubscribeToKeyboardNotofications() {
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//    }
+//    
+//    // MARK: shift the view's frame up only on bottom text field
+//    func keyboardWillShow(notification: NSNotification) {
+//        if userPassword.isFirstResponder && view.frame.origin.y == 0.0{
+//            view.frame.origin.y -= getKeyboardHeight(notification: notification)
+//        }
+//    }
+//    
+//    func keyboardWillHide(notification: NSNotification) {
+//        if userPassword.isFirstResponder {
+//            view.frame.origin.y = 0
+//        }
+//    }
+//    
+//    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+//        let userInfo = notification.userInfo
+//        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+//        return keyboardSize.cgRectValue.height
+//    }
+//    
+//    // MARK: hide keyboard with return or on click away from text
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        view.endEditing(true)
+//        return false
+//    }
+//    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        view.endEditing(true)
+//    }
     
 }

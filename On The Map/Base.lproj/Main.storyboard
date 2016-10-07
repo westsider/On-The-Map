@@ -79,61 +79,100 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cq-Cz-Axv" userLabel="TopView">
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter a link to share" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FSZ-dl-eAR">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="onc-iV-bKn" id="HN4-30-N6B"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.31372549019607843" green="0.52156862745098043" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="FSZ-dl-eAR" firstAttribute="trailing" secondItem="9cq-Cz-Axv" secondAttribute="trailingMargin" id="BrN-1h-TXL"/>
+                                    <constraint firstItem="FSZ-dl-eAR" firstAttribute="top" secondItem="9cq-Cz-Axv" secondAttribute="top" constant="94" id="U7J-U8-9fq"/>
+                                    <constraint firstItem="FSZ-dl-eAR" firstAttribute="leading" secondItem="9cq-Cz-Axv" secondAttribute="leadingMargin" id="h2T-rV-g9O"/>
+                                    <constraint firstAttribute="bottom" secondItem="FSZ-dl-eAR" secondAttribute="bottom" constant="96" id="jNd-ON-bzP"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZJ-zT-BIp" userLabel="MidView">
+                                <color key="backgroundColor" red="0.2697789931775898" green="0.51618222062010111" blue="0.81422511316923074" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Afn-TQ-jXi" userLabel="LowView">
+                                <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Mountian View, CA" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="onI-AI-8Xa">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="onc-iV-bKn" id="V3y-e2-3bC"/>
+                                </connections>
+                            </textField>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7Rf-07-tQc"/>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Where are you studying today?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FpD-5n-ojP">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="csY-s2-PTw"/>
+                                    <constraint firstAttribute="height" constant="102" id="Ji6-CV-Ud8"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter a location" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="onI-AI-8Xa">
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter a link to share" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FSZ-dl-eAR">
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lmh-tR-iEG">
-                                <state key="normal" title="Find on map"/>
-                                <connections>
-                                    <action selector="findOnMapAction:" destination="onc-iV-bKn" eventType="touchUpInside" id="mvJ-pK-pSA"/>
-                                </connections>
-                            </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7Rf-07-tQc"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMr-if-XFt">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="105" id="aH5-dm-pgc"/>
+                                    <constraint firstAttribute="width" constant="105" id="Ybi-v5-2NQ"/>
                                 </constraints>
-                                <state key="normal" title="Submit Link"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submitLinkAction:" destination="onc-iV-bKn" eventType="touchUpInside" id="IYs-Sd-2r4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lmh-tR-iEG">
+                                <frame key="frameInset" minX="90" minY="594" width="195" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Find on the Map"/>
+                                <connections>
+                                    <action selector="findOnMapAction:" destination="onc-iV-bKn" eventType="touchUpInside" id="mvJ-pK-pSA"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="7Rf-07-tQc" firstAttribute="top" secondItem="onI-AI-8Xa" secondAttribute="bottom" constant="8" symbolic="YES" id="0pX-nx-CK5"/>
-                            <constraint firstAttribute="trailing" secondItem="7Rf-07-tQc" secondAttribute="trailing" id="2Zp-yZ-LYN"/>
-                            <constraint firstItem="RMr-if-XFt" firstAttribute="centerX" secondItem="Lmh-tR-iEG" secondAttribute="centerX" id="5yt-0s-Vfb"/>
-                            <constraint firstItem="onI-AI-8Xa" firstAttribute="top" secondItem="FSZ-dl-eAR" secondAttribute="bottom" constant="1" id="64I-s8-4AZ"/>
-                            <constraint firstItem="FpD-5n-ojP" firstAttribute="centerX" secondItem="FSZ-dl-eAR" secondAttribute="centerX" id="8PU-xa-Jw1"/>
-                            <constraint firstItem="FpD-5n-ojP" firstAttribute="leading" secondItem="1ys-d2-vPt" secondAttribute="leadingMargin" constant="91" id="CSl-zl-r1K"/>
-                            <constraint firstItem="FSZ-dl-eAR" firstAttribute="leading" secondItem="1ys-d2-vPt" secondAttribute="leadingMargin" constant="33" id="FMg-9Z-xsV"/>
-                            <constraint firstItem="g7u-q6-qWY" firstAttribute="top" secondItem="Lmh-tR-iEG" secondAttribute="bottom" constant="30" id="NFG-WX-B3l"/>
-                            <constraint firstItem="Lmh-tR-iEG" firstAttribute="top" secondItem="RMr-if-XFt" secondAttribute="bottom" constant="8" symbolic="YES" id="X4V-f0-4aF"/>
-                            <constraint firstItem="FSZ-dl-eAR" firstAttribute="leading" secondItem="onI-AI-8Xa" secondAttribute="leading" id="d1Y-aD-uAk"/>
-                            <constraint firstItem="onI-AI-8Xa" firstAttribute="centerX" secondItem="7Rf-07-tQc" secondAttribute="centerX" id="ehQ-0M-MzC"/>
-                            <constraint firstItem="FpD-5n-ojP" firstAttribute="top" secondItem="bEM-b9-RtY" secondAttribute="bottom" constant="8" symbolic="YES" id="gqk-5T-OoJ"/>
-                            <constraint firstItem="7Rf-07-tQc" firstAttribute="leading" secondItem="1ys-d2-vPt" secondAttribute="leading" id="hZC-vv-lay"/>
-                            <constraint firstItem="RMr-if-XFt" firstAttribute="top" secondItem="7Rf-07-tQc" secondAttribute="bottom" constant="8" symbolic="YES" id="k3s-3P-KyX"/>
-                            <constraint firstItem="7Rf-07-tQc" firstAttribute="centerX" secondItem="RMr-if-XFt" secondAttribute="centerX" id="nF5-TH-6x9"/>
-                            <constraint firstItem="FSZ-dl-eAR" firstAttribute="top" secondItem="FpD-5n-ojP" secondAttribute="bottom" constant="24" id="qJI-Ij-aFW"/>
-                            <constraint firstItem="Lmh-tR-iEG" firstAttribute="leading" secondItem="1ys-d2-vPt" secondAttribute="leadingMargin" constant="74" id="tIb-A0-lBi"/>
-                            <constraint firstItem="FSZ-dl-eAR" firstAttribute="trailing" secondItem="onI-AI-8Xa" secondAttribute="trailing" id="uep-KD-kSd"/>
+                            <constraint firstItem="9cq-Cz-Axv" firstAttribute="leading" secondItem="1ys-d2-vPt" secondAttribute="leading" id="0RU-vm-vZ4"/>
+                            <constraint firstItem="Afn-TQ-jXi" firstAttribute="top" secondItem="RMr-if-XFt" secondAttribute="top" id="0op-PP-WCI"/>
+                            <constraint firstItem="FpD-5n-ojP" firstAttribute="centerX" secondItem="onI-AI-8Xa" secondAttribute="centerX" id="4MI-d6-fKY"/>
+                            <constraint firstItem="onI-AI-8Xa" firstAttribute="top" secondItem="9cq-Cz-Axv" secondAttribute="bottom" constant="35" id="5NR-JC-Npu"/>
+                            <constraint firstItem="Afn-TQ-jXi" firstAttribute="bottom" secondItem="g7u-q6-qWY" secondAttribute="top" id="6B4-hW-YiZ"/>
+                            <constraint firstItem="7Rf-07-tQc" firstAttribute="leading" secondItem="Afn-TQ-jXi" secondAttribute="leading" id="9rB-Gs-s5n"/>
+                            <constraint firstItem="9cq-Cz-Axv" firstAttribute="top" secondItem="1ys-d2-vPt" secondAttribute="top" id="B3N-7L-7bo"/>
+                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="top" secondItem="7Rf-07-tQc" secondAttribute="top" id="Bbe-Y6-GZl"/>
+                            <constraint firstItem="9cq-Cz-Axv" firstAttribute="centerX" secondItem="FpD-5n-ojP" secondAttribute="centerX" id="Fu4-IZ-Ftc"/>
+                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="trailing" secondItem="Afn-TQ-jXi" secondAttribute="trailing" id="HYG-TK-vV7"/>
+                            <constraint firstItem="FpD-5n-ojP" firstAttribute="top" secondItem="bEM-b9-RtY" secondAttribute="bottom" constant="39" id="Hex-7A-cJS"/>
+                            <constraint firstItem="FpD-5n-ojP" firstAttribute="leading" secondItem="1ys-d2-vPt" secondAttribute="leadingMargin" constant="89" id="J5K-aV-ygU"/>
+                            <constraint firstItem="9cq-Cz-Axv" firstAttribute="leading" secondItem="hZJ-zT-BIp" secondAttribute="leading" id="KRY-WF-QmH"/>
+                            <constraint firstItem="9cq-Cz-Axv" firstAttribute="trailing" secondItem="hZJ-zT-BIp" secondAttribute="trailing" id="Mba-eO-0B5"/>
+                            <constraint firstItem="9cq-Cz-Axv" firstAttribute="centerY" secondItem="FpD-5n-ojP" secondAttribute="centerY" id="U3L-uT-0fR"/>
+                            <constraint firstItem="7Rf-07-tQc" firstAttribute="leading" secondItem="hZJ-zT-BIp" secondAttribute="leading" id="XT0-Nw-eIl"/>
+                            <constraint firstItem="RMr-if-XFt" firstAttribute="centerX" secondItem="Lmh-tR-iEG" secondAttribute="centerX" id="bM6-Pf-mTE"/>
+                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="top" secondItem="FpD-5n-ojP" secondAttribute="bottom" constant="57" id="eJq-k6-fgt"/>
+                            <constraint firstItem="RMr-if-XFt" firstAttribute="top" secondItem="hZJ-zT-BIp" secondAttribute="bottom" constant="8" symbolic="YES" id="iQi-By-Z2E"/>
+                            <constraint firstItem="7Rf-07-tQc" firstAttribute="trailing" secondItem="Afn-TQ-jXi" secondAttribute="trailing" id="ksX-zj-Lmn"/>
+                            <constraint firstItem="g7u-q6-qWY" firstAttribute="top" secondItem="Lmh-tR-iEG" secondAttribute="bottom" constant="30" id="liz-Pm-Axt"/>
+                            <constraint firstItem="Lmh-tR-iEG" firstAttribute="top" secondItem="RMr-if-XFt" secondAttribute="bottom" constant="8" symbolic="YES" id="mU0-q9-7lj"/>
+                            <constraint firstItem="Lmh-tR-iEG" firstAttribute="leading" secondItem="1ys-d2-vPt" secondAttribute="leadingMargin" constant="74" id="pcN-Om-jXj"/>
+                            <constraint firstItem="7Rf-07-tQc" firstAttribute="bottom" secondItem="g7u-q6-qWY" secondAttribute="top" id="rXR-M3-olc"/>
+                            <constraint firstAttribute="trailing" secondItem="9cq-Cz-Axv" secondAttribute="trailing" id="sPL-qO-oa6"/>
+                            <constraint firstItem="onI-AI-8Xa" firstAttribute="leading" secondItem="1ys-d2-vPt" secondAttribute="leadingMargin" id="ulq-pZ-ctW"/>
+                            <constraint firstItem="Afn-TQ-jXi" firstAttribute="centerX" secondItem="RMr-if-XFt" secondAttribute="centerX" id="ytT-m2-GOC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ICP-kF-WMn">
@@ -150,6 +189,7 @@
                         <outlet property="mapView" destination="7Rf-07-tQc" id="gUs-Id-ucz"/>
                         <outlet property="searchDisplayController" destination="f28-lL-Cpu" id="0nk-SK-i5q"/>
                         <outlet property="submitLinkButton" destination="RMr-if-XFt" id="k5m-ll-G1R"/>
+                        <outlet property="topViewBackgroung" destination="9cq-Cz-Axv" id="0mN-al-tS4"/>
                         <outlet property="whereUstudyingToday" destination="FpD-5n-ojP" id="f7S-n4-GeC"/>
                     </connections>
                 </viewController>
@@ -434,7 +474,7 @@
         <image name="pin" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CjF-Rp-jjc"/>
+        <segue reference="BUU-ay-OCa"/>
         <segue reference="P9v-1v-lLa"/>
     </inferredMetricsTieBreakers>
 </document>

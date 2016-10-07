@@ -5,12 +5,15 @@
 //  Created by Warren Hansen on 9/23/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
 
+//  Checking compliance with rubik....
 //  lock verticle display Go To Target --> General and set Orientation Mode to Portrait.
+//  move text up to allow key board login
 
-//  move text up to allow key board
-//  cancel on where are you studying
-//  connect logout on mapview
-//  comform where are you studying color and layout
+//  find where cancel on mapview went
+//  add rounded corners
+//  move text up to allow key board - find on map
+
+//  need to gaurd against bad urls
 //  connect all buttons on tableview
 //  connect did select row on tableview
 //  connection errors display on login
@@ -52,7 +55,8 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     // MARK: log in button pressed
     @IBAction func logInAction(_ sender: AnyObject) {
         
-
+        userEmail.text = "whansen1@mac.com"
+        userPassword.text = "wh2403wh"
         
         // reduce the alpha and disable text entry
         setUIEnabled(enabled: false)
