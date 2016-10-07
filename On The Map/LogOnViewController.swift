@@ -5,11 +5,28 @@
 //  Created by Warren Hansen on 9/23/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
 
+//  lock verticle display Go To Target --> General and set Orientation Mode to Portrait.
+
+//  move text up to allow key board
+//  cancel on where are you studying
+//  connect logout on mapview
+//  comform where are you studying color and layout
+//  connect all buttons on tableview
+//  connect did select row on tableview
+//  connection errors display on login
+//  make alert view its own global function
+//  find big spinner for login
+//  design cool login page
+//  add facebook login
+
+
+
+
 
 import UIKit
 import Foundation
 
-class LogOnViewController: UIViewController  {
+class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate  {
     
     let loginViewToTabViewSegue = "loginViewToTabViewSegue"
     
@@ -34,7 +51,9 @@ class LogOnViewController: UIViewController  {
     
     // MARK: log in button pressed
     @IBAction func logInAction(_ sender: AnyObject) {
+        
 
+        
         // reduce the alpha and disable text entry
         setUIEnabled(enabled: false)
         
@@ -114,6 +133,60 @@ class LogOnViewController: UIViewController  {
             self.performSegue(withIdentifier: self.loginViewToTabViewSegue, sender: self)
         })
     }
+    
+    // MARK: Lifecycle Function
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unSubscribeToKeyboardNotofications()
+    }
+ 
+    // MARK:  Set up view shift up behavior for keyboard text entry
+    //  NSNotification subscriptions and selectors
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(LogOnViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(LogOnViewController.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func unSubscribeToKeyboardNotofications() {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    // MARK: shift the view's frame up only on bottom text field
+    func keyboardWillShow(notification: NSNotification) {
+        if userPassword.isFirstResponder && view.frame.origin.y == 0.0{
+            view.frame.origin.y -= getKeyboardHeight(notification: notification)
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if userPassword.isFirstResponder {
+            view.frame.origin.y = 0
+        }
+    }
+    
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
+    }
+    
+    // MARK: hide keyboard with return or on click away from text
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return false
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
 }
 
 
