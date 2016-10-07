@@ -4,7 +4,7 @@
 //
 //  Created by Warren Hansen on 10/4/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
-//
+//  move find location button up
 
 
 import UIKit
@@ -13,6 +13,8 @@ import MapKit
 class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate {
     
     let linkViewToMapDisplaySegue = "linkViewToMapDisplaySegue"
+    let myBlueColor = UIColor(red: 69.0/255.0, green: 130.0/214.0, blue: 214.0/255.0, alpha: 1.0)
+    let myLtGrayColor = UIColor(red: 217.0/255.0, green: 217.0/255.0, blue: 217.0/255.0, alpha: 1.0)
     
     @IBOutlet weak var whereUstudyingToday: UITextView!
     
@@ -26,6 +28,8 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
     
     @IBOutlet weak var topViewBackgroung: UIView!
     
+    @IBOutlet weak var midViewBackground: UIView!
+    
     @IBAction func submitLinkAction(_ sender: AnyObject) {
         
         if validateUrl(enterLink.text!) == false {
@@ -34,7 +38,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
             
             //Prevents user from submitting twice.
             submitLinkButton.isHidden = true
-            
+           
             //Indicates that the app is working
             //workingMessage.isHidden = false
             
@@ -58,6 +62,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
             }
         }
     }
+    @IBOutlet weak var BottomViewBackground: UIView!
     
     // mapDisplay
     
@@ -76,21 +81,20 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
    	let LINK_FIELD = 1
     
     var coordinates: CLLocationCoordinate2D!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         enterLink.tag = LINK_FIELD
-        
-        //This is required to add "http://" to the linkField text field when a user starts typing, and to call a findOnMap() when the return key is pressed.
+        //This is required to add "http://" to the linkField
         enterLink.delegate = self
-        
-        //This is required to call the findOnMap() function when the return key is pressed.
         enterLocation.delegate = self
         
         //These items aren't revealed until the user successfully finds a location.
         mapView.isHidden = true
-        topViewBackgroung.isHidden = true
+        //topViewBackgroung.isHidden = true
+        topViewBackgroung.isHidden = false
+        topViewBackgroung.backgroundColor = myLtGrayColor
         submitLinkButton.isHidden = true
         enterLink.isHidden = true
         //workingMessage.isHidden = true
@@ -100,13 +104,17 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         
         //Indicates the geocoding is in process.
         //workingMessage.isHidden = false
-        
+
         let location = enterLocation.text
         let geocoder: CLGeocoder = CLGeocoder()
         
         //Geocodes the location.
         geocoder.geocodeAddressString(location!, completionHandler: { (placemarks, error) -> Void in
             
+            // reveal map
+            self.midViewBackground.isHidden = true
+            self.topViewBackgroung.backgroundColor = self.myBlueColor
+            self.BottomViewBackground.isHidden = true
             //Returns an error if geocoding is unsuccessful.
             if ((error) != nil) {
                 //self.workingMessage.isHidden = true
@@ -114,7 +122,6 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
             }
                 
                 //If geocoding is successful, multiple locations may be returned in an array. Only the first location is used below.
-                
             else if placemarks?[0] != nil {
                 let placemark: CLPlacemark = placemarks![0]
                 
@@ -235,3 +242,4 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
 //    }
     
 }
+

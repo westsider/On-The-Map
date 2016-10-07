@@ -81,14 +81,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cq-Cz-Axv" userLabel="TopView">
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Where are you studying today?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FpD-5n-ojP">
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="165" id="XO0-5Z-SOX"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter a link to share" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FSZ-dl-eAR">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -98,33 +90,49 @@
                                             <outlet property="delegate" destination="onc-iV-bKn" id="HN4-30-N6B"/>
                                         </connections>
                                     </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Where are you studying today?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FpD-5n-ojP">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="165" id="byV-CU-MFo"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.31372549019607843" green="0.52156862745098043" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="FpD-5n-ojP" firstAttribute="centerY" secondItem="9cq-Cz-Axv" secondAttribute="centerY" id="0FX-71-VPQ"/>
-                                    <constraint firstItem="FSZ-dl-eAR" firstAttribute="leading" secondItem="9cq-Cz-Axv" secondAttribute="leadingMargin" id="DnH-f9-LyL"/>
-                                    <constraint firstItem="FpD-5n-ojP" firstAttribute="centerX" secondItem="9cq-Cz-Axv" secondAttribute="centerX" id="cAU-Or-rep"/>
-                                    <constraint firstItem="FSZ-dl-eAR" firstAttribute="centerY" secondItem="FpD-5n-ojP" secondAttribute="centerY" id="nw1-z1-bZg"/>
-                                    <constraint firstItem="FSZ-dl-eAR" firstAttribute="centerX" secondItem="FpD-5n-ojP" secondAttribute="centerX" id="uax-TG-1qk"/>
-                                    <constraint firstItem="FpD-5n-ojP" firstAttribute="top" secondItem="9cq-Cz-Axv" secondAttribute="top" constant="22" id="woO-cs-Ufb"/>
+                                    <constraint firstItem="FpD-5n-ojP" firstAttribute="centerX" secondItem="FSZ-dl-eAR" secondAttribute="centerX" id="3VA-5g-TGe"/>
+                                    <constraint firstItem="FSZ-dl-eAR" firstAttribute="trailing" secondItem="9cq-Cz-Axv" secondAttribute="trailingMargin" id="7C4-Me-hOH"/>
+                                    <constraint firstItem="FSZ-dl-eAR" firstAttribute="leading" secondItem="9cq-Cz-Axv" secondAttribute="leadingMargin" id="AQo-CP-khk"/>
+                                    <constraint firstItem="FSZ-dl-eAR" firstAttribute="centerY" secondItem="9cq-Cz-Axv" secondAttribute="centerY" id="BcD-s1-YwH"/>
+                                    <constraint firstItem="FpD-5n-ojP" firstAttribute="top" secondItem="9cq-Cz-Axv" secondAttribute="top" constant="29" id="uGy-Wt-xJo"/>
+                                    <constraint firstItem="FpD-5n-ojP" firstAttribute="centerY" secondItem="FSZ-dl-eAR" secondAttribute="centerY" id="yjG-y0-CuU"/>
                                 </constraints>
                             </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7Rf-07-tQc"/>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZJ-zT-BIp" userLabel="MidView">
-                                <color key="backgroundColor" red="0.2697789931775898" green="0.51618222062010111" blue="0.81422511316923074" alpha="1" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Mountian View, CA" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="onI-AI-8Xa">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="onc-iV-bKn" id="V3y-e2-3bC"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.27058823529411763" green="0.50980392156862742" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="onI-AI-8Xa" firstAttribute="centerX" secondItem="hZJ-zT-BIp" secondAttribute="centerX" id="593-F4-bT4"/>
+                                    <constraint firstItem="onI-AI-8Xa" firstAttribute="top" secondItem="hZJ-zT-BIp" secondAttribute="top" constant="35" id="nTO-YU-aJl"/>
+                                    <constraint firstItem="onI-AI-8Xa" firstAttribute="leading" secondItem="hZJ-zT-BIp" secondAttribute="leading" constant="16" id="qlY-WH-zHO"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Afn-TQ-jXi" userLabel="LowView">
                                 <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Mountian View, CA" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="onI-AI-8Xa">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="onc-iV-bKn" id="V3y-e2-3bC"/>
-                                </connections>
-                            </textField>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7Rf-07-tQc"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMr-if-XFt">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -147,29 +155,26 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="9cq-Cz-Axv" firstAttribute="leading" secondItem="1ys-d2-vPt" secondAttribute="leading" id="0Pc-eI-XaX"/>
                             <constraint firstItem="Afn-TQ-jXi" firstAttribute="top" secondItem="RMr-if-XFt" secondAttribute="top" id="0op-PP-WCI"/>
                             <constraint firstItem="Afn-TQ-jXi" firstAttribute="bottom" secondItem="g7u-q6-qWY" secondAttribute="top" id="6B4-hW-YiZ"/>
-                            <constraint firstItem="onI-AI-8Xa" firstAttribute="top" secondItem="9cq-Cz-Axv" secondAttribute="bottom" constant="27" id="88O-dp-9Jr"/>
-                            <constraint firstItem="7Rf-07-tQc" firstAttribute="leading" secondItem="Afn-TQ-jXi" secondAttribute="leading" id="9rB-Gs-s5n"/>
-                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="top" secondItem="7Rf-07-tQc" secondAttribute="top" id="AsW-20-oSr"/>
+                            <constraint firstAttribute="bottom" secondItem="9cq-Cz-Axv" secondAttribute="bottom" constant="445" id="ACG-pj-gIZ"/>
+                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="top" secondItem="7Rf-07-tQc" secondAttribute="top" id="AoI-zO-Ifx"/>
+                            <constraint firstAttribute="trailing" secondItem="9cq-Cz-Axv" secondAttribute="trailing" id="Cr0-cZ-RoY"/>
+                            <constraint firstItem="RMr-if-XFt" firstAttribute="top" secondItem="hZJ-zT-BIp" secondAttribute="bottom" constant="1" id="GFL-vc-BTG"/>
+                            <constraint firstItem="7Rf-07-tQc" firstAttribute="top" secondItem="9cq-Cz-Axv" secondAttribute="bottom" constant="1" id="Gcj-5b-3dS"/>
                             <constraint firstItem="Lmh-tR-iEG" firstAttribute="leading" secondItem="1ys-d2-vPt" secondAttribute="leadingMargin" constant="74" id="J5b-eQ-LDl"/>
-                            <constraint firstItem="onI-AI-8Xa" firstAttribute="leading" secondItem="1ys-d2-vPt" secondAttribute="leadingMargin" id="LRN-GG-Nik"/>
-                            <constraint firstItem="9cq-Cz-Axv" firstAttribute="top" secondItem="bEM-b9-RtY" secondAttribute="bottom" constant="56" id="NCN-3w-E87"/>
+                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="leading" secondItem="9cq-Cz-Axv" secondAttribute="leading" id="JyY-g2-BlR"/>
+                            <constraint firstItem="9cq-Cz-Axv" firstAttribute="top" secondItem="bEM-b9-RtY" secondAttribute="bottom" id="KKE-tc-0lm"/>
+                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="trailing" secondItem="Afn-TQ-jXi" secondAttribute="trailing" id="Kpr-Q5-CEj"/>
                             <constraint firstItem="Lmh-tR-iEG" firstAttribute="top" secondItem="RMr-if-XFt" secondAttribute="bottom" constant="1" id="RIh-mr-mWN"/>
-                            <constraint firstItem="RMr-if-XFt" firstAttribute="top" secondItem="hZJ-zT-BIp" secondAttribute="bottom" constant="8" symbolic="YES" id="SQt-3V-S9H"/>
-                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="top" secondItem="bEM-b9-RtY" secondAttribute="bottom" constant="198" id="SS4-gc-RbD"/>
+                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="trailing" secondItem="9cq-Cz-Axv" secondAttribute="trailing" id="TkV-mB-cvv"/>
                             <constraint firstItem="Lmh-tR-iEG" firstAttribute="centerX" secondItem="RMr-if-XFt" secondAttribute="centerX" id="US8-N5-Ufp"/>
+                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="leading" secondItem="Afn-TQ-jXi" secondAttribute="leading" id="WRq-GI-toG"/>
                             <constraint firstItem="Lmh-tR-iEG" firstAttribute="centerY" secondItem="Afn-TQ-jXi" secondAttribute="centerY" id="Ysl-2c-GVe"/>
-                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="trailing" secondItem="7Rf-07-tQc" secondAttribute="trailing" id="dWj-Fh-liG"/>
-                            <constraint firstAttribute="bottom" secondItem="9cq-Cz-Axv" secondAttribute="bottom" constant="445" id="kKl-Ho-YnR"/>
-                            <constraint firstItem="7Rf-07-tQc" firstAttribute="trailing" secondItem="Afn-TQ-jXi" secondAttribute="trailing" id="ksX-zj-Lmn"/>
-                            <constraint firstItem="9cq-Cz-Axv" firstAttribute="leading" secondItem="1ys-d2-vPt" secondAttribute="leading" id="mWT-l7-sCf"/>
-                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="trailing" secondItem="9cq-Cz-Axv" secondAttribute="trailing" id="n2a-k4-lJP"/>
-                            <constraint firstItem="7Rf-07-tQc" firstAttribute="bottom" secondItem="g7u-q6-qWY" secondAttribute="top" id="rXR-M3-olc"/>
-                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="leading" secondItem="9cq-Cz-Axv" secondAttribute="leading" id="tQy-QI-mdg"/>
-                            <constraint firstAttribute="trailing" secondItem="9cq-Cz-Axv" secondAttribute="trailing" id="ues-vD-ZJN"/>
-                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="leading" secondItem="Afn-TQ-jXi" secondAttribute="leading" id="unf-yD-pAs"/>
-                            <constraint firstItem="onI-AI-8Xa" firstAttribute="centerX" secondItem="9cq-Cz-Axv" secondAttribute="centerX" id="yDH-ux-m1u"/>
+                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="leading" secondItem="7Rf-07-tQc" secondAttribute="leading" id="gVj-wO-Vca"/>
+                            <constraint firstItem="7Rf-07-tQc" firstAttribute="trailing" secondItem="Afn-TQ-jXi" secondAttribute="trailing" id="naW-MQ-hjb"/>
+                            <constraint firstItem="7Rf-07-tQc" firstAttribute="bottom" secondItem="g7u-q6-qWY" secondAttribute="top" id="y1C-yt-WdK"/>
                             <constraint firstItem="Afn-TQ-jXi" firstAttribute="centerX" secondItem="RMr-if-XFt" secondAttribute="centerX" id="ytT-m2-GOC"/>
                         </constraints>
                     </view>
@@ -181,10 +186,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="BottomViewBackground" destination="Afn-TQ-jXi" id="VMf-C3-e2u"/>
                         <outlet property="enterLink" destination="FSZ-dl-eAR" id="kU6-HX-dCz"/>
                         <outlet property="enterLocation" destination="onI-AI-8Xa" id="tZZ-5W-F0v"/>
                         <outlet property="findOnMapButton" destination="Lmh-tR-iEG" id="aAq-DJ-QSg"/>
                         <outlet property="mapView" destination="7Rf-07-tQc" id="gUs-Id-ucz"/>
+                        <outlet property="midViewBackground" destination="hZJ-zT-BIp" id="UQY-2J-a4S"/>
                         <outlet property="searchDisplayController" destination="f28-lL-Cpu" id="0nk-SK-i5q"/>
                         <outlet property="submitLinkButton" destination="RMr-if-XFt" id="k5m-ll-G1R"/>
                         <outlet property="topViewBackgroung" destination="9cq-Cz-Axv" id="0mN-al-tS4"/>
@@ -201,7 +208,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3250" y="0.0"/>
+            <point key="canvasLocation" x="3248.8000000000002" y="-0.44977511244377816"/>
         </scene>
         <!--On The Map-->
         <scene sceneID="wg7-f3-ORb">

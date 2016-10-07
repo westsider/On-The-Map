@@ -55,6 +55,7 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     // MARK: log in button pressed
     @IBAction func logInAction(_ sender: AnyObject) {
         
+
         
         // reduce the alpha and disable text entry
         setUIEnabled(enabled: false)
