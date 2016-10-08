@@ -46,6 +46,15 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
 
+    // open url when row selected
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var urlArray:[String] = []
+        for result in MapPoints.sharedInstance().mapPoints {
+            urlArray.append(result.mediaURL)
+        }
+        UIApplication.shared.openURL(URL(string: urlArray[indexPath.row])!)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -100,4 +109,10 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
     func reloadViewController() {
        myTableView.reloadData()
     }
+    
+    //Opens the mediaURL in Safari when the annotation info box is tapped.
+//    func mapView() {
+//        UIApplication.shared.openURL(URL(string: view.annotation!.subtitle!!)!)
+//    }
+
 }

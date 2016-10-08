@@ -12,8 +12,8 @@
 //  need to gaurd against bad urls
 //  is 100 most recent posts?
 //  connect logout on both map and list
-
 //  connect did select row on tableview to url of user
+
 //  connection errors display on login
 //  alertview its own global function?
 //  alertview if login fails
