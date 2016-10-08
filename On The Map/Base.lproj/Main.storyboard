@@ -244,9 +244,17 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="On The Map" id="vUs-NN-hJG">
                         <barButtonItem key="backBarButtonItem" enabled="NO" id="9gW-ak-LeS"/>
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="27y-eJ-NxN"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="27y-eJ-NxN">
+                            <connections>
+                                <action selector="logOutAction:" destination="8rJ-Kc-sve" id="2HK-gJ-N83"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="mRE-wN-W08"/>
+                            <barButtonItem systemItem="refresh" id="mRE-wN-W08">
+                                <connections>
+                                    <action selector="reloadTableViewAction:" destination="8rJ-Kc-sve" id="aHQ-iT-FEB"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="pin" id="gUh-O5-7hJ">
                                 <connections>
                                     <segue destination="jRZ-Pg-jdf" kind="presentation" identifier="listToPinController" id="K4q-D9-ieI"/>
@@ -254,6 +262,11 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="logoutButton" destination="vUs-NN-hJG" id="3Cv-wa-YH4"/>
+                        <outlet property="pinButton" destination="gUh-O5-7hJ" id="dqd-Mt-XPn"/>
+                        <outlet property="reloadButton" destination="mRE-wN-W08" id="yMk-Vu-Mcw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -262,7 +275,7 @@
         <!--Log On View Controller-->
         <scene sceneID="9Vu-B6-GQO">
             <objects>
-                <viewController id="ueE-lQ-nay" customClass="LogOnViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogOnStoryEntry" id="ueE-lQ-nay" customClass="LogOnViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dQ2-AM-7f2"/>
                         <viewControllerLayoutGuide type="bottom" id="bpa-3s-zOe"/>
@@ -483,7 +496,7 @@
         <image name="pin" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BUU-ay-OCa"/>
+        <segue reference="CjF-Rp-jjc"/>
         <segue reference="K4q-D9-ieI"/>
     </inferredMetricsTieBreakers>
 </document>

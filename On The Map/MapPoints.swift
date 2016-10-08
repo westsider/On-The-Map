@@ -33,7 +33,7 @@ class MapPoints: NSObject {
     //Get student information from Parse.
     func fetchData(_ completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
         
-        let request = NSMutableURLRequest(url: URL(string:  "\(self.DatabaseURL)/StudentLocation")!)
+        let request = NSMutableURLRequest(url: URL(string:  "\(self.DatabaseURL)/StudentLocation?limit=100")!)
         request.addValue(self.ParseID, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(self.ParseAPIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         
@@ -63,7 +63,7 @@ class MapPoints: NSObject {
                     for result in results {
                         self.mapPoints.append(StudentInformation(dictionary: result))
                     }
-                    
+
                     //Setting this flag to true lets the TabViewController know that the views need to be reloaded.
                     self.needToRefreshData = true
                     
@@ -72,7 +72,6 @@ class MapPoints: NSObject {
                     completionHandler(false, "Could not find results in \(parsedResult)")
                 }
             }
-            
         })
         task.resume()
     }

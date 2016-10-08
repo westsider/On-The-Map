@@ -9,7 +9,7 @@ import MapKit
 import UIKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
-
+    
     var thisUserPosted = false
     
     let mapToPinSegue = "mapToPinSegue"
@@ -26,58 +26,56 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     UIActivityIndicatorView!
     
     @IBAction func logoutButtonTapped(_ sender: AnyObject) {
-       
+        
+        self.setUIEnabled(enabled: false)
         MapPoints.sharedInstance().logOut() { (success, errorString) in
             if success {
-                print("<<<<<<<<< Logout Complete >>>>>>>>>>>")
-                // segueay to add pin
-                DispatchQueue.main.async(execute: {
-                    self.performSegue(withIdentifier: self.mapToPinSegue, sender: self)
-                })
+                let controller = self.storyboard!.instantiateViewController(withIdentifier: "LogOnStoryEntry") //as! UIViewController
+                self.present(controller, animated: true, completion: nil)
             } else {
-                print("<<<<<<<<< Logout FAILED  \(errorString)>>>>>>>>>>>")
+                self.setUIEnabled(enabled: true)
+                self.errorAlert("Oh Snap!", error: errorString!)
             }
-            
         }
     }
-  
+    
     @IBAction func tapPinButton(_ sender: AnyObject) {
-            // see if user has a pin
-            if thisUserPosted {
-                let thisAlert = "You Have Already Posted A Student Location. Would You Like to Overwrite Your Current Location?"
-                let alertController = UIAlertController(title: "Hey", message: thisAlert, preferredStyle: UIAlertControllerStyle.alert)
-                let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
-                    print("Cancel")
-                }
-                let overwriteAction = UIAlertAction(title: "Overwrite", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-                    print("Overwrite")
-                    DispatchQueue.main.async(execute: {
-                        self.performSegue(withIdentifier: self.mapToPinSegue, sender: self)
-                    })
-                    
-                }
-                alertController.addAction(cancelAction)
-                alertController.addAction(overwriteAction)
-                self.present(alertController, animated: true, completion: nil)
-                
-            } else {
-                // if no user pin then segue to add pin VC  mapToPinSegue
+        // see if user has a pin
+        if thisUserPosted {
+            let thisAlert = "You Have Already Posted A Student Location. Would You Like to Overwrite Your Current Location?"
+            let alertController = UIAlertController(title: "Hey", message: thisAlert, preferredStyle: UIAlertControllerStyle.alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
+                print("Cancel")
+            }
+            let overwriteAction = UIAlertAction(title: "Overwrite", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                print("Overwrite")
                 DispatchQueue.main.async(execute: {
                     self.performSegue(withIdentifier: self.mapToPinSegue, sender: self)
                 })
+                
             }
+            alertController.addAction(cancelAction)
+            alertController.addAction(overwriteAction)
+            self.present(alertController, animated: true, completion: nil)
+            
+        } else {
+            // if no user pin then segue to add pin VC  mapToPinSegue
+            DispatchQueue.main.async(execute: {
+                self.performSegue(withIdentifier: self.mapToPinSegue, sender: self)
+            })
         }
-        
+    }
+    
     
     @IBAction func tapRefreshButton(_ sender: AnyObject) {
         refreshData()
     }
- 
- 
- 
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        
         //Sets the map area.
         mapView?.camera.altitude = 200000;
         //Set map to center on Los Angeles
@@ -152,12 +150,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     self.setUIEnabled(enabled: true)
                 })
             }
-           else {
-               
-                self.reloadViewController() 
+            else {
+                
+                self.reloadViewController()
                 //The re-enabled refresh button indicates that the refresh is complete.
                 self.setUIEnabled(enabled: true)
-             
+                
             }
         }
     }
@@ -180,4 +178,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    //Creates an Alert View Controller error message.
+    func errorAlert(_ title: String, error: String) {
+        let controller: UIAlertController = UIAlertController(title: title, message: error, preferredStyle: .alert)
+        controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(controller, animated: true, completion: nil)
+    }
 }

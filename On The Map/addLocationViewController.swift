@@ -85,7 +85,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         super.viewDidLoad()
         
         enterLink.tag = LINK_FIELD
-        //This is required to add "http://" to the linkField
+        //This is required to add "https://" to the linkField
         enterLink.delegate = self
         enterLocation.delegate = self
         
@@ -165,7 +165,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         })
     }
     
-    //Creates an Alert-style error message.
+    //Creates an Alert View Controller error message.
     func errorAlert(_ title: String, error: String) {
         let controller: UIAlertController = UIAlertController(title: title, message: error, preferredStyle: .alert)
         controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -175,7 +175,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         if textField.tag == LINK_FIELD {
-            textField.text = "http://"
+            textField.text = "https://"
         }
     }
     

@@ -9,13 +9,20 @@
 //  lock verticle display Go To Target --> General and set Orientation Mode to Portrait.
 //  move text up to allow key board login
 //  find where cancel on mapview went
-
-//  add rounded corners
 //  need to gaurd against bad urls
-//  connect all buttons on tableview
-//  connect did select row on tableview
+//  is 100 most recent posts?
+
+//  connect logout on both map and list
+//  connect did select row on tableview to url of user
 //  connection errors display on login
-//  make alert view its own global function
+//  alertview its own global function?
+//  alertview if login fails
+//  alertview if download json fails
+//  acitvity indicator geo coding
+//  alertview if geocode fails
+//  alertview if post link fails
+//  apha reduced during geiocoding
+
 //  find big spinner for login
 //  design cool login page
 //  add facebook login
@@ -52,7 +59,9 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     
     // MARK: log in button pressed
     @IBAction func logInAction(_ sender: AnyObject) {
-
+        
+        userEmail.text = "whansen1@mac.com"
+        userPassword.text = "wh2403wh"
         
         // reduce the alpha and disable text entry
         setUIEnabled(enabled: false)
