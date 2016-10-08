@@ -264,6 +264,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="logoutButton" destination="vUs-NN-hJG" id="3Cv-wa-YH4"/>
+                        <outlet property="myTableView" destination="1l8-cH-P6H" id="w7g-OC-KeI"/>
                         <outlet property="pinButton" destination="gUh-O5-7hJ" id="dqd-Mt-XPn"/>
                         <outlet property="reloadButton" destination="mRE-wN-W08" id="yMk-Vu-Mcw"/>
                     </connections>

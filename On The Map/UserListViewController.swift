@@ -10,8 +10,7 @@ import UIKit
 
 class UserListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var tavleView: UITableView!
-    
+    @IBOutlet var myTableView: UITableView!
     @IBOutlet weak var logoutButton: UINavigationItem!
     
     @IBOutlet weak var pinButton: UIBarButtonItem!
@@ -32,6 +31,7 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func reloadTableViewAction(_ sender: AnyObject) {
+        refreshData()
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,6 +48,32 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    //Reloads the data on the Map and Table views.
+    func refreshData() {
+        //The disabled refresh button indicates that the refresh is in progress.
+        setUIEnabled(enabled: false)
+        //This function fetches the latest data from the server.
+        MapPoints.sharedInstance().fetchData() { (success, errorString) in
+            if !success {
+                DispatchQueue.main.async(execute: {
+                    let controller: UIAlertController = UIAlertController(title: "Error", message: "Error loading map data. Tap Refresh to try again.", preferredStyle: .alert)
+                    controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(controller, animated: true, completion: nil)
+                    
+                    //The user can try refreshing again.
+                    self.setUIEnabled(enabled: true)
+                })
+            }
+            else {
+                // reload tableview
+                self.reloadViewController()
+                //The re-enabled refresh button indicates that the refresh is complete.
+                self.setUIEnabled(enabled: true)
+                
+            }
+        }
     }
     
     // MARK: Configure UI
@@ -69,5 +95,9 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         let controller: UIAlertController = UIAlertController(title: title, message: error, preferredStyle: .alert)
         controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(controller, animated: true, completion: nil)
+    }
+    //Required to conform to the ReloadableTab protocol.
+    func reloadViewController() {
+       myTableView.reloadData()
     }
 }
