@@ -14,22 +14,19 @@
 //  connect logout on both map and list
 //  connect did select row on tableview to url of user
 
-//  connection errors display on login
 //  alertview its own global function?
 //  alertview if login fails
 //  alertview if download json fails
-//  acitvity indicator geo coding
 //  alertview if geocode fails
 //  alertview if post link fails
+//  acitvity indicator geo coding
 //  apha reduced during geiocoding
 
 //  find big spinner for login
 //  design cool login page
+//  abstract objects
+//  remove white spaces in code
 //  add facebook login
-
-
-
-
 
 import UIKit
 import Foundation
@@ -59,7 +56,6 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     
     // MARK: log in button pressed
     @IBAction func logInAction(_ sender: AnyObject) {
-        
 
         
         // reduce the alpha and disable text entry
@@ -70,7 +66,7 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
             textDisplay("Please enter a username and password.")
             setUIEnabled(enabled: true)
             return
-        //get userID
+            //get userID
         } else {
             textDisplay("Contacting Udacity...")
             activityCircle.startAnimating();
@@ -102,7 +98,7 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     }
     
     @IBAction func loginFacebookAction(_ sender: AnyObject) {
-         debugWindow.text = "FaceBook API Not Available Yet"
+        debugWindow.text = "FaceBook API Not Available Yet"
     }
     
     // MARK: Configure UI
@@ -147,12 +143,12 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unSubscribeToKeyboardNotofications()
     }
- 
+    
     // MARK:  Set up view shift up behavior for keyboard text entry
     //  NSNotification subscriptions and selectors
     func subscribeToKeyboardNotifications() {

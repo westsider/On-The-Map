@@ -9,7 +9,7 @@
 import UIKit
 
 class UserListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     @IBOutlet var myTableView: UITableView!
     @IBOutlet weak var logoutButton: UINavigationItem!
     
@@ -37,7 +37,7 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MapPoints.sharedInstance().mapPoints.count
     }
-   
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let mapPoint = MapPoints.sharedInstance().mapPoints[(indexPath as NSIndexPath).row]
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
@@ -45,7 +45,7 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.imageView?.image = UIImage(named: "pinB")
         return cell
     }
-
+    
     // open url when row selected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var urlArray:[String] = []
@@ -107,12 +107,12 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     //Required to conform to the ReloadableTab protocol.
     func reloadViewController() {
-       myTableView.reloadData()
+        myTableView.reloadData()
     }
     
     //Opens the mediaURL in Safari when the annotation info box is tapped.
-//    func mapView() {
-//        UIApplication.shared.openURL(URL(string: view.annotation!.subtitle!!)!)
-//    }
-
+    //    func mapView() {
+    //        UIApplication.shared.openURL(URL(string: view.annotation!.subtitle!!)!)
+    //    }
+    
 }

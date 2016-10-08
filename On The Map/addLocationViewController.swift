@@ -37,7 +37,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
             
             //Prevents user from submitting twice.
             submitLinkButton.isHidden = true
-           
+            
             //Indicates that the app is working
             //workingMessage.isHidden = false
             
@@ -103,7 +103,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         
         //Indicates the geocoding is in process.
         //workingMessage.isHidden = false
-
+        
         let location = enterLocation.text
         let geocoder: CLGeocoder = CLGeocoder()
         

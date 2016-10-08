@@ -9,7 +9,7 @@
 import UIKit
 
 class TabViewController: UITabBarController {
-        
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         //Checks to see if flag has been set to true by AddPinViewController.
@@ -17,6 +17,6 @@ class TabViewController: UITabBarController {
             MapPoints.sharedInstance().needToRefreshData = false
         }
     }
-
+    
 }
 
