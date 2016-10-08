@@ -15,7 +15,6 @@ struct StudentInformation {
     var longitude = 0.0
     var mediaURL = ""
     
-    //The if statements are necessary because the Parse data may not contain all keys.
     init(dictionary: [String : AnyObject]) {
         
         var firstName = ""

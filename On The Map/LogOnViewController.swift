@@ -13,10 +13,10 @@
 //  is 100 most recent posts?
 //  connect logout on both map and list
 //  connect did select row on tableview to url of user
-
 //  alertview its own global function?
 //  alertview if login fails
 //  alertview if download json fails
+
 //  alertview if geocode fails
 //  alertview if post link fails
 //  acitvity indicator geo coding
@@ -27,6 +27,10 @@
 //  abstract objects
 //  remove white spaces in code
 //  add facebook login
+
+//   AlertView.errorAlert(_ title: String, error: String)
+//  AlertView.errorAlert.errorAlert("Oh Snap!", error: errorString!)
+
 
 import UIKit
 import Foundation
@@ -56,7 +60,6 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     
     // MARK: log in button pressed
     @IBAction func logInAction(_ sender: AnyObject) {
-
         
         // reduce the alpha and disable text entry
         setUIEnabled(enabled: false)
@@ -64,6 +67,7 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
         //Check for empty or default user and password
         if (userEmail.text == "" || userEmail.text == "user" || userPassword.text == "" || userPassword.text == "password") {
             textDisplay("Please enter a username and password.")
+            alertManager().notifyUser(title: "Need some input...", message: "Please enter a username and password.")
             setUIEnabled(enabled: true)
             return
             //get userID
@@ -83,15 +87,28 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
                                     self.textDisplay("Login Complete")
                                     self.completeLogin()
                                 } else {
-                                    self.textDisplay(errorString)
+                                    // get student info error
+                                    //self.textDisplay(errorString)
+                                    DispatchQueue.main.async(execute: {
+                                        alertManager().notifyUser(title: "Fetch Info", message: errorString!)
+                                        self.setUIEnabled(enabled: true)
+                                    })
                                 }
                             }
                         } else {
-                            self.textDisplay(errorString)
+                            // get user error
+                            DispatchQueue.main.async(execute: {
+                                alertManager().notifyUser(title: "Json Error", message: errorString!)
+                                self.setUIEnabled(enabled: true)
+                            })
                         }
                     }
                 } else {
-                    self.textDisplay(errorString)
+                    // login error
+                    DispatchQueue.main.async(execute: {
+                        alertManager().notifyUser(title: "Login Failed", message: errorString!)
+                        self.setUIEnabled(enabled: true)
+                    })
                 }
             }
         }
@@ -107,12 +124,15 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
         loginFbButtob.isEnabled = true
         userEmail.isEnabled = true
         userPassword.isEnabled = true
+        //activityCircle.stopAnimating()
         
         if enabled {
             loginButton.alpha = 1.0
             loginFbButtob.alpha = 1.0
             userEmail.alpha = 1.0
             userPassword.alpha = 1.0
+            activityCircle.stopAnimating()
+            textDisplay(" ")
         } else {
             loginButton.alpha = 0.3
             loginFbButtob.alpha = 0.3

@@ -9,7 +9,5 @@
 import Foundation
 
 @objc protocol ReloadableTab {
-    
     func reloadViewController()
-    
 }

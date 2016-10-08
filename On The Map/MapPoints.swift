@@ -63,7 +63,7 @@ class MapPoints: NSObject {
                     for result in results {
                         self.mapPoints.append(StudentInformation(dictionary: result))
                     }
-
+                    
                     //Setting this flag to true lets the TabViewController know that the views need to be reloaded.
                     self.needToRefreshData = true
                     
