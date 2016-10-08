@@ -16,21 +16,18 @@
 //  alertview its own global function?
 //  alertview if login fails
 //  alertview if download json fails
-
 //  alertview if geocode fails
 //  alertview if post link fails
 //  acitvity indicator geo coding
 //  apha reduced during geiocoding
 
+//  re order fuctions to make code more readable
 //  find big spinner for login
 //  design cool login page
 //  abstract objects
+//  RETURN FROM BAD CITY SEARCH WITH TEXT STRING FILLED
 //  remove white spaces in code
 //  add facebook login
-
-//   AlertView.errorAlert(_ title: String, error: String)
-//  AlertView.errorAlert.errorAlert("Oh Snap!", error: errorString!)
-
 
 import UIKit
 import Foundation
@@ -61,6 +58,7 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     // MARK: log in button pressed
     @IBAction func logInAction(_ sender: AnyObject) {
         
+
         
         // reduce the alpha and disable text entry
         setUIEnabled(enabled: false)

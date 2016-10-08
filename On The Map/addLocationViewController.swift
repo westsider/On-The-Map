@@ -5,15 +5,18 @@
 //  Created by Warren Hansen on 10/4/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
 
-
 import UIKit
 import MapKit
 
 class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate {
     
     let linkViewToMapDisplaySegue = "linkViewToMapDisplaySegue"
+    let returnToStartOfPin = "mapToPinSegue"
     let myBlueColor = UIColor(red: 69.0/255.0, green: 130.0/214.0, blue: 214.0/255.0, alpha: 1.0)
     let myLtGrayColor = UIColor(red: 217.0/255.0, green: 217.0/255.0, blue: 217.0/255.0, alpha: 1.0)
+    let LINK_FIELD = 1
+    
+    var coordinates: CLLocationCoordinate2D!
     
     @IBOutlet weak var whereUstudyingToday: UITextView!
     
@@ -29,105 +32,43 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
     
     @IBOutlet weak var midViewBackground: UIView!
     
-    @IBAction func submitLinkAction(_ sender: AnyObject) {
-        
-        if validateUrl(enterLink.text!) == false {
-            alertManager().notifyUser(title: "Invalid URL", message: "Please enter a valid Url")
-        } else {
-            
-            //Prevents user from submitting twice.
-            submitLinkButton.isHidden = true
-            
-            //Indicates that the app is working
-            //workingMessage.isHidden = false
-            
-            //Submits the new data point.
-            MapPoints.sharedInstance().submitData(coordinates.latitude.description, longitude: coordinates.longitude.description, addressField: enterLink.text!, link: enterLink.text!) { (success, errorString) in
-                if success {
-                    DispatchQueue.main.async(execute: {
-                        MapPoints.sharedInstance().needToRefreshData = true
-                        self.dismiss(animated: true, completion: nil)
-                        self.completePosing()
-                    })
-                } else {
-                    DispatchQueue.main.async(execute: {
-                        
-                        //If there is an error, the submit button is unhidden so that the user can try again.
-                        self.submitLinkButton.isHidden = false
-                        //self.workingMessage.isHidden = true
-                        print("")
-                        print("<<<<<<<<<<< geocode fail >>>>>>>>>>>>>>>")
-                        alertManager().notifyUser(title: "Location Post Error", message: errorString!)
-                    })
-                }
-            }
-        }
-    }
     @IBOutlet weak var BottomViewBackground: UIView!
-    
-    // mapDisplay
-    
-    func completePosing() {
-        DispatchQueue.main.async(execute: {
-            self.performSegue(withIdentifier: self.linkViewToMapDisplaySegue, sender: self)
-        })
-    }
     
     @IBOutlet weak var findOnMapButton: UIButton!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    //MARK:  Find Location On Map
     @IBAction func findOnMapAction(_ sender: AnyObject) {
         findOnMap()
     }
     
-   	let LINK_FIELD = 1
-    
-    var coordinates: CLLocationCoordinate2D!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        enterLink.tag = LINK_FIELD
-        //This is required to add "https://" to the linkField
-        enterLink.delegate = self
-        enterLocation.delegate = self
-        
-        //These items aren't revealed until the user successfully finds a location.
-        mapView.isHidden = true
-        //topViewBackgroung.isHidden = true
-        topViewBackgroung.isHidden = false
-        topViewBackgroung.backgroundColor = myLtGrayColor
-        submitLinkButton.isHidden = true
-        enterLink.isHidden = true
-        //workingMessage.isHidden = true
-    }
-    
+    //MARK:  Geocode Location
     func findOnMap() {
-        
         //Indicates the geocoding is in process.
-        //workingMessage.isHidden = false
-        
+//activityIndicator.isHidden = false
+setUIEnabled(enabled: false)
         let location = enterLocation.text
         let geocoder: CLGeocoder = CLGeocoder()
         
         //Geocodes the location.
         geocoder.geocodeAddressString(location!, completionHandler: { (placemarks, error) -> Void in
-            
-            // reveal map
-            self.midViewBackground.isHidden = true
-            self.topViewBackgroung.backgroundColor = self.myBlueColor
-            self.BottomViewBackground.isHidden = true
             //Returns an error if geocoding is unsuccessful.
             if ((error) != nil) {
-                //self.workingMessage.isHidden = true
-                //self.errorAlert("Geocode Error", error: "Please enter a valid location")
-                //alertManager().notifyUser(title: , message: "Please enter a valid location")
                 DispatchQueue.main.async(execute: {
                     SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Geocode Error", message: "Please enter a valid location")
                 })
+                //self.enterLocation.text = "Please enter a valid location"
+                self.setUIEnabled(enabled: true)
             }
-                
-                //If geocoding is successful, multiple locations may be returned in an array. Only the first location is used below.
+            //If geocoding is successful, multiple locations may be returned in an array. Only the first location is used below.
             else if placemarks?[0] != nil {
+                
+                // reveal map
+                self.midViewBackground.isHidden = true
+                self.topViewBackgroung.backgroundColor = self.myBlueColor
+                self.BottomViewBackground.isHidden = true
+                
                 let placemark: CLPlacemark = placemarks![0]
                 
                 //Creats a coordinate and annotation.
@@ -152,7 +93,6 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
                 self.coordinates = coordinates
                 
                 //Items used to look for a location are hidden.
-                //self.workingMessage.isHidden = true
                 self.findOnMapButton.isHidden = true
                 self.enterLocation.isHidden = true
                 
@@ -166,18 +106,41 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
                 self.submitLinkButton.isHidden = false
                 self.enterLink.isHidden = false
                 self.whereUstudyingToday.isHidden = true
-                
+                self.setUIEnabled(enabled: true)
             }
         })
     }
     
-    //Creates an Alert View Controller error message.
-    func errorAlert(_ title: String, error: String) {
-        let controller: UIAlertController = UIAlertController(title: title, message: error, preferredStyle: .alert)
-        controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(controller, animated: true, completion: nil)
+    //MARK: Submit URL Link
+    @IBAction func submitLinkAction(_ sender: AnyObject) {
+        
+        if validateUrl(enterLink.text!) == false {
+             SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Invalid URL", message: "Please enter a valid Url")
+        } else {
+
+            setUIEnabled(enabled: false)
+            //Submits the new data point.
+            MapPoints.sharedInstance().submitData(coordinates.latitude.description, longitude: coordinates.longitude.description, addressField: enterLink.text!, link: enterLink.text!) { (success, errorString) in
+                if success {
+                    DispatchQueue.main.async(execute: {
+                        MapPoints.sharedInstance().needToRefreshData = true
+                        self.dismiss(animated: true, completion: nil)
+                        self.completePosing()
+                    })
+                } else {
+                    DispatchQueue.main.async(execute: {
+                        //If there is an error, the submit button is unhidden so that the user can try again.
+                        self.setUIEnabled(enabled: true)
+                        print("")
+                        print("<<<<<<<<<<< geocode fail >>>>>>>>>>>>>>>")
+                        SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Location Post Error", message: errorString!)
+                    })
+                }
+            }
+        }
     }
-    //Makes it easier for the user to enter a valid link.
+    
+    //MARK:  Ensure secure url
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         if textField.tag == LINK_FIELD {
@@ -185,7 +148,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         }
     }
     
-    //Regular expression used for validating submitted URLs.
+    //MARK:  Ensure url is valid
     func validateUrl(_ url: String) -> Bool {
         let pattern = "^(https?:\\/\\/)([a-zA-Z0-9_\\-~]+\\.)+[a-zA-Z0-9_\\-~\\/\\.]+$"
         if url.range(of: pattern, options: .regularExpression) != nil {
@@ -194,15 +157,60 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         return false
     }
     
+    //MARK:  URL Post Complete Segue Bacl To Map View
+    func completePosing() {
+        DispatchQueue.main.async(execute: {
+            self.performSegue(withIdentifier: self.linkViewToMapDisplaySegue, sender: self)
+        })
+    }
+
+    //MARK:  Lifrcycle functions
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        enterLink.tag = LINK_FIELD
+        //This is required to add "https://" to the linkField
+        enterLink.delegate = self
+        enterLocation.delegate = self
+        //These items aren't revealed until the user successfully finds a location.
+        mapView.isHidden = true
+        topViewBackgroung.isHidden = false
+        topViewBackgroung.backgroundColor = myLtGrayColor
+        submitLinkButton.isHidden = true
+        enterLink.isHidden = true
+        activityIndicator.stopAnimating()
+    }
+
     // MARK: hide keyboard with return or on click away from text
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         return false
     }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
+    // MARK: Configure UI
+    private func setUIEnabled(enabled: Bool) {
+        //whereUstudyingToday.isEnabled = true
+        enterLocation.isEnabled = true
+        submitLinkButton.isEnabled = true
+        findOnMapButton.isEnabled = true
+        activityIndicator.stopAnimating()
+        
+        if enabled {
+            whereUstudyingToday.alpha = 1.0
+            enterLocation.alpha = 1.0
+            submitLinkButton.alpha = 1.0
+            findOnMapButton.alpha = 1.0
+            activityIndicator.stopAnimating()
+        } else {
+            whereUstudyingToday.alpha = 0.3
+            enterLocation.alpha = 0.3
+            submitLinkButton.alpha = 0.3
+            findOnMapButton.alpha = 0.3
+            activityIndicator.startAnimating()
+        }
+    }
+
 }
 

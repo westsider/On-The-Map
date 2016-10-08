@@ -122,11 +122,14 @@
                                             <outlet property="delegate" destination="onc-iV-bKn" id="V3y-e2-3bC"/>
                                         </connections>
                                     </textField>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="9fq-8Z-BXG"/>
                                 </subviews>
                                 <color key="backgroundColor" red="0.27058823529411763" green="0.50980392156862742" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="9fq-8Z-BXG" firstAttribute="centerX" secondItem="onI-AI-8Xa" secondAttribute="centerX" id="4i0-cZ-nBp"/>
                                     <constraint firstItem="onI-AI-8Xa" firstAttribute="centerX" secondItem="hZJ-zT-BIp" secondAttribute="centerX" id="593-F4-bT4"/>
                                     <constraint firstItem="onI-AI-8Xa" firstAttribute="top" secondItem="hZJ-zT-BIp" secondAttribute="top" constant="35" id="nTO-YU-aJl"/>
+                                    <constraint firstItem="9fq-8Z-BXG" firstAttribute="centerY" secondItem="hZJ-zT-BIp" secondAttribute="centerY" id="oHC-sZ-799"/>
                                     <constraint firstItem="onI-AI-8Xa" firstAttribute="leading" secondItem="hZJ-zT-BIp" secondAttribute="leading" constant="16" id="qlY-WH-zHO"/>
                                 </constraints>
                             </view>
@@ -187,6 +190,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="BottomViewBackground" destination="Afn-TQ-jXi" id="VMf-C3-e2u"/>
+                        <outlet property="activityIndicator" destination="9fq-8Z-BXG" id="uO6-2f-khJ"/>
                         <outlet property="enterLink" destination="FSZ-dl-eAR" id="kU6-HX-dCz"/>
                         <outlet property="enterLocation" destination="onI-AI-8Xa" id="tZZ-5W-F0v"/>
                         <outlet property="findOnMapButton" destination="Lmh-tR-iEG" id="aAq-DJ-QSg"/>
@@ -474,7 +478,7 @@
         <!--Nav To Pin View Controller-->
         <scene sceneID="IYE-15-iN0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jRZ-Pg-jdf" customClass="NavToPinViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="addPinToMap" automaticallyAdjustsScrollViewInsets="NO" id="jRZ-Pg-jdf" customClass="NavToPinViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bm0-QU-RTU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -498,6 +502,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CjF-Rp-jjc"/>
-        <segue reference="K4q-D9-ieI"/>
+        <segue reference="ryW-T2-SW7"/>
     </inferredMetricsTieBreakers>
 </document>
