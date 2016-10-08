@@ -60,8 +60,7 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     // MARK: log in button pressed
     @IBAction func logInAction(_ sender: AnyObject) {
         
-        userEmail.text = "whansen1@mac.com"
-        userPassword.text = "wh2403wh"
+
         
         // reduce the alpha and disable text entry
         setUIEnabled(enabled: false)
