@@ -13,54 +13,61 @@ class alertManager: NSObject {
     func notifyUser(title: String, message: String) -> Void
     {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        // background color
+        let myLtBlueColor = UIColor(red: 1.0/255.0, green: 1.0/255.0, blue: 255.0/255.0, alpha: 0.5)
+        let backView = alert.view.subviews.last?.subviews.last
+        backView?.layer.cornerRadius = 10.0
+        backView?.backgroundColor = myLtBlueColor
+        
         let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
         UIApplication.shared.keyWindow?.rootViewController!.present(alert, animated: true,completion: nil)
     }
 }
 
-//
-//class AlertView: UIViewController {
-//    
-//    var title:String
-//    var error:String
-//    
-//    init(title:String, error:String){
-//        self.title = title
-//        self.error = error
-//    }
-//    
-////    func errorAlert(_ title: String, error: String) {
-////        let controller: UIAlertController = UIAlertController(title: title, message: error, preferredStyle: .alert)
-////        controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-////        present(controller, animated: true, completion: nil)
-////    }
-//}
+// found a way to abstract my alert controller here
+// http://stackoverflow.com/questions/36915725/attempt-to-present-whose-view-is-not-in-the-window-hierarchy
+class SPSwiftAlert: UIViewController {
+    
+    //#MARK: - Members
+    
+    internal var defaultTextForNormalAlertButton = "OK"
+    
+    static let sharedObject = SPSwiftAlert()
+    
+    //#MARK: Functions
+    
+    func showNormalAlert(controller: UIViewController, title: String, message: String) {
+        
+        // create the alert
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: defaultTextForNormalAlertButton, style: UIAlertActionStyle.default, handler: nil))
+        
+        // show the alert
+        controller.present(alert, animated: true, completion: nil)
+        
+    }    
+}
 
-//class AlertView: UIViewController {
-//    var alertTitle:String
-//    var error:String
-//    init(title: String, error:String) {
-//        self.alertTitle = title
-//        self.error = error
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//    func myErrorAlert(alertTitle: String, error: String)-> Void {
+//class alertManager: NSObject {
+//    func notifyUser(title: String, message: String) -> Void
+//    {
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
 //        
+//        // background color
+//        let myLtBlueColor = UIColor(red: 1.0/255.0, green: 1.0/255.0, blue: 255.0/255.0, alpha: 0.5)
+//        let backView = alert.view.subviews.last?.subviews.last
+//        backView?.layer.cornerRadius = 10.0
+//        backView?.backgroundColor = myLtBlueColor
+//        
+//        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//        alert.addAction(cancelAction)
+//        UIApplication.shared.keyWindow?.rootViewController!.present(alert, animated: true,completion: nil)
 //    }
 //}
 
-//class Starship{
-//    var prefix: String?
-//    var name: String
-//    init(name: String, prefix: String? = nil) {
-//        self.name = name
-//        self.prefix = prefix
-//    }
-//    var fullName: String {
-//        return (prefix != nil ? prefix! + " " : "") + name
-//    }
-//}
+
+

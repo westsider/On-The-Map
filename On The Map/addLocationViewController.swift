@@ -32,7 +32,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
     @IBAction func submitLinkAction(_ sender: AnyObject) {
         
         if validateUrl(enterLink.text!) == false {
-            errorAlert("Invalid URL", error: "Please try again.")
+            alertManager().notifyUser(title: "Invalid URL", message: "Please enter a valid Url")
         } else {
             
             //Prevents user from submitting twice.
@@ -55,7 +55,9 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
                         //If there is an error, the submit button is unhidden so that the user can try again.
                         self.submitLinkButton.isHidden = false
                         //self.workingMessage.isHidden = true
-                        self.errorAlert("Error", error: errorString!)
+                        print("")
+                        print("<<<<<<<<<<< geocode fail >>>>>>>>>>>>>>>")
+                        alertManager().notifyUser(title: "Location Post Error", message: errorString!)
                     })
                 }
             }
@@ -117,7 +119,11 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
             //Returns an error if geocoding is unsuccessful.
             if ((error) != nil) {
                 //self.workingMessage.isHidden = true
-                self.errorAlert("Invalid location", error: "Please try again.")
+                //self.errorAlert("Geocode Error", error: "Please enter a valid location")
+                //alertManager().notifyUser(title: , message: "Please enter a valid location")
+                DispatchQueue.main.async(execute: {
+                    SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Geocode Error", message: "Please enter a valid location")
+                })
             }
                 
                 //If geocoding is successful, multiple locations may be returned in an array. Only the first location is used below.
@@ -140,7 +146,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
                 self.mapView?.centerCoordinate = coordinates
                 
                 //Sets the zoom level on the map.
-                self.mapView?.camera.altitude = 1000;
+                self.mapView?.camera.altitude = 20000;
                 
                 //Sets the coordinates parameter that is used if the user decides to submit this location.
                 self.coordinates = coordinates

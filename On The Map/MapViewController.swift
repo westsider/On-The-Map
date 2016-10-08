@@ -70,9 +70,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBAction func tapRefreshButton(_ sender: AnyObject) {
         refreshData()
     }
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
