@@ -27,9 +27,10 @@
 //  put overwrite into function
 //  remove double alert files
 //  reload tableview crash unwrap optional
-
-//  find big spinner for login
 //  design cool login page
+//  remove background og login logo
+//  find big spinner for login
+
 //  abstract objects
 //  remove white spaces in code
 //  add facebook login
@@ -59,6 +60,10 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     
     @IBOutlet weak var loginFbButtob: UIButton!
 
+    @IBOutlet weak var mailIcon: UIImageView!
+    
+    @IBOutlet weak var lockIcon: UIImageView!
+    
     // MARK: Login With Facebook Function
     @IBAction func loginFacebookAction(_ sender: AnyObject) {
         debugWindow.text = "FaceBook API Not Available Yet"
@@ -138,13 +143,16 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
         loginFbButtob.isEnabled = true
         userEmail.isEnabled = true
         userPassword.isEnabled = true
-        //activityCircle.stopAnimating()
+        mailIcon.isHidden = false
+        lockIcon.isHidden = false
         
         if enabled {
             loginButton.alpha = 1.0
             loginFbButtob.alpha = 1.0
             userEmail.alpha = 1.0
             userPassword.alpha = 1.0
+            mailIcon.alpha = 1.0
+            lockIcon.alpha = 1.0
             activityCircle.stopAnimating()
             textDisplay(" ")
         } else {
@@ -152,6 +160,8 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
             loginFbButtob.alpha = 0.3
             userEmail.alpha = 0.3
             userPassword.alpha = 0.3
+            mailIcon.alpha = 0.3
+            lockIcon.alpha = 0.3
         }
     }
     
