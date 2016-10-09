@@ -4,7 +4,7 @@
 //
 //  Created by Warren Hansen on 10/6/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
-//
+
 
 import UIKit
 
@@ -45,11 +45,12 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
     }
-    // MARK: Set Up TableView
+   
     @IBAction func reloadTableViewAction(_ sender: AnyObject) {
         refreshData()
     }
     
+     // MARK: Set Up TableView
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MapPoints.sharedInstance().mapPoints.count
     }
@@ -71,7 +72,7 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         UIApplication.shared.openURL(URL(string: urlArray[indexPath.row])!)
     }
     
-    // MARK: Reloads the data on the Map and Table views.
+    // MARK: Reloads the data on the Map and Table views. EROOR UNWRAPPING OPTIONAL
     func refreshData() {
         //The disabled refresh button indicates that the refresh is in progress.
         setUIEnabled(enabled: false)
@@ -79,19 +80,16 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         MapPoints.sharedInstance().fetchData() { (success, errorString) in
             if !success {
                 DispatchQueue.main.async(execute: {
-                    let controller: UIAlertController = UIAlertController(title: "Error", message: "Error loading map data. Tap Refresh to try again.", preferredStyle: .alert)
-                    controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(controller, animated: true, completion: nil)
-                    
-                    //The user can try refreshing again.
+                    SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Error Reloading Data", message: errorString!)
                     self.setUIEnabled(enabled: true)
                 })
             }
             else {
-                // reload tableview
-                self.reloadViewController()
-                //The re-enabled refresh button indicates that the refresh is complete.
-                self.setUIEnabled(enabled: true)
+                DispatchQueue.main.async(execute: {
+                    // reload tableview
+                    self.myTableView.reloadData()
+                    self.setUIEnabled(enabled: true)
+                })
             }
         }
     }
@@ -109,13 +107,8 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
             reloadButton.isEnabled = false
         }
     }
-
-    // Required to conform to the ReloadableTab protocol.
-    func reloadViewController() {
-        myTableView.reloadData()
-    }
    
-    //# MARK: Show 2 Button Alert View Controller
+    //# MARK: Show special 2 Button Alert View Controller
     func showDoubleAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
@@ -123,7 +116,6 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         let listToPinController = "listToPinController"
         let overwriteAction = UIAlertAction(title: "Overwrite", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
             DispatchQueue.main.async(execute: {
-                //self.performSegue(withIdentifier: self.listT, sender: self)
                 self.performSegue(withIdentifier: listToPinController, sender: self)
             })
         }

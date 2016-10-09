@@ -26,6 +26,7 @@
 //  add thisUserPosted to table view
 //  put overwrite into function
 //  remove double alert files
+//  reload tableview crash unwrap optional
 
 //  find big spinner for login
 //  design cool login page
@@ -65,7 +66,6 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     
     // MARK: Login with Email Function
     @IBAction func logInAction(_ sender: AnyObject) {
-        
 
         
         // reduce the alpha and disable text entry
