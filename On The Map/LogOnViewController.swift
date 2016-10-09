@@ -31,7 +31,7 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     @IBOutlet weak var activityCircle: UIActivityIndicatorView!
     
     @IBOutlet weak var loginFbButtob: UIButton!
-
+    
     @IBOutlet weak var mailIcon: UIImageView!
     
     @IBOutlet weak var lockIcon: UIImageView!
@@ -44,17 +44,12 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     // MARK: Login with Email Function
     @IBAction func logInAction(_ sender: AnyObject) {
 
-        // reduce the alpha and disable text entry
-        setUIEnabled(enabled: false)
         
-        // MARK: Check User and Password Fields
-        if (userEmail.text == "" || userEmail.text == "user" || userPassword.text == "" || userPassword.text == "password") {
-            textDisplay("Please enter a username and password.")
-            SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Need some input...", message: "Please enter a username and password.")
-            setUIEnabled(enabled: true)
+        if textInputIncomplete() {
             return
-            //get userID
+            
         } else {
+            //get userID
             textDisplay("Contacting Udacity...")
             activityCircle.startAnimating();
             UdacityLogin.sharedInstance().loginToUdacity(username: self.userEmail.text!, password: self.userPassword.text!) { (success, errorString) in
@@ -108,8 +103,22 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
         UIApplication.shared.openURL(URL(string: "https://www.udacity.com/account/auth#!/signup")!)
     }
     
+    //MARK: Check Text Input
+    func textInputIncomplete()-> Bool {
+        // reduce the alpha and disable text entry
+        setUIEnabled(enabled: false)
+        if (userEmail.text == "" || userEmail.text == "user" || userPassword.text == "" || userPassword.text == "password") {
+            textDisplay("Please enter a username and password.")
+            SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Need some input...", message: "Please enter a username and password.")
+            setUIEnabled(enabled: true)
+            return true
+        } else {
+            return false
+        }
+    }
+    
     // MARK: Configure UI
-    private func setUIEnabled(enabled: Bool) {
+    func setUIEnabled(enabled: Bool) {
         loginButton.isEnabled = true
         loginFbButtob.isEnabled = true
         userEmail.isEnabled = true

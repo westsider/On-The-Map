@@ -33,24 +33,7 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    @IBAction func logOutAction(_ sender: AnyObject) {
-        setUIEnabled(enabled: false)
-        MapPoints.sharedInstance().logOut() { (success, errorString) in
-            if success {
-                let controller = self.storyboard!.instantiateViewController(withIdentifier: "LogOnStoryEntry") //as! UIViewController
-                self.present(controller, animated: true, completion: nil)
-            } else {
-                self.setUIEnabled(enabled: true)
-                SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Oh Snap!", message:errorString!)
-            }
-        }
-    }
-   
-    @IBAction func reloadTableViewAction(_ sender: AnyObject) {
-        refreshData()
-    }
-    
-     // MARK: Set Up TableView
+    // MARK: Set Up TableView
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MapPoints.sharedInstance().mapPoints.count
     }
@@ -94,6 +77,25 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    //# MARK: Reload Data
+    @IBAction func reloadTableViewAction(_ sender: AnyObject) {
+        refreshData()
+    }
+    
+    //# MARK: Log Out
+    @IBAction func logOutAction(_ sender: AnyObject) {
+        setUIEnabled(enabled: false)
+        MapPoints.sharedInstance().logOut() { (success, errorString) in
+            if success {
+                let controller = self.storyboard!.instantiateViewController(withIdentifier: "LogOnStoryEntry") //as! UIViewController
+                self.present(controller, animated: true, completion: nil)
+            } else {
+                self.setUIEnabled(enabled: true)
+                SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Oh Snap!", message:errorString!)
+            }
+        }
+    }
+    
     // MARK: Configure UI
     private func setUIEnabled(enabled: Bool) {
         pinButton.isEnabled = true
@@ -107,7 +109,7 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
             reloadButton.isEnabled = false
         }
     }
-   
+    
     //# MARK: Show special 2 Button Alert View Controller
     func showDoubleAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)

@@ -151,9 +151,6 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
     //MARK:  Lifrcycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(" ")
-        print("<<<<<<<<<<<< LOADING PIN VC >>>>>>>>>>>>>>>>>>>")
-        print(" ")
         enterLink.tag = Constants.LINK_FIELD
         //This is required to add "https://" to the linkField
         enterLink.delegate = self

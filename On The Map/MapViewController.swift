@@ -31,8 +31,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBAction func tapPinButton(_ sender: AnyObject) {
         // see if user has a pin
         if thisUserPosted  {
-            let thisAlert = "You Have Already Posted A Student Location. Would You Like to Overwrite Your Current Location?"
-            showDoubleAlert(title: "Hey", message: thisAlert)
+            let thisAlert = "You Already Posted A Student Location. Would You Like to Overwrite Your Current Location?"
+            showDoubleAlert(title: "Overwrite?", message: thisAlert)
         } else {
             // if no user pin then segue to add pin VC  mapToPinSegue
             DispatchQueue.main.async(execute: {
@@ -45,7 +45,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBAction func tapRefreshButton(_ sender: AnyObject) {
         refreshData()
     }
-
+    
     //# MARK: Open mediaURL in Safari when the annotation info box is tapped.
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         UIApplication.shared.openURL(URL(string: view.annotation!.subtitle!!)!)
@@ -77,11 +77,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     //# MARK: Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Sets the map area.
-//        mapView?.camera.altitude = 300000;
-//        //Set map to center on Los Angeles
-//        mapView?.centerCoordinate = CLLocationCoordinate2D(latitude: 34.052235, longitude: -118.243683)
-//        //Adding a link to the annotation requires making the mapView a delegate of MKMapView.
+        
         mapView.delegate = self
         //Call to getStudents then Draw the annotations on the map.
         reloadViewController()
@@ -103,14 +99,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             annotation.title = result.fullName
             annotation.subtitle = result.mediaURL
             
-            // flag that this user is on the map
+            // flag if this user is on the map
             if result.fullName == UdacityLogin.sharedInstance().firstName + " " + UdacityLogin.sharedInstance().lastName {
                 thisUserPosted  = true
-               // print("")
-                print("\(result.fullName)")
-               // print("")
             }
-            
             
             //Adds the annotation to the map.
             mapView.addAnnotation(annotation)

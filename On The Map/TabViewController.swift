@@ -17,5 +17,4 @@ class TabViewController: UITabBarController {
             MapPoints.sharedInstance().needToRefreshData = false
         }
     }
-    
 }
