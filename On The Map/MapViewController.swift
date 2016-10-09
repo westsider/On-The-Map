@@ -78,10 +78,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Sets the map area.
-        mapView?.camera.altitude = 300000;
-        //Set map to center on Los Angeles
-        mapView?.centerCoordinate = CLLocationCoordinate2D(latitude: 34.052235, longitude: -118.243683)
-        //Adding a link to the annotation requires making the mapView a delegate of MKMapView.
+//        mapView?.camera.altitude = 300000;
+//        //Set map to center on Los Angeles
+//        mapView?.centerCoordinate = CLLocationCoordinate2D(latitude: 34.052235, longitude: -118.243683)
+//        //Adding a link to the annotation requires making the mapView a delegate of MKMapView.
         mapView.delegate = self
         //Call to getStudents then Draw the annotations on the map.
         reloadViewController()

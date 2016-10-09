@@ -5,34 +5,6 @@
 //  Created by Warren Hansen on 9/23/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
 
-//  Checking compliance with rubik....
-//  lock verticle display Go To Target --> General and set Orientation Mode to Portrait.
-//  move text up to allow key board login
-//  find where cancel on mapview went
-//  need to gaurd against bad urls
-//  is 100 most recent posts?
-//  connect logout on both map and list
-//  connect did select row on tableview to url of user
-//  alertview its own global function?
-//  alertview if login fails
-//  alertview if download json fails
-//  alertview if geocode fails
-//  alertview if post link fails
-//  acitvity indicator geo coding
-//  apha reduced during geiocoding
-//  re order fuctions to make code more readable
-//  remove print statements
-//  no longer sees me
-//  add thisUserPosted to table view
-//  put overwrite into function
-//  remove double alert files
-//  reload tableview crash unwrap optional
-//  design cool login page
-//  remove background og login logo
-//  find big spinner for login
-
-//  abstract objects
-//  remove white spaces in code
 //  add facebook login
 //  location search fail return text in text box - so its visible?
 
@@ -72,7 +44,6 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     // MARK: Login with Email Function
     @IBAction func logInAction(_ sender: AnyObject) {
 
-        
         // reduce the alpha and disable text entry
         setUIEnabled(enabled: false)
         
@@ -175,56 +146,4 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
             }
         })
     }
-    
-    // MARK: Lifecycle Function
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        subscribeToKeyboardNotifications()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        unSubscribeToKeyboardNotofications()
-    }
-    
-    // MARK:  Set up view shift up behavior for keyboard text entry
-    func subscribeToKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(LogOnViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(LogOnViewController.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    func unSubscribeToKeyboardNotofications() {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-
-    func keyboardWillShow(notification: NSNotification) {
-        if userPassword.isFirstResponder && view.frame.origin.y == 0.0{
-            view.frame.origin.y -= getKeyboardHeight(notification: notification)
-        }
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        if userPassword.isFirstResponder {
-            view.frame.origin.y = 0
-        }
-    }
-    
-    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
-        let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
-        return keyboardSize.cgRectValue.height
-    }
-    
-    // MARK: hide keyboard with return or on click away from text
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
-        return false
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    
 }
