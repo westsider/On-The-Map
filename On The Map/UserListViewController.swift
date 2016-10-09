@@ -10,7 +10,9 @@ import UIKit
 
 class UserListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    // MARK: Variables + Outlets
     @IBOutlet var myTableView: UITableView!
+    
     @IBOutlet weak var logoutButton: UINavigationItem!
     
     @IBOutlet weak var pinButton: UIBarButtonItem!
@@ -25,11 +27,11 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
                 self.present(controller, animated: true, completion: nil)
             } else {
                 self.setUIEnabled(enabled: true)
-                self.errorAlert("Oh Snap!", error: errorString!)
+                SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Oh Snap!", message:errorString!)
             }
         }
     }
-    
+    // MARK: Set Up TableView
     @IBAction func reloadTableViewAction(_ sender: AnyObject) {
         refreshData()
     }
@@ -46,7 +48,7 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-    // open url when row selected
+    // MARK:  Open Url when Row Selected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var urlArray:[String] = []
         for result in MapPoints.sharedInstance().mapPoints {
@@ -55,11 +57,7 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         UIApplication.shared.openURL(URL(string: urlArray[indexPath.row])!)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    //Reloads the data on the Map and Table views.
+    // MARK: Reloads the data on the Map and Table views.
     func refreshData() {
         //The disabled refresh button indicates that the refresh is in progress.
         setUIEnabled(enabled: false)
@@ -80,7 +78,6 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
                 self.reloadViewController()
                 //The re-enabled refresh button indicates that the refresh is complete.
                 self.setUIEnabled(enabled: true)
-                
             }
         }
     }
@@ -98,21 +95,10 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
             reloadButton.isEnabled = false
         }
     }
-    
-    //Creates an Alert View Controller error message.
-    func errorAlert(_ title: String, error: String) {
-        let controller: UIAlertController = UIAlertController(title: title, message: error, preferredStyle: .alert)
-        controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(controller, animated: true, completion: nil)
-    }
-    //Required to conform to the ReloadableTab protocol.
+
+    // Required to conform to the ReloadableTab protocol.
     func reloadViewController() {
         myTableView.reloadData()
     }
-    
-    //Opens the mediaURL in Safari when the annotation info box is tapped.
-    //    func mapView() {
-    //        UIApplication.shared.openURL(URL(string: view.annotation!.subtitle!!)!)
-    //    }
     
 }

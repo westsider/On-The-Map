@@ -13,4 +13,3 @@ func performUIUpdatesOnMain(updates: @escaping () -> Void) {
         updates()
     }
 }
- 

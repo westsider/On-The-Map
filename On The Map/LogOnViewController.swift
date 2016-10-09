@@ -25,16 +25,21 @@
 //  find big spinner for login
 //  design cool login page
 //  abstract objects
-//  RETURN FROM BAD CITY SEARCH WITH TEXT STRING FILLED
 //  remove white spaces in code
 //  add facebook login
+//  location search fail return text in text box - so its visible?
 
 import UIKit
 import Foundation
 
 class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate  {
     
+    // MARK: Variables + Outlets
     let loginViewToTabViewSegue = "loginViewToTabViewSegue"
+    
+    var accountKey = ""
+    
+    var sessionID = ""
     
     @IBOutlet weak var userEmail: UITextField!
     
@@ -47,17 +52,14 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     @IBOutlet weak var activityCircle: UIActivityIndicatorView!
     
     @IBOutlet weak var loginFbButtob: UIButton!
-    
-    @IBAction func accountSignUp(_ sender: AnyObject) {
-        UIApplication.shared.openURL(URL(string: "https://www.udacity.com/account/auth#!/signup")!)
+
+    // MARK: Login With Facebook Function
+    @IBAction func loginFacebookAction(_ sender: AnyObject) {
+        debugWindow.text = "FaceBook API Not Available Yet"
     }
-    var accountKey = ""
     
-    var sessionID = ""
-    
-    // MARK: log in button pressed
+    // MARK: Login with Email Function
     @IBAction func logInAction(_ sender: AnyObject) {
-        
 
         
         // reduce the alpha and disable text entry
@@ -113,8 +115,16 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
         }
     }
     
-    @IBAction func loginFacebookAction(_ sender: AnyObject) {
-        debugWindow.text = "FaceBook API Not Available Yet"
+    // MARK: Complete Login
+    func completeLogin() {
+        DispatchQueue.main.async(execute: {
+            self.performSegue(withIdentifier: self.loginViewToTabViewSegue, sender: self)
+        })
+    }
+    
+    // MARK: Account Sign Up
+    @IBAction func accountSignUp(_ sender: AnyObject) {
+        UIApplication.shared.openURL(URL(string: "https://www.udacity.com/account/auth#!/signup")!)
     }
     
     // MARK: Configure UI
@@ -151,12 +161,6 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
         })
     }
     
-    func completeLogin() {
-        DispatchQueue.main.async(execute: {
-            self.performSegue(withIdentifier: self.loginViewToTabViewSegue, sender: self)
-        })
-    }
-    
     // MARK: Lifecycle Function
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -169,7 +173,6 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     }
     
     // MARK:  Set up view shift up behavior for keyboard text entry
-    //  NSNotification subscriptions and selectors
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(LogOnViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
@@ -180,8 +183,7 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
-    
-    // MARK: shift the view's frame up only on bottom text field
+
     func keyboardWillShow(notification: NSNotification) {
         if userPassword.isFirstResponder && view.frame.origin.y == 0.0{
             view.frame.origin.y -= getKeyboardHeight(notification: notification)
@@ -211,5 +213,3 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     }
     
 }
-
-

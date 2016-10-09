@@ -98,7 +98,6 @@ class UdacityLogin: NSObject {
         task.resume()
     }
     
-    
     //Allows other classes to reference a common instance of the user's information fetched from Udacity.
     class func sharedInstance() -> UdacityLogin {
         

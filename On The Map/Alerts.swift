@@ -51,23 +51,3 @@ class SPSwiftAlert: UIViewController {
         
     }    
 }
-
-//class alertManager: NSObject {
-//    func notifyUser(title: String, message: String) -> Void
-//    {
-//        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-//        
-//        // background color
-//        let myLtBlueColor = UIColor(red: 1.0/255.0, green: 1.0/255.0, blue: 255.0/255.0, alpha: 0.5)
-//        let backView = alert.view.subviews.last?.subviews.last
-//        backView?.layer.cornerRadius = 10.0
-//        backView?.backgroundColor = myLtBlueColor
-//        
-//        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//        alert.addAction(cancelAction)
-//        UIApplication.shared.keyWindow?.rootViewController!.present(alert, animated: true,completion: nil)
-//    }
-//}
-
-
-

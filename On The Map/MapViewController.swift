@@ -10,6 +10,7 @@ import UIKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
+    // MARK: Variables + Outlets
     var thisUserPosted = false
     
     let mapToPinSegue = "mapToPinSegue"
@@ -25,20 +26,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var activityCircle:
     UIActivityIndicatorView!
     
-    @IBAction func logoutButtonTapped(_ sender: AnyObject) {
-        
-        self.setUIEnabled(enabled: false)
-        MapPoints.sharedInstance().logOut() { (success, errorString) in
-            if success {
-                let controller = self.storyboard!.instantiateViewController(withIdentifier: "LogOnStoryEntry") //as! UIViewController
-                self.present(controller, animated: true, completion: nil)
-            } else {
-                self.setUIEnabled(enabled: true)
-                self.errorAlert("Oh Snap!", error: errorString!)
-            }
-        }
-    }
-    
+    //# MARK: Add Pin To Map
     @IBAction func tapPinButton(_ sender: AnyObject) {
         // see if user has a pin
         if thisUserPosted {
@@ -66,11 +54,40 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    
+    //# MARK: Refresh Map
     @IBAction func tapRefreshButton(_ sender: AnyObject) {
         refreshData()
     }
 
+    //# MARK: Open mediaURL in Safari when the annotation info box is tapped.
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        UIApplication.shared.openURL(URL(string: view.annotation!.subtitle!!)!)
+    }
+    
+    //# MARK: "callout" to annotation so it can access the mediaURL.
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "MapAnnotation")
+        view.canShowCallout = true
+        view.calloutOffset = CGPoint(x: -5, y: 5)
+        view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
+        return view
+    }
+    
+    //# MARK: Logout
+    @IBAction func logoutButtonTapped(_ sender: AnyObject) {
+        self.setUIEnabled(enabled: false)
+        MapPoints.sharedInstance().logOut() { (success, errorString) in
+            if success {
+                let controller = self.storyboard!.instantiateViewController(withIdentifier: "LogOnStoryEntry") //as! UIViewController
+                self.present(controller, animated: true, completion: nil)
+            } else {
+                self.setUIEnabled(enabled: true)
+                SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Oh Snap!", message: errorString!)
+            }
+        }
+    }
+    
+    //# MARK: Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,24 +101,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         reloadViewController()
     }
     
-    
-    //Opens the mediaURL in Safari when the annotation info box is tapped.
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        UIApplication.shared.openURL(URL(string: view.annotation!.subtitle!!)!)
-    }
-    
-    
-    //Adds a "callout" to the annotation info box so that it can be tapped to access the mediaURL.
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "MapAnnotation")
-        view.canShowCallout = true
-        view.calloutOffset = CGPoint(x: -5, y: 5)
-        view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
-        return view
-    }
-    
-    
-    //Required to conform to the ReloadableTab protocol.
+    //# MARK: Required to conform to the ReloadableTab protocol.
     func reloadViewController() {
         activityCircle.startAnimating()
         for result in MapPoints.sharedInstance().mapPoints {
@@ -132,7 +132,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         activityCircle.stopAnimating()
     }
     
-    //Reloads the data on the Map and Table views.
+    //# MARK: Reloads the data on the Map
     func refreshData() {
         //The disabled refresh button indicates that the refresh is in progress.
         setUIEnabled(enabled: false)
@@ -143,21 +143,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     let controller: UIAlertController = UIAlertController(title: "Error", message: "Error loading map data. Tap Refresh to try again.", preferredStyle: .alert)
                     controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(controller, animated: true, completion: nil)
-                    
                     //The user can try refreshing again.
                     self.setUIEnabled(enabled: true)
                 })
             }
             else {
-                
                 self.reloadViewController()
                 //The re-enabled refresh button indicates that the refresh is complete.
                 self.setUIEnabled(enabled: true)
-                
             }
         }
     }
-    // MARK: Configure UI
+    
+    //# MARK: Configure UI
     private func setUIEnabled(enabled: Bool) {
         refreshButton.isEnabled = true
         pinButton.isEnabled = true
@@ -174,12 +172,5 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             logoutButton.isEnabled = false
             activityCircle.startAnimating()
         }
-    }
-    
-    //Creates an Alert View Controller error message.
-    func errorAlert(_ title: String, error: String) {
-        let controller: UIAlertController = UIAlertController(title: title, message: error, preferredStyle: .alert)
-        controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(controller, animated: true, completion: nil)
     }
 }

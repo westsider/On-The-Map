@@ -10,12 +10,7 @@ import MapKit
 
 class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate {
     
-    let linkViewToMapDisplaySegue = "linkViewToMapDisplaySegue"
-    let returnToStartOfPin = "mapToPinSegue"
-    let myBlueColor = UIColor(red: 69.0/255.0, green: 130.0/214.0, blue: 214.0/255.0, alpha: 1.0)
-    let myLtGrayColor = UIColor(red: 217.0/255.0, green: 217.0/255.0, blue: 217.0/255.0, alpha: 1.0)
-    let LINK_FIELD = 1
-    
+    // MARK: Variables + Outlets
     var coordinates: CLLocationCoordinate2D!
     
     @IBOutlet weak var whereUstudyingToday: UITextView!
@@ -43,22 +38,17 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         findOnMap()
     }
     
-    //MARK:  Geocode Location
+    // MARK:  Geocode Location
     func findOnMap() {
-        //Indicates the geocoding is in process.
-//activityIndicator.isHidden = false
-setUIEnabled(enabled: false)
+        setUIEnabled(enabled: false)
         let location = enterLocation.text
         let geocoder: CLGeocoder = CLGeocoder()
-        
-        //Geocodes the location.
         geocoder.geocodeAddressString(location!, completionHandler: { (placemarks, error) -> Void in
             //Returns an error if geocoding is unsuccessful.
             if ((error) != nil) {
                 DispatchQueue.main.async(execute: {
                     SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Geocode Error", message: "Please enter a valid location")
                 })
-                //self.enterLocation.text = "Please enter a valid location"
                 self.setUIEnabled(enabled: true)
             }
             //If geocoding is successful, multiple locations may be returned in an array. Only the first location is used below.
@@ -66,7 +56,7 @@ setUIEnabled(enabled: false)
                 
                 // reveal map
                 self.midViewBackground.isHidden = true
-                self.topViewBackgroung.backgroundColor = self.myBlueColor
+                self.topViewBackgroung.backgroundColor = Constants.myBlueColor
                 self.BottomViewBackground.isHidden = true
                 
                 let placemark: CLPlacemark = placemarks![0]
@@ -98,8 +88,6 @@ setUIEnabled(enabled: false)
                 
                 //The keyboad is dismissed.
                 self.enterLocation.resignFirstResponder()
-                
-                //This is necessary because the user may have moved his cursor to the linkField text field.
                 self.enterLink.resignFirstResponder()
                 
                 //The user can now submit the location.
@@ -111,13 +99,28 @@ setUIEnabled(enabled: false)
         })
     }
     
+    // MARK:  Ensure url is valid
+    func validateUrl(_ url: String) -> Bool {
+        let pattern = "^(https?:\\/\\/)([a-zA-Z0-9_\\-~]+\\.)+[a-zA-Z0-9_\\-~\\/\\.]+$"
+        if url.range(of: pattern, options: .regularExpression) != nil {
+            return true
+        }
+        return false
+    }
+    
+    // MARK:  Ensure secure url
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.tag == Constants.LINK_FIELD {
+            textField.text = "https://"
+        }
+    }
+
     //MARK: Submit URL Link
     @IBAction func submitLinkAction(_ sender: AnyObject) {
         
         if validateUrl(enterLink.text!) == false {
              SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Invalid URL", message: "Please enter a valid Url")
         } else {
-
             setUIEnabled(enabled: false)
             //Submits the new data point.
             MapPoints.sharedInstance().submitData(coordinates.latitude.description, longitude: coordinates.longitude.description, addressField: enterLink.text!, link: enterLink.text!) { (success, errorString) in
@@ -131,8 +134,6 @@ setUIEnabled(enabled: false)
                     DispatchQueue.main.async(execute: {
                         //If there is an error, the submit button is unhidden so that the user can try again.
                         self.setUIEnabled(enabled: true)
-                        print("")
-                        print("<<<<<<<<<<< geocode fail >>>>>>>>>>>>>>>")
                         SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Location Post Error", message: errorString!)
                     })
                 }
@@ -140,41 +141,24 @@ setUIEnabled(enabled: false)
         }
     }
     
-    //MARK:  Ensure secure url
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-        if textField.tag == LINK_FIELD {
-            textField.text = "https://"
-        }
-    }
-    
-    //MARK:  Ensure url is valid
-    func validateUrl(_ url: String) -> Bool {
-        let pattern = "^(https?:\\/\\/)([a-zA-Z0-9_\\-~]+\\.)+[a-zA-Z0-9_\\-~\\/\\.]+$"
-        if url.range(of: pattern, options: .regularExpression) != nil {
-            return true
-        }
-        return false
-    }
-    
-    //MARK:  URL Post Complete Segue Bacl To Map View
+    // MARK:  URL Post Complete Segue Back To Map View
     func completePosing() {
         DispatchQueue.main.async(execute: {
-            self.performSegue(withIdentifier: self.linkViewToMapDisplaySegue, sender: self)
+            self.performSegue(withIdentifier: Constants.linkViewToMapDisplaySegue, sender: self)
         })
     }
-
+    
     //MARK:  Lifrcycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        enterLink.tag = LINK_FIELD
+        enterLink.tag = Constants.LINK_FIELD
         //This is required to add "https://" to the linkField
         enterLink.delegate = self
         enterLocation.delegate = self
         //These items aren't revealed until the user successfully finds a location.
         mapView.isHidden = true
         topViewBackgroung.isHidden = false
-        topViewBackgroung.backgroundColor = myLtGrayColor
+        topViewBackgroung.backgroundColor = Constants.myLtGrayColor
         submitLinkButton.isHidden = true
         enterLink.isHidden = true
         activityIndicator.stopAnimating()
@@ -191,7 +175,6 @@ setUIEnabled(enabled: false)
     
     // MARK: Configure UI
     private func setUIEnabled(enabled: Bool) {
-        //whereUstudyingToday.isEnabled = true
         enterLocation.isEnabled = true
         submitLinkButton.isEnabled = true
         findOnMapButton.isEnabled = true
@@ -213,4 +196,3 @@ setUIEnabled(enabled: false)
     }
 
 }
-
