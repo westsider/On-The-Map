@@ -8,10 +8,11 @@
 import MapKit
 import UIKit
 
+var thisUserPosted = false
+
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: Variables + Outlets
-    var thisUserPosted = false
     
     let mapToPinSegue = "mapToPinSegue"
     
@@ -29,23 +30,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     //# MARK: Add Pin To Map
     @IBAction func tapPinButton(_ sender: AnyObject) {
         // see if user has a pin
-        if thisUserPosted {
+        if thisUserPosted  {
             let thisAlert = "You Have Already Posted A Student Location. Would You Like to Overwrite Your Current Location?"
-            let alertController = UIAlertController(title: "Hey", message: thisAlert, preferredStyle: UIAlertControllerStyle.alert)
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
-                print("Cancel")
-            }
-            let overwriteAction = UIAlertAction(title: "Overwrite", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-                print("Overwrite")
-                DispatchQueue.main.async(execute: {
-                    self.performSegue(withIdentifier: self.mapToPinSegue, sender: self)
-                })
-                
-            }
-            alertController.addAction(cancelAction)
-            alertController.addAction(overwriteAction)
-            self.present(alertController, animated: true, completion: nil)
-            
+            showDoubleAlert(title: "Hey", message: thisAlert)
         } else {
             // if no user pin then segue to add pin VC  mapToPinSegue
             DispatchQueue.main.async(execute: {
@@ -90,9 +77,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     //# MARK: Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Sets the map area.
-        mapView?.camera.altitude = 200000;
+        mapView?.camera.altitude = 300000;
         //Set map to center on Los Angeles
         mapView?.centerCoordinate = CLLocationCoordinate2D(latitude: 34.052235, longitude: -118.243683)
         //Adding a link to the annotation requires making the mapView a delegate of MKMapView.
@@ -119,10 +105,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             // flag that this user is on the map
             if result.fullName == UdacityLogin.sharedInstance().firstName + " " + UdacityLogin.sharedInstance().lastName {
-                thisUserPosted = true
-                print(" ")
-                print("<<<<<<<<< THIS USER HAS POSTED TO MAP >>>>>>>>>>>>>>>>>>>>>")
-                print(" ")
+                thisUserPosted  = true
+               // print("")
+                print("\(result.fullName)")
+               // print("")
             }
             
             
@@ -173,4 +159,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             activityCircle.startAnimating()
         }
     }
+    
+    //# MARK: Show 2 Button Alert View Controller
+    func showDoubleAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
+        }
+        let overwriteAction = UIAlertAction(title: "Overwrite", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            DispatchQueue.main.async(execute: {
+                self.performSegue(withIdentifier: self.mapToPinSegue, sender: self)
+            })
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(overwriteAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 }

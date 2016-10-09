@@ -19,6 +19,20 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var reloadButton: UIBarButtonItem!
     
+    //# MARK: Add Pin To Map
+    @IBAction func pinButtonAction(_ sender: AnyObject) {
+        // see if user has a pin
+        if thisUserPosted  {
+            let thisAlert = "You Have Already Posted A Student Location. Would You Like to Overwrite Your Current Location?"
+            showDoubleAlert(title: "Hey", message: thisAlert)
+        } else {
+            // if no user pin then segue to add pin VC  mapToPinSegue
+            DispatchQueue.main.async(execute: {
+                self.performSegue(withIdentifier: "listToPinController", sender: self)
+            })
+        }
+    }
+    
     @IBAction func logOutAction(_ sender: AnyObject) {
         setUIEnabled(enabled: false)
         MapPoints.sharedInstance().logOut() { (success, errorString) in
@@ -100,5 +114,21 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
     func reloadViewController() {
         myTableView.reloadData()
     }
-    
+   
+    //# MARK: Show 2 Button Alert View Controller
+    func showDoubleAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
+        }
+        let listToPinController = "listToPinController"
+        let overwriteAction = UIAlertAction(title: "Overwrite", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            DispatchQueue.main.async(execute: {
+                //self.performSegue(withIdentifier: self.listT, sender: self)
+                self.performSegue(withIdentifier: listToPinController, sender: self)
+            })
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(overwriteAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
 }

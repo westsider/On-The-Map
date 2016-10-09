@@ -50,7 +50,6 @@
                             <barButtonItem image="pin" id="Eta-lH-meJ">
                                 <connections>
                                     <action selector="tapPinButton:" destination="9pv-A4-QxB" id="YH0-xr-OQ2"/>
-                                    <segue destination="jRZ-Pg-jdf" kind="presentation" identifier="mapToPinSegue" id="ryW-T2-SW7"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -61,6 +60,7 @@
                         <outlet property="mapView" destination="GZo-qa-3Mr" id="vxQ-u7-7Bu"/>
                         <outlet property="pinButton" destination="Eta-lH-meJ" id="Zu6-eX-GKe"/>
                         <outlet property="refreshButton" destination="Z19-yS-5sh" id="qrb-VM-geF"/>
+                        <segue destination="jRZ-Pg-jdf" kind="presentation" identifier="mapToPinSegue" id="vEI-Lj-QgL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -261,7 +261,7 @@
                             </barButtonItem>
                             <barButtonItem image="pin" id="gUh-O5-7hJ">
                                 <connections>
-                                    <segue destination="jRZ-Pg-jdf" kind="presentation" identifier="listToPinController" id="K4q-D9-ieI"/>
+                                    <action selector="pinButtonAction:" destination="8rJ-Kc-sve" id="S0S-7n-XW0"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -271,6 +271,7 @@
                         <outlet property="myTableView" destination="1l8-cH-P6H" id="w7g-OC-KeI"/>
                         <outlet property="pinButton" destination="gUh-O5-7hJ" id="dqd-Mt-XPn"/>
                         <outlet property="reloadButton" destination="mRE-wN-W08" id="yMk-Vu-Mcw"/>
+                        <segue destination="jRZ-Pg-jdf" kind="presentation" identifier="listToPinController" id="kx8-UC-LRb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -501,7 +502,7 @@
         <image name="pin" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CjF-Rp-jjc"/>
-        <segue reference="ryW-T2-SW7"/>
+        <segue reference="kx8-UC-LRb"/>
+        <segue reference="BUU-ay-OCa"/>
     </inferredMetricsTieBreakers>
 </document>

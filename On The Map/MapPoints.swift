@@ -24,6 +24,8 @@ class MapPoints: NSObject {
     //Each point on the map is a StudentInformation object. They are stored in this array.
     var mapPoints = [StudentInformation]()
     
+    // Mutable Flag set true id this user is already On The Map
+    //var thisUserPosted = false
     
     //This will be set to true when a new pin is submitted to Parse.
     var needToRefreshData = false
@@ -99,7 +101,6 @@ class MapPoints: NSObject {
             } else {
                 completionHandler(true, nil)
             }
-            
         })
         task.resume()
     }

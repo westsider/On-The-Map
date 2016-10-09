@@ -106,8 +106,8 @@
 			children = (
 				39C0E7F31D959BDB0075AA20 /* LogOnViewController.swift */,
 				A6D16BAD1D8F51740074A14D /* MapViewController.swift */,
-				399E51EB1DA4651400864070 /* addLocationViewController.swift */,
 				39B54D751DA6B203005E9B39 /* UserListViewController.swift */,
+				399E51EB1DA4651400864070 /* addLocationViewController.swift */,
 				3935448B1DA1C1A20015CBF2 /* TabViewController.swift */,
 			);
 			name = View;

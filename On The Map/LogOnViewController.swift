@@ -20,8 +20,13 @@
 //  alertview if post link fails
 //  acitvity indicator geo coding
 //  apha reduced during geiocoding
-
 //  re order fuctions to make code more readable
+//  remove print statements
+//  no longer sees me
+//  add thisUserPosted to table view
+//  put overwrite into function
+//  remove double alert files
+
 //  find big spinner for login
 //  design cool login page
 //  abstract objects
@@ -60,15 +65,16 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     
     // MARK: Login with Email Function
     @IBAction func logInAction(_ sender: AnyObject) {
+        
 
         
         // reduce the alpha and disable text entry
         setUIEnabled(enabled: false)
         
-        //Check for empty or default user and password
+        // MARK: Check User and Password Fields
         if (userEmail.text == "" || userEmail.text == "user" || userPassword.text == "" || userPassword.text == "password") {
             textDisplay("Please enter a username and password.")
-            alertManager().notifyUser(title: "Need some input...", message: "Please enter a username and password.")
+            SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Need some input...", message: "Please enter a username and password.")
             setUIEnabled(enabled: true)
             return
             //get userID
@@ -88,26 +94,25 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
                                     self.textDisplay("Login Complete")
                                     self.completeLogin()
                                 } else {
-                                    // get student info error
-                                    //self.textDisplay(errorString)
+                                    // MARK: Error Getting User ID
                                     DispatchQueue.main.async(execute: {
-                                        alertManager().notifyUser(title: "Fetch Info", message: errorString!)
+                                        SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Fetch Info", message: errorString!)
                                         self.setUIEnabled(enabled: true)
                                     })
                                 }
                             }
                         } else {
-                            // get user error
+                            // MARK: JSON Error
                             DispatchQueue.main.async(execute: {
-                                alertManager().notifyUser(title: "Json Error", message: errorString!)
+                                SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Json Error", message: errorString!)
                                 self.setUIEnabled(enabled: true)
                             })
                         }
                     }
                 } else {
-                    // login error
+                    // MARK: Login Error
                     DispatchQueue.main.async(execute: {
-                        alertManager().notifyUser(title: "Login Failed", message: errorString!)
+                        SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Login Failed", message: errorString!)
                         self.setUIEnabled(enabled: true)
                     })
                 }
@@ -150,7 +155,7 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
         }
     }
     
-    // MARK: Display text to UI.
+    // MARK: Display Text to UI.
     func textDisplay(_ errorString: String?) {
         DispatchQueue.main.async(execute: {
             if let errorString = errorString {
