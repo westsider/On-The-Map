@@ -176,5 +176,4 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let loginView : FBSDKLoginManager = FBSDKLoginManager()
         loginView.loginBehavior = FBSDKLoginBehavior.web
     }
-    
 }

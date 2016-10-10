@@ -127,7 +127,6 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         enterLocation.delegate = self
         displayOriginalUI()
         modifyText()
-        subscribeToKeyboardNotifications()
     }
     
     // MARK: hide keyboard with return or on click away from text
@@ -196,53 +195,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         self.enterLink.isHidden = false
         self.whereUstudyingToday.isHidden = true
         self.setUIEnabled(enabled: true)
-        
-        // move top text field down so its not hidden in landscape
     }
-
-     // MARK: Lifecycle Function
-        override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            subscribeToKeyboardNotifications()
-        }
-    
-        override func viewWillDisappear(_ animated: Bool) {
-            super.viewWillDisappear(animated)
-            unSubscribeToKeyboardNotofications()
-        }
-    
-     // MARK:  Set up view shift up behavior for keyboard text entry
-        func subscribeToKeyboardNotifications() {
-            NotificationCenter.default.addObserver(self, selector: #selector(addLocationViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-    
-            NotificationCenter.default.addObserver(self, selector: #selector(addLocationViewController.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        }
-    
-        func unSubscribeToKeyboardNotofications() {
-            NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-            NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        }
-    
-    // and landscape
-    // map not locked to view
-        func keyboardWillShow(notification: NSNotification) {
-            if UIDevice.current.orientation.isLandscape && enterLink.isFirstResponder && view.frame.origin.y == 0.0
-            {
-                view.frame.origin.y += getKeyboardHeight(notification: notification) 
-            }
-        }
-    
-        func keyboardWillHide(notification: NSNotification) {
-            if enterLink.isFirstResponder {
-                view.frame.origin.y = 0
-            }
-        }
-    
-        func getKeyboardHeight(notification: NSNotification) -> CGFloat {
-            let userInfo = notification.userInfo
-            let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
-            return keyboardSize.cgRectValue.height
-        }
     
     // MARK: Set Top Text Field
     func modifyText() {
@@ -267,5 +220,4 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
                                        range: NSRange(location:14,length:9))
         whereUstudyingToday.attributedText = attributedString
     }
-    
 }

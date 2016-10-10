@@ -12,9 +12,6 @@
 //          Disable and fade UI during login and geocoding
 //          scrub and url of blank spaces and add missing http
 
-//  if landscape move textfield down durring map phases
-
-
 
 import UIKit
 import Foundation
@@ -44,8 +41,6 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     @IBOutlet weak var mailIcon: UIImageView!
     
     @IBOutlet weak var lockIcon: UIImageView!
-    
-    
     
     // MARK: Login with Email Function
     @IBAction func logInAction(_ sender: AnyObject) {
@@ -214,13 +209,14 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
             }
         })
     }
-        // MARK: hide keyboard with return or on click away from text
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            view.endEditing(true)
-            return false
-        }
     
-        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            view.endEditing(true)
-        }
+    // MARK: hide keyboard with return or on click away from text
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return false
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 }
