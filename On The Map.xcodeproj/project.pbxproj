@@ -163,6 +163,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		39F0B71E1DAB524600D539EF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6D16BB11D8F51740074A14D /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		A6D16B9F1D8F51740074A14D = {
 			isa = PBXGroup;
 			children = (
@@ -188,8 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				397DB9BA1DAB270200B8E07C /* On The Map.entitlements */,
-				A6D16BB11D8F51740074A14D /* Main.storyboard */,
 				39B54D7F1DA6C68B005E9B39 /* Model */,
+				39F0B71E1DAB524600D539EF /* View */,
 				3935447F1DA19AAE0015CBF2 /* Controller */,
 				A6D16BB41D8F51740074A14D /* Assets.xcassets */,
 				39B54D7E1DA6C672005E9B39 /* Supporting FIles */,

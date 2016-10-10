@@ -126,6 +126,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         enterLink.delegate = self
         enterLocation.delegate = self
         displayOriginalUI()
+        modifyText()
     }
     
     // MARK: hide keyboard with return or on click away from text
@@ -195,4 +196,40 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         self.whereUstudyingToday.isHidden = true
         self.setUIEnabled(enabled: true)
     }
+    
+    // MARK: Set Top Text Field
+    func modifyText() {
+        let myString = "Where are you studying today?"
+        let myMutableString = NSMutableAttributedString(
+            string: myString,
+            attributes: [NSFontAttributeName:
+                UIFont(name: "HelveticaNeue", size: 28.0)!])
+        
+//        let attrs:[String:AnyObject] = [NSParagraphStyleAttributeName: NSParagraphStyle.self]
+//        let length = myString.characters.count
+//        let range = NSRange(location: 0, length: length)
+//        myMutableString.addAttributes(attrs, range: range)
+        
+        myMutableString.addAttribute(NSForegroundColorAttributeName,
+                                     value: UIColor.lightGray,
+                                     range:NSRange(
+                                        location:0,
+                                        length:myString.characters.count))
+        
+        myMutableString.addAttribute(NSFontAttributeName,
+                                     value: UIFont(
+                                        name: "HelveticaNeue-Bold",
+                                        size: 28.0)!,
+                                     range: NSRange(
+                                        location: 14,
+                                        length: 9))
+        
+        myMutableString.addAttribute( NSForegroundColorAttributeName,
+                                      value: UIColor.darkGray,
+                                      range: NSRange(
+                                        location:14,
+                                        length:9))
+        whereUstudyingToday.attributedText = myMutableString
+    }
+    
 }

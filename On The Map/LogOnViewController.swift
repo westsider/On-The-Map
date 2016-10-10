@@ -4,9 +4,16 @@
 //
 //  Created by Warren Hansen on 9/23/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
-//  text for where are you studying?
-//  clean up location
+//
+//  Writted in xCode 8 for Swift 3
+//  Extra features inclide Facebook Login
+//             Additional indications of activity
+//             that modifying alpha/transparency
+//             of interface elements
+//             during login and geocoding.
+//             buttons are unavailable during this time
 
+//  center align text
 import UIKit
 import Foundation
 import FBSDKLoginKit
