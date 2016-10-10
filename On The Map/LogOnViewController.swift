@@ -161,7 +161,7 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     
     // MARK: Login With Facebook Button Pressed
     @IBAction func loginFacebookAction(_ sender: AnyObject) {
-        
+
         activityCircle.startAnimating();
         setUIEnabled(enabled: false)
         let login = FBSDKLoginManager()
