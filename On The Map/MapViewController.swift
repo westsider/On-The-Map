@@ -63,9 +63,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return view
     }
     
-    //# MARK: Logout Of Udacity
+    //# MARK: Logout Of Udacity and Facebook
     @IBAction func logoutButtonTapped(_ sender: AnyObject) {
         self.setUIEnabled(enabled: false)
+        logoutFacebook()
         MapPoints.sharedInstance().logOut() { (success, errorString) in
             if success {
                 let controller = self.storyboard!.instantiateViewController(withIdentifier: "LogOnStoryEntry") //as! UIViewController
@@ -75,7 +76,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Oh Snap!", message: errorString!)
             }
         }
-        logoutFacebook()
     }
     
     //# MARK: Lifecycle Functions
@@ -171,9 +171,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    //# MARK: Logout Of FaceBook
+    //# MARK: Logout FaceBook
     func logoutFacebook() {
-        let loginView : FBSDKLoginManager = FBSDKLoginManager()
-        loginView.loginBehavior = FBSDKLoginBehavior.web
+        FBSDKLoginManager().logOut()
     }
 }

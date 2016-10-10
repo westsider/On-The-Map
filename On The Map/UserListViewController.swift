@@ -85,9 +85,10 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         refreshData()
     }
     
-    //# MARK: Log Out of Udacity
+    //# MARK: Log Out of Udacity and FaceBook
     @IBAction func logOutAction(_ sender: AnyObject) {
         setUIEnabled(enabled: false)
+        logoutFacebook()
         MapPoints.sharedInstance().logOut() { (success, errorString) in
             if success {
                 let controller = self.storyboard!.instantiateViewController(withIdentifier: "LogOnStoryEntry") //as! UIViewController
@@ -97,7 +98,6 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
                 SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Oh Snap!", message:errorString!)
             }
         }
-        logoutFacebook()
     }
     
     // MARK: Configure UI
@@ -130,9 +130,8 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         self.present(alertController, animated: true, completion: nil)
     }
     
-    //# MARK: Logout Of FaceBook
+    //# MARK: Logout FaceBook
     func logoutFacebook() {
-        let loginView : FBSDKLoginManager = FBSDKLoginManager()
-        loginView.loginBehavior = FBSDKLoginBehavior.web
+        FBSDKLoginManager().logOut()
     }
 }
