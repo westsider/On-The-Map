@@ -54,6 +54,10 @@ class UdacityLogin: NSObject {
         task.resume()
     }
     
+    func setNameFromFacebook(firstName:String, lastName:String) {
+        self.firstName = firstName
+        self.lastName = lastName
+    }
     
     //MARK: With UserKey, get the user name.
     func setFirstNameLastName(completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void) {

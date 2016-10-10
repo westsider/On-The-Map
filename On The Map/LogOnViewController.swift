@@ -5,18 +5,17 @@
 //  Created by Warren Hansen on 9/23/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
 //  add facebook login
-
 //  move button to right place with auto layout
 //  when connected, segue to map
-//  figure out if I need username to find if I have posted on map
 
+//  clean up code
 //  clean up location search storyboard
 
 import UIKit
 import Foundation
 import FBSDKLoginKit
 
-class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, FBSDKLoginButtonDelegate  {
+class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate  {
     
     // MARK: Variables + Outlets
     let loginViewToTabViewSegue = "loginViewToTabViewSegue"
@@ -41,10 +40,7 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     
     @IBOutlet weak var lockIcon: UIImageView!
     
-    // MARK: Login With Facebook Function
-    @IBAction func loginFacebookAction(_ sender: AnyObject) {
-        debugWindow.text = "FaceBook API Not Available Yet"
-    }
+
     
     // MARK: Login with Email Function
     @IBAction func logInAction(_ sender: AnyObject) {
@@ -167,49 +163,69 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
         // Facebook code
         if (FBSDKAccessToken.current() != nil ) {
             
-            print("User Logged In")
+            print(" ")
+            print("User Logged In from VDL")
+            print(" ")
             
         } else {
             
-            let loginButton = FBSDKLoginButton()
-            
-            loginButton.center = self.view.center
-            loginButton.readPermissions = ["public_profile", "email"]
-            loginButton.delegate = self
-            self.view.addSubview(loginButton)
+
         }
     }
     
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        
-        if error != nil {
-            print(error)
-        } else if result.isCancelled {
-            print("User Cancelled login")
-        } else {
-            if result.grantedPermissions.contains("email")
-            {
-                if let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"]) {
-                    graphRequest.start(completionHandler: { (connection, result, error) in
-                        
-                        if error != nil {
-                            print(error)
-                        } else {
-                            if let userDetails = result as? [String:String] {
-                                print("Email: \(userDetails["email"])")
-                                print("ID: \(userDetails["id"])")
-                                print("Name: \(userDetails["name"])")
+    // MARK: Login With Facebook Action
+    @IBAction func loginFacebookAction(_ sender: AnyObject) {
+        //debugWindow.text = "FaceBook API Not Available Yet"
+        let login = FBSDKLoginManager()
+        login.loginBehavior = FBSDKLoginBehavior.systemAccount
+        login.logIn(withReadPermissions: ["public_profile", "email"], from: self, handler: {(result, error) in
+            if error != nil {
+                print("Error :  \(error)")
+            }
+            else if (result?.isCancelled)! {
+                print("User Canceled")
+            }
+            else {
+                FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email, first_name, last_name"]).start(completionHandler: {(connection, result, error) -> Void in
+                    if error != nil{
+                        print("Error : \(error)")
+                    }else{
+                        if let userDetails = result as? [String:String] {
+                            print(" ")
+                            print("Email: \(userDetails["email"]!)")
+                            print("ID: \(userDetails["id"]!)")
+                            let firstName = userDetails["first_name"]!
+                            let lastName = userDetails["last_name"]!
+                            print("Name: \(firstName)")
+                            print("Name: \(lastName)")
+                            print(" ")
+                            //setNameFromFacebook
+                            UdacityLogin.sharedInstance().firstName = firstName
+                            UdacityLogin.sharedInstance().lastName = lastName
+                            
+                            print(" ")
+                            print("Stored Values as:")
+                            print(UdacityLogin.sharedInstance().firstName)
+                            print(UdacityLogin.sharedInstance().lastName)
+                            //Fetching student information from Parse.
+                            MapPoints.sharedInstance().fetchData() { (success, errorString) in
+                                if success {
+                                    self.textDisplay("Login Complete")
+                                    self.completeLogin()
+                                } else {
+                                    // MARK: Error Getting User ID
+                                    DispatchQueue.main.async(execute: {
+                                        SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Fetch Info", message: errorString!)
+                                        self.setUIEnabled(enabled: true)
+                                    })
+                                }
                             }
                         }
-                    })
-                }
+                        
+                    }
+                })
             }
-        }
+        })
     }
     
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        
-        print("Logged Out")
-        
-    }
 }
