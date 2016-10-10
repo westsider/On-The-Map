@@ -83,7 +83,7 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         refreshData()
     }
     
-    //# MARK: Log Out
+    //# MARK: Log Out of Udacity
     @IBAction func logOutAction(_ sender: AnyObject) {
         setUIEnabled(enabled: false)
         MapPoints.sharedInstance().logOut() { (success, errorString) in

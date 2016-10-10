@@ -4,9 +4,8 @@
 //
 //  Created by Warren Hansen on 9/23/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
-
-//  clean up code
-//  clean up location search storyboard
+//  text for where are you studying?
+//  clean up location
 
 import UIKit
 import Foundation
@@ -56,13 +55,13 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
                     UdacityLogin.sharedInstance().setFirstNameLastName() { (success, errorString) in
                         if success {
                             
-                            //Fetching student information from Parse.
+                            //Fetching student information from Udacity.
                             MapPoints.sharedInstance().fetchData() { (success, errorString) in
                                 if success {
                                     self.textDisplay("Login Complete")
                                     self.completeLogin()
                                 } else {
-                                    // MARK: Error Getting User ID
+                                    // MARK: Error Getting Users From Udacity
                                     DispatchQueue.main.async(execute: {
                                         SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Fetch Info", message: errorString!)
                                         self.setUIEnabled(enabled: true)
@@ -153,24 +152,7 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
         })
     }
     
-    //# MARK: Lifecycle Functions for Facebook Login
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //        // Facebook code
-        //        if (FBSDKAccessToken.current() != nil ) {
-        //
-        //            print(" ")
-        //            print("User Logged In from VDL")
-        //            print(" ")
-        //
-        //        } else {
-        //
-        //
-        //        }
-    }
-    
-    // MARK: Login With Facebook Action
+    // MARK: Login With Facebook Button Pressed
     @IBAction func loginFacebookAction(_ sender: AnyObject) {
         
         activityCircle.startAnimating();
@@ -179,42 +161,38 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
         login.loginBehavior = FBSDKLoginBehavior.systemAccount
         login.logIn(withReadPermissions: ["public_profile", "email"], from: self, handler: {(result, error) in
             if error != nil {
-                print("Error :  \(error)")
+                // MARK: Error Loggin Into Facebook
+                DispatchQueue.main.async(execute: {
+                    SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "FB Login Error", message: error! as! String)
+                    self.setUIEnabled(enabled: true)
+                })
                 self.setUIEnabled(enabled: true)
             }
             else if (result?.isCancelled)! {
-                print("User Canceled")
                 self.setUIEnabled(enabled: true)
             }
             else {
                 FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email, first_name, last_name"]).start(completionHandler: {(connection, result, error) -> Void in
                     if error != nil{
-                        print("Error : \(error)")
+                        // MARK: Error Getting User Name
+                        DispatchQueue.main.async(execute: {
+                            SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Error Getting User", message: error! as! String)
+                            self.setUIEnabled(enabled: true)
+                        })
                     }else{
                         if let userDetails = result as? [String:String] {
-                            print(" ")
-                            print("Email: \(userDetails["email"]!)")
-                            print("ID: \(userDetails["id"]!)")
                             let firstName = userDetails["first_name"]!
                             let lastName = userDetails["last_name"]!
-                            print("Name: \(firstName)")
-                            print("Name: \(lastName)")
-                            print(" ")
                             //setNameFromFacebook
                             UdacityLogin.sharedInstance().firstName = firstName
                             UdacityLogin.sharedInstance().lastName = lastName
-                            
-                            print(" ")
-                            print("Stored Values as:")
-                            print(UdacityLogin.sharedInstance().firstName)
-                            print(UdacityLogin.sharedInstance().lastName)
-                            //Fetching student information from Parse.
+                            //Fetching student information from Udacity.
                             MapPoints.sharedInstance().fetchData() { (success, errorString) in
                                 if success {
                                     self.textDisplay("Login Complete")
                                     self.completeLogin()
                                 } else {
-                                    // MARK: Error Getting User ID
+                                    // MARK: Error Getting Data from Udacity
                                     DispatchQueue.main.async(execute: {
                                         SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Fetch Info", message: errorString!)
                                         self.setUIEnabled(enabled: true)

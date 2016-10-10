@@ -53,48 +53,18 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
             }
                 //If geocoding is successful, multiple locations may be returned in an array. Only the first location is used below.
             else if placemarks?[0] != nil {
-                
-                // reveal map
-                self.midViewBackground.isHidden = true
-                self.topViewBackgroung.backgroundColor = Constants.myBlueColor
-                self.BottomViewBackground.isHidden = true
-                
+                self.revealMap()
                 let placemark: CLPlacemark = placemarks![0]
-                
                 //Creats a coordinate and annotation.
                 let coordinates: CLLocationCoordinate2D = placemark.location!.coordinate
                 let pointAnnotation: MKPointAnnotation = MKPointAnnotation()
                 pointAnnotation.coordinate = coordinates
-                
-                //Displays the map.
-                self.mapView.isHidden = false
-                self.topViewBackgroung.isHidden = false
-                
-                //Places the annotation on the map.
+                self.displayMap()
                 self.mapView?.addAnnotation(pointAnnotation)
-                
-                //Centers the map on the coordinates.
                 self.mapView?.centerCoordinate = coordinates
-                
-                //Sets the zoom level on the map.
                 self.mapView?.camera.altitude = 20000;
-                
-                //Sets the coordinates parameter that is used if the user decides to submit this location.
                 self.coordinates = coordinates
-                
-                //Items used to look for a location are hidden.
-                self.findOnMapButton.isHidden = true
-                self.enterLocation.isHidden = true
-                
-                //The keyboad is dismissed.
-                self.enterLocation.resignFirstResponder()
-                self.enterLink.resignFirstResponder()
-                
-                //The user can now submit the location.
-                self.submitLinkButton.isHidden = false
-                self.enterLink.isHidden = false
-                self.whereUstudyingToday.isHidden = true
-                self.setUIEnabled(enabled: true)
+                self.displayLocation()
             }
         })
     }
@@ -155,13 +125,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         //This is required to add "https://" to the linkField
         enterLink.delegate = self
         enterLocation.delegate = self
-        //These items aren't revealed until the user successfully finds a location.
-        mapView.isHidden = true
-        topViewBackgroung.isHidden = false
-        topViewBackgroung.backgroundColor = Constants.myLtGrayColor
-        submitLinkButton.isHidden = true
-        enterLink.isHidden = true
-        activityIndicator.stopAnimating()
+        displayOriginalUI()
     }
     
     // MARK: hide keyboard with return or on click away from text
@@ -195,4 +159,40 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         }
     }
     
+    // MARK: Frist UI Set UP
+    func displayOriginalUI(){
+        //These items aren't revealed until the user successfully finds a location.
+        mapView.isHidden = true
+        topViewBackgroung.isHidden = false
+        topViewBackgroung.backgroundColor = Constants.myLtGrayColor
+        submitLinkButton.isHidden = true
+        enterLink.isHidden = true
+        activityIndicator.stopAnimating()
+    }
+    func revealMap() {
+        self.midViewBackground.isHidden = true
+        self.topViewBackgroung.backgroundColor = Constants.myBlueColor
+        self.BottomViewBackground.isHidden = true
+    }
+    
+    func displayMap(){
+        self.mapView.isHidden = false
+        self.topViewBackgroung.isHidden = false
+    }
+    
+    func displayLocation() {
+        //Items used to look for a location are hidden.
+        self.findOnMapButton.isHidden = true
+        self.enterLocation.isHidden = true
+        
+        //The keyboad is dismissed.
+        self.enterLocation.resignFirstResponder()
+        self.enterLink.resignFirstResponder()
+        
+        //The user can now submit the location.
+        self.submitLinkButton.isHidden = false
+        self.enterLink.isHidden = false
+        self.whereUstudyingToday.isHidden = true
+        self.setUIEnabled(enabled: true)
+    }
 }

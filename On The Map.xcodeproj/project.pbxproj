@@ -129,6 +129,10 @@
 		396B276A1DA064FF008508CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				397DB9B41DAB22D500B8E07C /* FBSDKCoreKit.framework */,
+				397DB9B51DAB22D500B8E07C /* FBSDKLoginKit.framework */,
+				397DB9B61DAB22D500B8E07C /* FBSDKShareKit.framework */,
+				397DB9B21DAB229A00B8E07C /* Bolts.framework */,
 				396B276B1DA064FF008508CF /* CoreLocation.framework */,
 			);
 			name = Frameworks;
@@ -162,10 +166,6 @@
 		A6D16B9F1D8F51740074A14D = {
 			isa = PBXGroup;
 			children = (
-				397DB9B41DAB22D500B8E07C /* FBSDKCoreKit.framework */,
-				397DB9B51DAB22D500B8E07C /* FBSDKLoginKit.framework */,
-				397DB9B61DAB22D500B8E07C /* FBSDKShareKit.framework */,
-				397DB9B21DAB229A00B8E07C /* Bolts.framework */,
 				A6D16BAA1D8F51740074A14D /* On The Map */,
 				A6D16BC11D8F51740074A14D /* On The MapTests */,
 				A6D16BCC1D8F51740074A14D /* On The MapUITests */,

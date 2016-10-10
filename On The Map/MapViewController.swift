@@ -61,7 +61,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return view
     }
     
-    //# MARK: Logout
+    //# MARK: Logout Of Udacity
     @IBAction func logoutButtonTapped(_ sender: AnyObject) {
         self.setUIEnabled(enabled: false)
         MapPoints.sharedInstance().logOut() { (success, errorString) in

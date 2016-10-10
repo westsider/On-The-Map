@@ -92,7 +92,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Where are you studying today?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FpD-5n-ojP">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="165" id="byV-CU-MFo"/>
+                                            <constraint firstAttribute="width" constant="165" id="W5I-uS-8mf"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -101,12 +101,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.31372549019607843" green="0.52156862745098043" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="FpD-5n-ojP" firstAttribute="centerX" secondItem="FSZ-dl-eAR" secondAttribute="centerX" id="3VA-5g-TGe"/>
-                                    <constraint firstItem="FSZ-dl-eAR" firstAttribute="trailing" secondItem="9cq-Cz-Axv" secondAttribute="trailingMargin" id="7C4-Me-hOH"/>
-                                    <constraint firstItem="FSZ-dl-eAR" firstAttribute="leading" secondItem="9cq-Cz-Axv" secondAttribute="leadingMargin" id="AQo-CP-khk"/>
-                                    <constraint firstItem="FSZ-dl-eAR" firstAttribute="centerY" secondItem="9cq-Cz-Axv" secondAttribute="centerY" id="BcD-s1-YwH"/>
-                                    <constraint firstItem="FpD-5n-ojP" firstAttribute="top" secondItem="9cq-Cz-Axv" secondAttribute="top" constant="29" id="uGy-Wt-xJo"/>
-                                    <constraint firstItem="FpD-5n-ojP" firstAttribute="centerY" secondItem="FSZ-dl-eAR" secondAttribute="centerY" id="yjG-y0-CuU"/>
+                                    <constraint firstItem="FpD-5n-ojP" firstAttribute="top" secondItem="9cq-Cz-Axv" secondAttribute="top" constant="29" id="0z9-K6-rLH"/>
+                                    <constraint firstItem="FpD-5n-ojP" firstAttribute="centerY" secondItem="FSZ-dl-eAR" secondAttribute="centerY" id="33n-op-Mfd"/>
+                                    <constraint firstItem="FSZ-dl-eAR" firstAttribute="leading" secondItem="9cq-Cz-Axv" secondAttribute="leadingMargin" id="4m6-su-m0B"/>
+                                    <constraint firstItem="FSZ-dl-eAR" firstAttribute="centerY" secondItem="9cq-Cz-Axv" secondAttribute="centerY" id="C49-hO-MLL"/>
+                                    <constraint firstItem="FSZ-dl-eAR" firstAttribute="trailing" secondItem="9cq-Cz-Axv" secondAttribute="trailingMargin" id="dfl-Ba-GYD"/>
+                                    <constraint firstItem="FpD-5n-ojP" firstAttribute="centerX" secondItem="FSZ-dl-eAR" secondAttribute="centerX" id="gwR-Co-UGw"/>
                                 </constraints>
                             </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7Rf-07-tQc"/>
@@ -157,24 +157,24 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9cq-Cz-Axv" firstAttribute="leading" secondItem="1ys-d2-vPt" secondAttribute="leading" id="0Pc-eI-XaX"/>
                             <constraint firstItem="Afn-TQ-jXi" firstAttribute="top" secondItem="RMr-if-XFt" secondAttribute="top" id="0op-PP-WCI"/>
                             <constraint firstItem="Afn-TQ-jXi" firstAttribute="bottom" secondItem="g7u-q6-qWY" secondAttribute="top" id="6B4-hW-YiZ"/>
-                            <constraint firstAttribute="bottom" secondItem="9cq-Cz-Axv" secondAttribute="bottom" constant="445" id="ACG-pj-gIZ"/>
+                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="top" secondItem="9cq-Cz-Axv" secondAttribute="bottom" id="7jV-hD-OTG"/>
                             <constraint firstItem="hZJ-zT-BIp" firstAttribute="top" secondItem="7Rf-07-tQc" secondAttribute="top" id="AoI-zO-Ifx"/>
-                            <constraint firstAttribute="trailing" secondItem="9cq-Cz-Axv" secondAttribute="trailing" id="Cr0-cZ-RoY"/>
                             <constraint firstItem="RMr-if-XFt" firstAttribute="top" secondItem="hZJ-zT-BIp" secondAttribute="bottom" constant="1" id="GFL-vc-BTG"/>
-                            <constraint firstItem="7Rf-07-tQc" firstAttribute="top" secondItem="9cq-Cz-Axv" secondAttribute="bottom" constant="1" id="Gcj-5b-3dS"/>
+                            <constraint firstAttribute="bottom" secondItem="9cq-Cz-Axv" secondAttribute="bottom" constant="444" id="If7-Pv-Wif"/>
                             <constraint firstItem="Lmh-tR-iEG" firstAttribute="leading" secondItem="1ys-d2-vPt" secondAttribute="leadingMargin" constant="74" id="J5b-eQ-LDl"/>
-                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="leading" secondItem="9cq-Cz-Axv" secondAttribute="leading" id="JyY-g2-BlR"/>
-                            <constraint firstItem="9cq-Cz-Axv" firstAttribute="top" secondItem="bEM-b9-RtY" secondAttribute="bottom" id="KKE-tc-0lm"/>
+                            <constraint firstItem="9cq-Cz-Axv" firstAttribute="leading" secondItem="1ys-d2-vPt" secondAttribute="leading" id="Jwq-zi-aJ4"/>
                             <constraint firstItem="hZJ-zT-BIp" firstAttribute="trailing" secondItem="Afn-TQ-jXi" secondAttribute="trailing" id="Kpr-Q5-CEj"/>
+                            <constraint firstItem="9cq-Cz-Axv" firstAttribute="top" secondItem="bEM-b9-RtY" secondAttribute="bottom" id="NkC-Ek-Zes"/>
+                            <constraint firstItem="9cq-Cz-Axv" firstAttribute="leading" secondItem="hZJ-zT-BIp" secondAttribute="leading" id="QH0-dy-V86"/>
                             <constraint firstItem="Lmh-tR-iEG" firstAttribute="top" secondItem="RMr-if-XFt" secondAttribute="bottom" constant="1" id="RIh-mr-mWN"/>
-                            <constraint firstItem="hZJ-zT-BIp" firstAttribute="trailing" secondItem="9cq-Cz-Axv" secondAttribute="trailing" id="TkV-mB-cvv"/>
                             <constraint firstItem="Lmh-tR-iEG" firstAttribute="centerX" secondItem="RMr-if-XFt" secondAttribute="centerX" id="US8-N5-Ufp"/>
                             <constraint firstItem="hZJ-zT-BIp" firstAttribute="leading" secondItem="Afn-TQ-jXi" secondAttribute="leading" id="WRq-GI-toG"/>
+                            <constraint firstAttribute="trailing" secondItem="9cq-Cz-Axv" secondAttribute="trailing" id="YTE-pg-ntQ"/>
                             <constraint firstItem="Lmh-tR-iEG" firstAttribute="centerY" secondItem="Afn-TQ-jXi" secondAttribute="centerY" id="Ysl-2c-GVe"/>
                             <constraint firstItem="hZJ-zT-BIp" firstAttribute="leading" secondItem="7Rf-07-tQc" secondAttribute="leading" id="gVj-wO-Vca"/>
+                            <constraint firstItem="9cq-Cz-Axv" firstAttribute="trailing" secondItem="hZJ-zT-BIp" secondAttribute="trailing" id="joM-c6-fRG"/>
                             <constraint firstItem="7Rf-07-tQc" firstAttribute="trailing" secondItem="Afn-TQ-jXi" secondAttribute="trailing" id="naW-MQ-hjb"/>
                             <constraint firstItem="7Rf-07-tQc" firstAttribute="bottom" secondItem="g7u-q6-qWY" secondAttribute="top" id="y1C-yt-WdK"/>
                             <constraint firstItem="Afn-TQ-jXi" firstAttribute="centerX" secondItem="RMr-if-XFt" secondAttribute="centerX" id="ytT-m2-GOC"/>
@@ -504,7 +504,7 @@
         <image name="pin" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CjF-Rp-jjc"/>
         <segue reference="vEI-Lj-QgL"/>
+        <segue reference="BUU-ay-OCa"/>
     </inferredMetricsTieBreakers>
 </document>
