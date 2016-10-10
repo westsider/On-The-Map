@@ -123,11 +123,11 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.27058823529411763" green="0.50980392156862742" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="9fq-8Z-BXG" firstAttribute="top" secondItem="onI-AI-8Xa" secondAttribute="bottom" constant="82" id="18P-29-eFl"/>
-                                    <constraint firstItem="onI-AI-8Xa" firstAttribute="centerX" secondItem="hZJ-zT-BIp" secondAttribute="centerX" id="OwO-pU-Aox"/>
-                                    <constraint firstItem="onI-AI-8Xa" firstAttribute="leading" secondItem="hZJ-zT-BIp" secondAttribute="leading" constant="16" id="jfI-I4-ac2"/>
-                                    <constraint firstItem="onI-AI-8Xa" firstAttribute="top" secondItem="hZJ-zT-BIp" secondAttribute="top" constant="43" id="k5c-gU-BUx"/>
-                                    <constraint firstItem="9fq-8Z-BXG" firstAttribute="leading" secondItem="hZJ-zT-BIp" secondAttribute="leading" constant="170" id="oIw-zM-yQi"/>
+                                    <constraint firstItem="onI-AI-8Xa" firstAttribute="top" secondItem="hZJ-zT-BIp" secondAttribute="top" constant="149" id="MAl-vu-2iM"/>
+                                    <constraint firstItem="onI-AI-8Xa" firstAttribute="centerX" secondItem="hZJ-zT-BIp" secondAttribute="centerX" id="aRG-vb-pFx"/>
+                                    <constraint firstItem="9fq-8Z-BXG" firstAttribute="leading" secondItem="hZJ-zT-BIp" secondAttribute="leading" constant="170" id="jz4-p7-lGt"/>
+                                    <constraint firstItem="9fq-8Z-BXG" firstAttribute="centerY" secondItem="onI-AI-8Xa" secondAttribute="centerY" id="kkf-xT-Xq4"/>
+                                    <constraint firstItem="onI-AI-8Xa" firstAttribute="leading" secondItem="hZJ-zT-BIp" secondAttribute="leading" constant="16" id="xOb-hC-j5M"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Afn-TQ-jXi" userLabel="LowView">
@@ -514,7 +514,7 @@
         <image name="pin" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CjF-Rp-jjc"/>
+        <segue reference="BUU-ay-OCa"/>
         <segue reference="vEI-Lj-QgL"/>
     </inferredMetricsTieBreakers>
 </document>

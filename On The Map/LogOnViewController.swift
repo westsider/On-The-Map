@@ -12,7 +12,7 @@
 //          Disable and fade UI during login and geocoding
 //          scrub and url of blank spaces and add missing http
 
-//  move textfield down durring map phases
+//  if landscape move textfield down durring map phases
 
 
 
