@@ -53,7 +53,9 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         for result in MapPoints.sharedInstance().mapPoints {
             urlArray.append(result.mediaURL)
         }
-        UIApplication.shared.openURL(URL(string: urlArray[indexPath.row])!)
+        // remove any spaces or add missing http in url string
+        let cleanUrl = MapPoints.sharedInstance().cleanUrl(url: urlArray[indexPath.row])
+        UIApplication.shared.openURL(URL(string: cleanUrl)!)
     }
     
     // MARK: Reloads the data on the Map and Table views. EROOR UNWRAPPING OPTIONAL

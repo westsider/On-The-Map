@@ -12,6 +12,5 @@ class NavToPinViewController: UINavigationController {
     //  Set this up to allow segue to map view controller and change titlebar color
     override func viewDidLoad() {
         super.viewDidLoad()
-       // UINavigationBar.appearance().barTintColor = Constants.myLtGrayColor
     }
 }

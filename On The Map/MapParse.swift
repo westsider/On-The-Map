@@ -123,6 +123,15 @@ class MapPoints: NSObject {
         task.resume()
     }
     
+    // remove spaces from url and add missing http:
+    func cleanUrl(url: String) -> String {
+        var testUrl = url
+        if testUrl.characters.first != "h"  && testUrl.characters.first != "H"{
+           testUrl = "http://\(testUrl)"
+        }
+        return String(testUrl.characters.filter { !" ".characters.contains($0) })
+    }
+    
     //Allows other classes to reference a common instance of the mapPoints array.
     class func sharedInstance() -> MapPoints {
         

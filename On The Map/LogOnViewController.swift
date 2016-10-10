@@ -5,15 +5,17 @@
 //  Created by Warren Hansen on 9/23/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
 //
-//  Writted in xCode 8 for Swift 3
-//  Extra features inclide Facebook Login
-//             Additional indications of activity
-//             that modifying alpha/transparency
-//             of interface elements
-//             during login and geocoding.
-//             buttons are unavailable during this time
+//  Writted in Xcode 8 for Swift 3
+//  Extra features:
+//          Facebook Login
+//          circle activity indicatior
+//          Disable and fade UI during login and geocoding
+//          scrub and url of blank spaces and add missing http
 
-//  center align text
+//  move textfield down durring map phases
+
+
+
 import UIKit
 import Foundation
 import FBSDKLoginKit
@@ -161,7 +163,7 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     
     // MARK: Login With Facebook Button Pressed
     @IBAction func loginFacebookAction(_ sender: AnyObject) {
-
+        
         activityCircle.startAnimating();
         setUIEnabled(enabled: false)
         let login = FBSDKLoginManager()
@@ -212,5 +214,13 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
             }
         })
     }
+        // MARK: hide keyboard with return or on click away from text
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            view.endEditing(true)
+            return false
+        }
     
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            view.endEditing(true)
+        }
 }

@@ -20,4 +20,5 @@ struct Constants {
     static let myLtGrayColor = UIColor(red: 225.0/255.0, green: 225.0/255.0, blue: 225.0/255.0, alpha: 1.0)
     
     static let LINK_FIELD = 1
+    
 }

@@ -49,7 +49,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     //# MARK: Open mediaURL in Safari when the annotation info box is tapped.
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        UIApplication.shared.openURL(URL(string: view.annotation!.subtitle!!)!)
+        // remove any spaces or add missing http in url string
+        let cleanUrl = MapPoints.sharedInstance().cleanUrl(url: view.annotation!.subtitle!!)
+        UIApplication.shared.openURL(URL(string: cleanUrl)!)
     }
     
     //# MARK: "callout" to annotation so it can access the mediaURL.
