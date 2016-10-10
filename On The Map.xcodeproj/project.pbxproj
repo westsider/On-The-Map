@@ -24,6 +24,7 @@
 		39C0E7F61D95EB770075AA20 /* GDCBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C0E7F51D95EB770075AA20 /* GDCBlackBox.swift */; };
 		39D3BED01DA83C12004A6027 /* NavToPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3BECF1DA83C12004A6027 /* NavToPinViewController.swift */; };
 		39DC80411DA9CB2A000A78BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DC80401DA9CB2A000A78BD /* Constants.swift */; };
+		39EEF8571DAC189300A688B3 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 39EEF8561DAC189300A688B3 /* README.md */; };
 		A6D16BAC1D8F51740074A14D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BAB1D8F51740074A14D /* AppDelegate.swift */; };
 		A6D16BAE1D8F51740074A14D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D16BAD1D8F51740074A14D /* MapViewController.swift */; };
 		A6D16BB31D8F51740074A14D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6D16BB11D8F51740074A14D /* Main.storyboard */; };
@@ -69,6 +70,7 @@
 		39C0E7F51D95EB770075AA20 /* GDCBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GDCBlackBox.swift; sourceTree = "<group>"; };
 		39D3BECF1DA83C12004A6027 /* NavToPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavToPinViewController.swift; sourceTree = "<group>"; };
 		39DC80401DA9CB2A000A78BD /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		39EEF8561DAC189300A688B3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A6D16BA81D8F51740074A14D /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D16BAB1D8F51740074A14D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6D16BAD1D8F51740074A14D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				39C0E7F51D95EB770075AA20 /* GDCBlackBox.swift */,
 				39D3BECF1DA83C12004A6027 /* NavToPinViewController.swift */,
 				39DC80401DA9CB2A000A78BD /* Constants.swift */,
+				39EEF8561DAC189300A688B3 /* README.md */,
 			);
 			name = "Supporting FIles";
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				39C0E7F41D959BDB0075AA20 /* LogOnViewController.swift in Sources */,
 				399E51EC1DA4651400864070 /* addLocationViewController.swift in Sources */,
 				39DC80411DA9CB2A000A78BD /* Constants.swift in Sources */,
+				39EEF8571DAC189300A688B3 /* README.md in Sources */,
 				3935448A1DA1B16A0015CBF2 /* ReloadableTab.swift in Sources */,
 				393544841DA1A4040015CBF2 /* MapParse.swift in Sources */,
 			);
