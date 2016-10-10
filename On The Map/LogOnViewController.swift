@@ -4,14 +4,19 @@
 //
 //  Created by Warren Hansen on 9/23/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
-
 //  add facebook login
-//  location search fail return text in text box - so its visible?
+
+//  move button to right place with auto layout
+//  when connected, segue to map
+//  figure out if I need username to find if I have posted on map
+
+//  clean up location search storyboard
 
 import UIKit
 import Foundation
+import FBSDKLoginKit
 
-class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate  {
+class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, FBSDKLoginButtonDelegate  {
     
     // MARK: Variables + Outlets
     let loginViewToTabViewSegue = "loginViewToTabViewSegue"
@@ -43,7 +48,9 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     
     // MARK: Login with Email Function
     @IBAction func logInAction(_ sender: AnyObject) {
-
+        
+        userEmail.text = "whansen1@mac.com"
+        userPassword.text = "wh2403wh"
         
         if textInputIncomplete() {
             return
@@ -154,5 +161,58 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
                 self.loginButton.isEnabled = true
             }
         })
+    }
+    
+    //# MARK: Lifecycle Functions for Facebook Login
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Facebook code
+        if (FBSDKAccessToken.current() != nil ) {
+            
+            print("User Logged In")
+            
+        } else {
+            
+            let loginButton = FBSDKLoginButton()
+            
+            loginButton.center = self.view.center
+            loginButton.readPermissions = ["public_profile", "email"]
+            loginButton.delegate = self
+            self.view.addSubview(loginButton)
+        }
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        
+        if error != nil {
+            print(error)
+        } else if result.isCancelled {
+            print("User Cancelled login")
+        } else {
+            if result.grantedPermissions.contains("email")
+            {
+                if let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"]) {
+                    graphRequest.start(completionHandler: { (connection, result, error) in
+                        
+                        if error != nil {
+                            print(error)
+                        } else {
+                            if let userDetails = result as? [String:String] {
+                                print("Email: \(userDetails["email"])")
+                                print("ID: \(userDetails["id"])")
+                                print("Name: \(userDetails["name"])")
+                            }
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
+        print("Logged Out")
+        
     }
 }

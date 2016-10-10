@@ -14,6 +14,10 @@
 		3935448C1DA1C1A20015CBF2 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935448B1DA1C1A20015CBF2 /* TabViewController.swift */; };
 		396B276C1DA064FF008508CF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 396B276B1DA064FF008508CF /* CoreLocation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		397A05821DA967A300F1E948 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397A05811DA967A300F1E948 /* Alerts.swift */; };
+		397DB9B31DAB229A00B8E07C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397DB9B21DAB229A00B8E07C /* Bolts.framework */; };
+		397DB9B71DAB22D500B8E07C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397DB9B41DAB22D500B8E07C /* FBSDKCoreKit.framework */; };
+		397DB9B81DAB22D500B8E07C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397DB9B51DAB22D500B8E07C /* FBSDKLoginKit.framework */; };
+		397DB9B91DAB22D500B8E07C /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397DB9B61DAB22D500B8E07C /* FBSDKShareKit.framework */; };
 		399E51EC1DA4651400864070 /* addLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E51EB1DA4651400864070 /* addLocationViewController.swift */; };
 		39B54D761DA6B203005E9B39 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B54D751DA6B203005E9B39 /* UserListViewController.swift */; };
 		39C0E7F41D959BDB0075AA20 /* LogOnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C0E7F31D959BDB0075AA20 /* LogOnViewController.swift */; };
@@ -54,6 +58,11 @@
 		3935448B1DA1C1A20015CBF2 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		396B276B1DA064FF008508CF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		397A05811DA967A300F1E948 /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		397DB9B21DAB229A00B8E07C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		397DB9B41DAB22D500B8E07C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		397DB9B51DAB22D500B8E07C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		397DB9B61DAB22D500B8E07C /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		397DB9BA1DAB270200B8E07C /* On The Map.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "On The Map.entitlements"; sourceTree = "<group>"; };
 		399E51EB1DA4651400864070 /* addLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addLocationViewController.swift; sourceTree = "<group>"; };
 		39B54D751DA6B203005E9B39 /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		39C0E7F31D959BDB0075AA20 /* LogOnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOnViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +90,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				396B276C1DA064FF008508CF /* CoreLocation.framework in Frameworks */,
+				397DB9B71DAB22D500B8E07C /* FBSDKCoreKit.framework in Frameworks */,
+				397DB9B91DAB22D500B8E07C /* FBSDKShareKit.framework in Frameworks */,
+				397DB9B81DAB22D500B8E07C /* FBSDKLoginKit.framework in Frameworks */,
+				397DB9B31DAB229A00B8E07C /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +162,10 @@
 		A6D16B9F1D8F51740074A14D = {
 			isa = PBXGroup;
 			children = (
+				397DB9B41DAB22D500B8E07C /* FBSDKCoreKit.framework */,
+				397DB9B51DAB22D500B8E07C /* FBSDKLoginKit.framework */,
+				397DB9B61DAB22D500B8E07C /* FBSDKShareKit.framework */,
+				397DB9B21DAB229A00B8E07C /* Bolts.framework */,
 				A6D16BAA1D8F51740074A14D /* On The Map */,
 				A6D16BC11D8F51740074A14D /* On The MapTests */,
 				A6D16BCC1D8F51740074A14D /* On The MapUITests */,
@@ -170,6 +187,7 @@
 		A6D16BAA1D8F51740074A14D /* On The Map */ = {
 			isa = PBXGroup;
 			children = (
+				397DB9BA1DAB270200B8E07C /* On The Map.entitlements */,
 				A6D16BB11D8F51740074A14D /* Main.storyboard */,
 				39B54D7F1DA6C68B005E9B39 /* Model */,
 				3935447F1DA19AAE0015CBF2 /* Controller */,
@@ -267,6 +285,11 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = RTLF7UB597;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					A6D16BBD1D8F51740074A14D = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -496,7 +519,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "On The Map/On The Map.entitlements";
 				DEVELOPMENT_TEAM = RTLF7UB597;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "On The Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "TradeStrat.On-The-Map";
@@ -509,7 +537,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "On The Map/On The Map.entitlements";
 				DEVELOPMENT_TEAM = RTLF7UB597;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "On The Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "TradeStrat.On-The-Map";
