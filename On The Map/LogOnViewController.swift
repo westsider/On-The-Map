@@ -49,9 +49,6 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     // MARK: Login with Email Function
     @IBAction func logInAction(_ sender: AnyObject) {
         
-        userEmail.text = "whansen1@mac.com"
-        userPassword.text = "wh2403wh"
-        
         if textInputIncomplete() {
             return
             
