@@ -199,37 +199,26 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
     
     // MARK: Set Top Text Field
     func modifyText() {
-        let myString = "Where are you studying today?"
-        let myMutableString = NSMutableAttributedString(
-            string: myString,
-            attributes: [NSFontAttributeName:
-                UIFont(name: "HelveticaNeue", size: 28.0)!])
+        let string = "Where are you\rstudying\rtoday?"
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        let fontSize:CGFloat = 28.0
         
-//        let attrs:[String:AnyObject] = [NSParagraphStyleAttributeName: NSParagraphStyle.self]
-//        let length = myString.characters.count
-//        let range = NSRange(location: 0, length: length)
-//        myMutableString.addAttributes(attrs, range: range)
+        let attributes = [
+            NSFontAttributeName: UIFont(name: "Helvetica",size: fontSize)!,
+            NSParagraphStyleAttributeName: style,
+            NSForegroundColorAttributeName: UIColor.lightGray
+        ]
         
-        myMutableString.addAttribute(NSForegroundColorAttributeName,
-                                     value: UIColor.lightGray,
-                                     range:NSRange(
-                                        location:0,
-                                        length:myString.characters.count))
+        let attributedString = NSMutableAttributedString(string: string, attributes: attributes)
         
-        myMutableString.addAttribute(NSFontAttributeName,
-                                     value: UIFont(
-                                        name: "HelveticaNeue-Bold",
-                                        size: 28.0)!,
-                                     range: NSRange(
-                                        location: 14,
-                                        length: 9))
-        
-        myMutableString.addAttribute( NSForegroundColorAttributeName,
-                                      value: UIColor.darkGray,
-                                      range: NSRange(
-                                        location:14,
-                                        length:9))
-        whereUstudyingToday.attributedText = myMutableString
+        attributedString.addAttribute(NSFontAttributeName,
+                                      value: UIFont(name: "Helvetica-Bold",size: fontSize)!,
+                                      range: NSRange(location: 14,length: 9))
+        attributedString.addAttribute( NSForegroundColorAttributeName,
+                                       value: UIColor.darkGray,
+                                       range: NSRange(location:14,length:9))
+        whereUstudyingToday.attributedText = attributedString
     }
     
 }
