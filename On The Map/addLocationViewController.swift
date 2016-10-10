@@ -51,7 +51,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
                 })
                 self.setUIEnabled(enabled: true)
             }
-            //If geocoding is successful, multiple locations may be returned in an array. Only the first location is used below.
+                //If geocoding is successful, multiple locations may be returned in an array. Only the first location is used below.
             else if placemarks?[0] != nil {
                 
                 // reveal map
@@ -114,12 +114,12 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
             textField.text = "https://"
         }
     }
-
+    
     //MARK: Submit URL Link
     @IBAction func submitLinkAction(_ sender: AnyObject) {
         
         if validateUrl(enterLink.text!) == false {
-             SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Invalid URL", message: "Please enter a valid Url")
+            SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Invalid URL", message: "Please enter a valid Url")
         } else {
             setUIEnabled(enabled: false)
             //Submits the new data point.
@@ -163,7 +163,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         enterLink.isHidden = true
         activityIndicator.stopAnimating()
     }
-
+    
     // MARK: hide keyboard with return or on click away from text
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
@@ -194,5 +194,5 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
             activityIndicator.startAnimating()
         }
     }
-
+    
 }

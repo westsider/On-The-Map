@@ -4,9 +4,6 @@
 //
 //  Created by Warren Hansen on 9/23/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
-//  add facebook login
-//  move button to right place with auto layout
-//  when connected, segue to map
 
 //  clean up code
 //  clean up location search storyboard
@@ -40,7 +37,7 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     
     @IBOutlet weak var lockIcon: UIImageView!
     
-
+    
     
     // MARK: Login with Email Function
     @IBAction func logInAction(_ sender: AnyObject) {
@@ -160,30 +157,34 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Facebook code
-        if (FBSDKAccessToken.current() != nil ) {
-            
-            print(" ")
-            print("User Logged In from VDL")
-            print(" ")
-            
-        } else {
-            
-
-        }
+        //        // Facebook code
+        //        if (FBSDKAccessToken.current() != nil ) {
+        //
+        //            print(" ")
+        //            print("User Logged In from VDL")
+        //            print(" ")
+        //
+        //        } else {
+        //
+        //
+        //        }
     }
     
     // MARK: Login With Facebook Action
     @IBAction func loginFacebookAction(_ sender: AnyObject) {
-        //debugWindow.text = "FaceBook API Not Available Yet"
+        
+        activityCircle.startAnimating();
+        setUIEnabled(enabled: false)
         let login = FBSDKLoginManager()
         login.loginBehavior = FBSDKLoginBehavior.systemAccount
         login.logIn(withReadPermissions: ["public_profile", "email"], from: self, handler: {(result, error) in
             if error != nil {
                 print("Error :  \(error)")
+                self.setUIEnabled(enabled: true)
             }
             else if (result?.isCancelled)! {
                 print("User Canceled")
+                self.setUIEnabled(enabled: true)
             }
             else {
                 FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email, first_name, last_name"]).start(completionHandler: {(connection, result, error) -> Void in
@@ -221,7 +222,6 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
                                 }
                             }
                         }
-                        
                     }
                 })
             }

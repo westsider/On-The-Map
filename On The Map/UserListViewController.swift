@@ -7,6 +7,7 @@
 
 
 import UIKit
+import FBSDKLoginKit
 
 class UserListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -94,6 +95,7 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
                 SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Oh Snap!", message:errorString!)
             }
         }
+        logoutFacebook()
     }
     
     // MARK: Configure UI
@@ -124,5 +126,11 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         alertController.addAction(cancelAction)
         alertController.addAction(overwriteAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    //# MARK: Logout Of FaceBook
+    func logoutFacebook() {
+        let loginView : FBSDKLoginManager = FBSDKLoginManager()
+        loginView.loginBehavior = FBSDKLoginBehavior.web
     }
 }

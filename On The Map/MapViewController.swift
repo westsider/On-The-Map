@@ -7,6 +7,7 @@
 
 import MapKit
 import UIKit
+import FBSDKLoginKit
 
 var thisUserPosted = false
 
@@ -72,6 +73,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Oh Snap!", message: errorString!)
             }
         }
+        logoutFacebook()
     }
     
     //# MARK: Lifecycle Functions
@@ -165,6 +167,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         alertController.addAction(cancelAction)
         alertController.addAction(overwriteAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    //# MARK: Logout Of FaceBook
+    func logoutFacebook() {
+        let loginView : FBSDKLoginManager = FBSDKLoginManager()
+        loginView.loginBehavior = FBSDKLoginBehavior.web
     }
     
 }
