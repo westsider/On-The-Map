@@ -56,11 +56,9 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
             activityCircle.startAnimating();
             UdacityLogin.sharedInstance().loginToUdacity(username: self.userEmail.text!, password: self.userPassword.text!) { (success, errorString) in
                 if success {
-                    Swifty().printString(input: "Login Successful")
                     //Fetching first and last name from Udacity.
                     UdacityLogin.sharedInstance().setFirstNameLastName() { (success, errorString) in
                         if success {
-                            Swifty().printString(input: "Name Recieved")
                             //Fetching student information from Udacity.
                             MapPoints.sharedInstance().fetchData() { (success, errorString) in
                                 if success {

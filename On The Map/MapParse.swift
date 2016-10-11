@@ -42,7 +42,6 @@ class MapPoints: NSObject {
             let parsedResult = (try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)) as! NSDictionary
             if let error = parsingError {
                 completionHandler(false, error.description)
-                Swifty().printString(input: " PARSE ERROR")
             } else {
                 if let results = parsedResult["results"] as? [[String : AnyObject]] {
                     //Clear existing data from the mapPoints object.
@@ -50,8 +49,6 @@ class MapPoints: NSObject {
                     //Re-populate the mapPoints object with refreshed data.
                     for result in results {
                         StudentData.sharedInstance().mapPoints.append(StudentInformation(dictionary: result))
-                        Swifty().printString(input: " LOOP TO POPULATE DICTIOARY")
-                        Swifty().report(input: result as AnyObject)
                     }
                     
                     //Setting this flag to true lets the TabViewController know that the views need to be reloaded.
