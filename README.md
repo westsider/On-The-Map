@@ -14,5 +14,5 @@ Use Core Location and the MapKit framework for to display annotated pins on a ma
 Why is this project meaningful to my career?
 Working with data from networked sources is as important to iOS development as creating good user interfaces. Completing this project shows that I can both read and write from RESTful networked APIs.
 
-#Extra features: 
+#Extra features 
 Facebook Login, Circle activity indicator during login and geocoding, Disable and fade UI during login and geocoding, Url Scrubbing: check incomming Url - remove blank spaces and add missing http, Check outgoing Url for proper formatting.
