@@ -4,7 +4,7 @@
 //
 //  Created by Warren Hansen on 10/2/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
-//  found some help with parse from Daniel Riehs and Egorio on  https://github.com/egorio/udacity-on-the-map
+//
 
 import Foundation
 

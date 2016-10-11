@@ -76,7 +76,6 @@ class MapPoints: NSObject {
         task.resume()
     }
     
-    
     //Submit a student information node to Parse.
     func submitData(_ latitude: String, longitude: String, addressField: String, link: String, completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
         

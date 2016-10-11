@@ -4,6 +4,7 @@
 //
 //  Created by Warren Hansen on 10/4/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
+//
 
 import UIKit
 import MapKit
@@ -91,6 +92,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         if validateUrl(enterLink.text!) == false {
             SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Invalid URL", message: "Please enter a valid Url")
         } else {
+            activityIndicator.color = UIColor.darkGray
             setUIEnabled(enabled: false)
             //Submits the new data point.
             MapPoints.sharedInstance().submitData(coordinates.latitude.description, longitude: coordinates.longitude.description, addressField: enterLink.text!, link: enterLink.text!) { (success, errorString) in
@@ -157,7 +159,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
             enterLocation.alpha = 0.3
             submitLinkButton.alpha = 0.3
             findOnMapButton.alpha = 0.3
-            mapView.alpha = 0.3
+            mapView.alpha = 0.5
             activityIndicator.startAnimating()
         }
     }

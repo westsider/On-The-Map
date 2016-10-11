@@ -4,6 +4,7 @@
 //
 //  Created by Warren Hansen on 9/18/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
+//
 
 import MapKit
 import UIKit
@@ -139,7 +140,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
-    
+    // Mark: Reload Map on return to this VC from other controllers especialy Add Location
+    override func viewWillAppear(_ animated: Bool) {
+        self.reloadViewController()
+    }
     //# MARK: Configure UI
     private func setUIEnabled(enabled: Bool) {
         refreshButton.isEnabled = true

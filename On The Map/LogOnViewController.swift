@@ -11,9 +11,9 @@
 //          circle activity indicatior
 //          Disable and fade UI during login and geocoding
 //          URL Scrubbing:
-//          check incomming u\Url- remove blank spaces and add missing http
+//          check incomming Url- remove blank spaces and add missing http
 //          check outgoing Url for proper formatting
-
+//
 
 import UIKit
 import Foundation
