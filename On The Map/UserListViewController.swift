@@ -36,13 +36,10 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // MARK: Set Up TableView
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//return MapPoints.sharedInstance().mapPoints.count
-        return  StudentData.sharedInstance().mapPoints.count       //StudentData().mapPoints.count
+        return  StudentData.sharedInstance().mapPoints.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-// let mapPoint = MapPoints.sharedInstance().mapPoints[(indexPath as NSIndexPath).row]
-        //let mapPoint = StudentData().mapPoints[(indexPath as NSIndexPath).row]
         let mapPoint = StudentData.sharedInstance().mapPoints[(indexPath as NSIndexPath).row]
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         cell.textLabel?.text = mapPoint.fullName
@@ -53,7 +50,6 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK:  Open Url when Row Selected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var urlArray:[String] = []
-//for result in MapPoints.sharedInstance().mapPoints {
         for result in StudentData.sharedInstance().mapPoints {
             urlArray.append(result.mediaURL)
         }

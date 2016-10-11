@@ -14,7 +14,6 @@
 //          Check incomming Url - remove blank spaces and add missing http
 //          Check outgoing Url for proper formatting
 //
-//   post review changes
 
 import UIKit
 import Foundation
@@ -66,7 +65,6 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
                             MapPoints.sharedInstance().fetchData() { (success, errorString) in
                                 if success {
                                     self.textDisplay("Login Complete")
-                                    Swifty().printString(input: "Fetch Data Complete")
                                     self.completeLogin()
                                 } else {
                                     // MARK: Error Getting Users From Udacity

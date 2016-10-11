@@ -16,18 +16,8 @@ class MapPoints: NSObject {
     let ParseID: String = Constants.ParseID
     let ParseAPIKey: String = Constants.ParseAPIKey
     
-    
     //Database URL:
     let DatabaseURL: String = "https://parse.udacity.com/parse/classes"
-    
-    
-    //Each point on the map is a StudentInformation object. They are stored in this array.
-//var mapPoints = [StudentInformation]()
-    
-    
-    
-    // Mutable Flag set true id this user is already On The Map
-    //var thisUserPosted = false
     
     //This will be set to true when a new pin is submitted to Parse.
     var needToRefreshData = false
@@ -47,37 +37,22 @@ class MapPoints: NSObject {
             if error != nil {
                 completionHandler(false, error!.localizedDescription)
             }
-            Swifty().printString(input: " Heres The data")
-            Swifty().report(input: data as AnyObject)
             //Parse the data.
             let parsingError: NSError? = nil
             let parsedResult = (try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)) as! NSDictionary
-            
-            Swifty().printString(input: " Heres The serialized data")
-            Swifty().report(input: parsedResult as AnyObject)
-            
             if let error = parsingError {
                 completionHandler(false, error.description)
                 Swifty().printString(input: " PARSE ERROR")
             } else {
                 if let results = parsedResult["results"] as? [[String : AnyObject]] {
-                    Swifty().printString(input: " Heres The parsed data")
-                    Swifty().report(input: results as AnyObject)
                     //Clear existing data from the mapPoints object.
-//self.mapPoints.removeAll(keepingCapacity: true)
-                    //StudentData.mapPoints.removeAll(keepingCapacity: true)
                     StudentData.sharedInstance().mapPoints.removeAll(keepingCapacity: true)
                     //Re-populate the mapPoints object with refreshed data.
                     for result in results {
-//self.mapPoints.append(StudentInformation(dictionary: result))
-                        //StudentData().mapPoints.append(StudentInformation(dictionary: result))
                         StudentData.sharedInstance().mapPoints.append(StudentInformation(dictionary: result))
                         Swifty().printString(input: " LOOP TO POPULATE DICTIOARY")
                         Swifty().report(input: result as AnyObject)
                     }
-                    
-                    Swifty().printString(input: "Map Pionts Loaded from Map Parse")
-                    //Swifty().report(input: StudentData.sharedInstance().mapPoints as AnyObject)
                     
                     //Setting this flag to true lets the TabViewController know that the views need to be reloaded.
                     self.needToRefreshData = true
@@ -140,7 +115,7 @@ class MapPoints: NSObject {
     func cleanUrl(url: String) -> String {
         var testUrl = url
         if testUrl.characters.first != "h"  && testUrl.characters.first != "H"{
-           testUrl = "http://\(testUrl)"
+            testUrl = "http://\(testUrl)"
         }
         return String(testUrl.characters.filter { !" ".characters.contains($0) })
     }

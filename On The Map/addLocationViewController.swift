@@ -95,27 +95,26 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
             activityIndicator.color = UIColor.darkGray
             setUIEnabled(enabled: false)
             //Submits the new data point.
-            MapPoints.sharedInstance().submitData(coordinates.latitude.description, longitude: coordinates.longitude.description, 
-                addressField: enterLink.text!, link: enterLink.text!) { (success, errorString) in
-                if success {
-                    DispatchQueue.main.async(execute: {
-                        MapPoints.sharedInstance().needToRefreshData = true
-                        self.dismiss(animated: true, completion: nil)
-                        self.completePosing()
-                    })
-                } else {
-                    DispatchQueue.main.async(execute: {
-                        //If there is an error, the submit button is unhidden so that the user can try again.
-                        self.setUIEnabled(enabled: true)
-                        SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Location Post Error", message: errorString!)
-                    })
-                }
+            MapPoints.sharedInstance().submitData(coordinates.latitude.description, longitude: coordinates.longitude.description,
+                                                  addressField: enterLink.text!, link: enterLink.text!) { (success, errorString) in
+                                                    if success {
+                                                        DispatchQueue.main.async(execute: {
+                                                            MapPoints.sharedInstance().needToRefreshData = true
+                                                            self.dismiss(animated: true, completion: nil)
+                                                            self.completePosing()
+                                                        })
+                                                    } else {
+                                                        DispatchQueue.main.async(execute: {
+                                                            //If there is an error, the submit button is unhidden so that the user can try again.
+                                                            self.setUIEnabled(enabled: true)
+                                                            SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Location Post Error", message: errorString!)
+                                                        })
+                                                    }
             }
         }
     }
     
-    
-    
+    // MARK: Cancel
     @IBAction func cancelAction(_ sender: AnyObject) {
         self.dismiss(animated: false, completion: nil)
     }

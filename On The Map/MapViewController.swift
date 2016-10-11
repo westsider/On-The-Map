@@ -82,41 +82,27 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     //# MARK: Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         mapView.delegate = self
         //Call to getStudents then Draw the annotations on the map.
         reloadViewController()
-        
-        Swifty().printString(input: "VDL in Map VC All Map Pionts")
-        Swifty().report(input: StudentData.sharedInstance().mapPoints as AnyObject)
     }
     
     //# MARK: Required to conform to the ReloadableTab protocol.
     func reloadViewController() {
         activityCircle.startAnimating()
-        
-// for result in MapPoints.sharedInstance().mapPoints {
         for result in StudentData.sharedInstance().mapPoints {
-Swifty().report(input: "reload view controller" as AnyObject)
-            Swifty().report(input: result as AnyObject)
-
-            //[MKMapView addAnnotation:]
             //Creates an annotation and coordinate.
             let annotation = MKPointAnnotation()
             let location = CLLocationCoordinate2D(latitude: result.latitude, longitude: result.longitude)
-            
             //Sets the coordinates of the annotation.
             annotation.coordinate = location
-            
             //Adds a student name and URL to the annotation.
             annotation.title = result.fullName
             annotation.subtitle = result.mediaURL
-            
             // flag if this user is on the map
             if result.fullName == UdacityLogin.sharedInstance().firstName + " " + UdacityLogin.sharedInstance().lastName {
                 thisUserPosted  = true
             }
-            
             //Adds the annotation to the map.
             mapView.addAnnotation(annotation)
         }
