@@ -5,14 +5,14 @@
 //  Created by Warren Hansen on 9/23/16.
 //  Copyright © 2016 Warren Hansen. All rights reserved.
 //
-//  Writted in Xcode 8 for Swift 3
+//  Written in Xcode 8 for Swift 3
 //  Extra features:
 //          Facebook Login
-//          circle activity indicatior
+//          Circle activity indicator during login and geocoding
 //          Disable and fade UI during login and geocoding
-//          URL Scrubbing:
-//          check incomming Url- remove blank spaces and add missing http
-//          check outgoing Url for proper formatting
+//          Url Scrubbing:
+//          Check incomming Url - remove blank spaces and add missing http
+//          Check outgoing Url for proper formatting
 //
 
 import UIKit
