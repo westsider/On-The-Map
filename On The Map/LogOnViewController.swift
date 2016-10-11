@@ -10,7 +10,9 @@
 //          Facebook Login
 //          circle activity indicatior
 //          Disable and fade UI during login and geocoding
-//          scrub and url of blank spaces and add missing http
+//          URL Scrubbing:
+//          check incomming u\Url- remove blank spaces and add missing http
+//          check outgoing Url for proper formatting
 
 
 import UIKit

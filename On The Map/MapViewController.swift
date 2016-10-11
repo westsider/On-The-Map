@@ -90,8 +90,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     //# MARK: Required to conform to the ReloadableTab protocol.
     func reloadViewController() {
         activityCircle.startAnimating()
+        
         for result in MapPoints.sharedInstance().mapPoints {
+       
             
+            //[MKMapView addAnnotation:]
             //Creates an annotation and coordinate.
             let annotation = MKPointAnnotation()
             let location = CLLocationCoordinate2D(latitude: result.latitude, longitude: result.longitude)
@@ -147,11 +150,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             refreshButton.isEnabled = true
             pinButton.isEnabled = true
             logoutButton.isEnabled = true
+            mapView.alpha = 1.0
             activityCircle.stopAnimating()
         } else {
             refreshButton.isEnabled = false
             pinButton.isEnabled = false
             logoutButton.isEnabled = false
+            mapView.alpha = 0.5
             activityCircle.startAnimating()
         }
     }

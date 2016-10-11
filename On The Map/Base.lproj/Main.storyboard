@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GZo-qa-3Mr"/>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5FY-CA-gMW"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5FY-CA-gMW"/>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -120,15 +120,17 @@
                                             <outlet property="delegate" destination="onc-iV-bKn" id="V3y-e2-3bC"/>
                                         </connections>
                                     </textField>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="9fq-8Z-BXG"/>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="9fq-8Z-BXG"/>
                                 </subviews>
                                 <color key="backgroundColor" red="0.27058823529411763" green="0.50980392156862742" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="9fq-8Z-BXG" firstAttribute="leading" secondItem="hZJ-zT-BIp" secondAttribute="leading" constant="170" id="8dt-l2-AMz"/>
-                                    <constraint firstItem="onI-AI-8Xa" firstAttribute="leading" secondItem="hZJ-zT-BIp" secondAttribute="leading" constant="16" id="E6A-7h-fAs"/>
-                                    <constraint firstItem="onI-AI-8Xa" firstAttribute="centerY" secondItem="9fq-8Z-BXG" secondAttribute="centerY" id="GwV-e2-U1r"/>
-                                    <constraint firstItem="onI-AI-8Xa" firstAttribute="top" secondItem="hZJ-zT-BIp" secondAttribute="top" constant="149" id="bY6-Fd-5w7"/>
-                                    <constraint firstItem="onI-AI-8Xa" firstAttribute="centerX" secondItem="hZJ-zT-BIp" secondAttribute="centerX" id="xck-eY-cVD"/>
+                                    <constraint firstItem="onI-AI-8Xa" firstAttribute="top" secondItem="hZJ-zT-BIp" secondAttribute="top" constant="149" id="2WK-rf-Z5G"/>
+                                    <constraint firstItem="9fq-8Z-BXG" firstAttribute="leading" secondItem="hZJ-zT-BIp" secondAttribute="leading" constant="169" id="2bu-iW-8ml"/>
+                                    <constraint firstAttribute="bottom" secondItem="9fq-8Z-BXG" secondAttribute="bottom" constant="151" id="9FI-RZ-uW0"/>
+                                    <constraint firstItem="onI-AI-8Xa" firstAttribute="centerX" secondItem="hZJ-zT-BIp" secondAttribute="centerX" id="JCa-Oy-qXx"/>
+                                    <constraint firstItem="9fq-8Z-BXG" firstAttribute="top" secondItem="hZJ-zT-BIp" secondAttribute="top" constant="144" id="O9C-BJ-ra6"/>
+                                    <constraint firstItem="onI-AI-8Xa" firstAttribute="leading" secondItem="hZJ-zT-BIp" secondAttribute="leading" constant="16" id="hBA-9v-CR2"/>
+                                    <constraint firstAttribute="trailing" secondItem="9fq-8Z-BXG" secondAttribute="trailing" constant="169" id="hLm-dX-iZz"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Afn-TQ-jXi" userLabel="LowView">

@@ -30,7 +30,6 @@ class MapPoints: NSObject {
     //This will be set to true when a new pin is submitted to Parse.
     var needToRefreshData = false
     
-    
     //Get student information from Parse.
     func fetchData(_ completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
         

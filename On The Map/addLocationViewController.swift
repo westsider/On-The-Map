@@ -150,12 +150,14 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
             enterLocation.alpha = 1.0
             submitLinkButton.alpha = 1.0
             findOnMapButton.alpha = 1.0
+            mapView.alpha = 1.0
             activityIndicator.stopAnimating()
         } else {
             whereUstudyingToday.alpha = 0.3
             enterLocation.alpha = 0.3
             submitLinkButton.alpha = 0.3
             findOnMapButton.alpha = 0.3
+            mapView.alpha = 0.3
             activityIndicator.startAnimating()
         }
     }
