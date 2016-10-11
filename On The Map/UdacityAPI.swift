@@ -35,6 +35,8 @@ class UdacityLogin: NSObject {
             
             if error != nil {
                 completionHandler(false, error!.localizedDescription)
+                // MARK: Connection Error
+                return
             }
             
             //The first five characters must be removed. They are included by Udacity for security purposes.

@@ -19,6 +19,7 @@
 		397DB9B81DAB22D500B8E07C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397DB9B51DAB22D500B8E07C /* FBSDKLoginKit.framework */; };
 		397DB9B91DAB22D500B8E07C /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397DB9B61DAB22D500B8E07C /* FBSDKShareKit.framework */; };
 		399E51EC1DA4651400864070 /* addLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E51EB1DA4651400864070 /* addLocationViewController.swift */; };
+		39AFE8961DAD793300DB8255 /* StudentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AFE8951DAD793300DB8255 /* StudentData.swift */; };
 		39B54D761DA6B203005E9B39 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B54D751DA6B203005E9B39 /* UserListViewController.swift */; };
 		39C0E7F41D959BDB0075AA20 /* LogOnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C0E7F31D959BDB0075AA20 /* LogOnViewController.swift */; };
 		39C0E7F61D95EB770075AA20 /* GDCBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C0E7F51D95EB770075AA20 /* GDCBlackBox.swift */; };
@@ -64,6 +65,7 @@
 		397DB9B61DAB22D500B8E07C /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		397DB9BA1DAB270200B8E07C /* On The Map.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "On The Map.entitlements"; sourceTree = "<group>"; };
 		399E51EB1DA4651400864070 /* addLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addLocationViewController.swift; sourceTree = "<group>"; };
+		39AFE8951DAD793300DB8255 /* StudentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentData.swift; sourceTree = "<group>"; };
 		39B54D751DA6B203005E9B39 /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		39C0E7F31D959BDB0075AA20 /* LogOnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOnViewController.swift; sourceTree = "<group>"; };
 		39C0E7F51D95EB770075AA20 /* GDCBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GDCBlackBox.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				393544811DA19BEE0015CBF2 /* UdacityAPI.swift */,
 				393544831DA1A4040015CBF2 /* MapParse.swift */,
 				393544871DA1A4810015CBF2 /* StudentInfo.swift */,
+				39AFE8951DAD793300DB8255 /* StudentData.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				39DC80411DA9CB2A000A78BD /* Constants.swift in Sources */,
 				3935448A1DA1B16A0015CBF2 /* ReloadableTab.swift in Sources */,
 				393544841DA1A4040015CBF2 /* MapParse.swift in Sources */,
+				39AFE8961DAD793300DB8255 /* StudentData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

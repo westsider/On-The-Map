@@ -86,15 +86,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         //Call to getStudents then Draw the annotations on the map.
         reloadViewController()
+        
+        Swifty().printString(input: "VDL in Map VC All Map Pionts")
+        Swifty().report(input: StudentData.sharedInstance().mapPoints as AnyObject)
     }
     
     //# MARK: Required to conform to the ReloadableTab protocol.
     func reloadViewController() {
         activityCircle.startAnimating()
         
-        for result in MapPoints.sharedInstance().mapPoints {
-       
-            
+// for result in MapPoints.sharedInstance().mapPoints {
+        for result in StudentData.sharedInstance().mapPoints {
+Swifty().report(input: "reload view controller" as AnyObject)
+            Swifty().report(input: result as AnyObject)
+
             //[MKMapView addAnnotation:]
             //Creates an annotation and coordinate.
             let annotation = MKPointAnnotation()

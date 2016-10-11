@@ -12,6 +12,7 @@ import UIKit
 
 // help with abstraction from http://stackoverflow.com/questions/36915725/attempt-to-present-whose-view-is-not-in-the-window-hierarchy
 
+// Utility to crealte Alert View COntrollers
 class SPSwiftAlert: UIViewController {
     
     internal var defaultTextForNormalAlertButton = "OK"
@@ -24,5 +25,20 @@ class SPSwiftAlert: UIViewController {
         alert.addAction(UIAlertAction(title: defaultTextForNormalAlertButton, style: UIAlertActionStyle.default, handler: nil))
         // show the alert
         controller.present(alert, animated: true, completion: nil)
+    }
+}
+
+// Utility to print results to log
+class Swifty {
+    func printString(input: String){
+        print(" ")
+        print("<<<<<<<<<<<<<<   This is a Swifty Report: \(input)   >>>>>>>>>>>>>>>>")
+        print(" ")
+    }
+    
+    func report(input: AnyObject) {
+        print(" ")
+        print("<<<<<<<<<<<<<<   This is a Swifty Object Report: \(input)   >>>>>>>>>>>>>>>>")
+        print(" ")
     }
 }

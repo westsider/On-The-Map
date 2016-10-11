@@ -14,7 +14,7 @@
 //          Check incomming Url - remove blank spaces and add missing http
 //          Check outgoing Url for proper formatting
 //
-//   post review
+//   post review changes
 
 import UIKit
 import Foundation
@@ -57,15 +57,16 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
             activityCircle.startAnimating();
             UdacityLogin.sharedInstance().loginToUdacity(username: self.userEmail.text!, password: self.userPassword.text!) { (success, errorString) in
                 if success {
-                    
+                    Swifty().printString(input: "Login Successful")
                     //Fetching first and last name from Udacity.
                     UdacityLogin.sharedInstance().setFirstNameLastName() { (success, errorString) in
                         if success {
-                            
+                            Swifty().printString(input: "Name Recieved")
                             //Fetching student information from Udacity.
                             MapPoints.sharedInstance().fetchData() { (success, errorString) in
                                 if success {
                                     self.textDisplay("Login Complete")
+                                    Swifty().printString(input: "Fetch Data Complete")
                                     self.completeLogin()
                                 } else {
                                     // MARK: Error Getting Users From Udacity

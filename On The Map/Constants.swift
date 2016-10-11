@@ -21,4 +21,8 @@ struct Constants {
     
     static let LINK_FIELD = 1
     
+    static let ParseID: String = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
+    
+    static let ParseAPIKey: String = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
+    
 }

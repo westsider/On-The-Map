@@ -183,7 +183,7 @@
                     <navigationItem key="navigationItem" id="ICP-kF-WMn">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Fal-E0-TwM">
                             <connections>
-                                <segue destination="49e-Tb-3d3" kind="presentation" identifier="linkViewToMapDisplaySegue" id="BUU-ay-OCa"/>
+                                <action selector="cancelAction:" destination="onc-iV-bKn" id="fn9-XQ-UKZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -516,7 +516,6 @@
         <image name="pin" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BUU-ay-OCa"/>
         <segue reference="vEI-Lj-QgL"/>
     </inferredMetricsTieBreakers>
 </document>

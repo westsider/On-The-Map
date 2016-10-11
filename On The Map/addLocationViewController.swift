@@ -95,7 +95,8 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
             activityIndicator.color = UIColor.darkGray
             setUIEnabled(enabled: false)
             //Submits the new data point.
-            MapPoints.sharedInstance().submitData(coordinates.latitude.description, longitude: coordinates.longitude.description, addressField: enterLink.text!, link: enterLink.text!) { (success, errorString) in
+            MapPoints.sharedInstance().submitData(coordinates.latitude.description, longitude: coordinates.longitude.description, 
+                addressField: enterLink.text!, link: enterLink.text!) { (success, errorString) in
                 if success {
                     DispatchQueue.main.async(execute: {
                         MapPoints.sharedInstance().needToRefreshData = true
@@ -111,6 +112,12 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
                 }
             }
         }
+    }
+    
+    
+    
+    @IBAction func cancelAction(_ sender: AnyObject) {
+        self.dismiss(animated: false, completion: nil)
     }
     
     // MARK:  URL Post Complete Segue Back To Map View

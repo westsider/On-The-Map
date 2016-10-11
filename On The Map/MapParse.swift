@@ -13,8 +13,8 @@ import Foundation
 class MapPoints: NSObject {
     
     //These shared keys are used by all students in Udacity.com's "iOS Networking with Swift" course.
-    let ParseID: String = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
-    let ParseAPIKey: String = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
+    let ParseID: String = Constants.ParseID
+    let ParseAPIKey: String = Constants.ParseAPIKey
     
     
     //Database URL:
@@ -22,7 +22,9 @@ class MapPoints: NSObject {
     
     
     //Each point on the map is a StudentInformation object. They are stored in this array.
-    var mapPoints = [StudentInformation]()
+//var mapPoints = [StudentInformation]()
+    
+    
     
     // Mutable Flag set true id this user is already On The Map
     //var thisUserPosted = false
@@ -33,7 +35,7 @@ class MapPoints: NSObject {
     //Get student information from Parse.
     func fetchData(_ completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
         
-        let request = NSMutableURLRequest(url: URL(string:  "\(self.DatabaseURL)/StudentLocation?limit=100")!)
+        let request = NSMutableURLRequest(url: URL(string:  "\(self.DatabaseURL)/StudentLocation?limit=100&order=-updatedAt")!)
         request.addValue(self.ParseID, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(self.ParseAPIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         
@@ -45,24 +47,37 @@ class MapPoints: NSObject {
             if error != nil {
                 completionHandler(false, error!.localizedDescription)
             }
-            
+            Swifty().printString(input: " Heres The data")
+            Swifty().report(input: data as AnyObject)
             //Parse the data.
             let parsingError: NSError? = nil
             let parsedResult = (try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)) as! NSDictionary
             
+            Swifty().printString(input: " Heres The serialized data")
+            Swifty().report(input: parsedResult as AnyObject)
+            
             if let error = parsingError {
                 completionHandler(false, error.description)
-                
+                Swifty().printString(input: " PARSE ERROR")
             } else {
                 if let results = parsedResult["results"] as? [[String : AnyObject]] {
-                    
+                    Swifty().printString(input: " Heres The parsed data")
+                    Swifty().report(input: results as AnyObject)
                     //Clear existing data from the mapPoints object.
-                    self.mapPoints.removeAll(keepingCapacity: true)
-                    
+//self.mapPoints.removeAll(keepingCapacity: true)
+                    //StudentData.mapPoints.removeAll(keepingCapacity: true)
+                    StudentData.sharedInstance().mapPoints.removeAll(keepingCapacity: true)
                     //Re-populate the mapPoints object with refreshed data.
                     for result in results {
-                        self.mapPoints.append(StudentInformation(dictionary: result))
+//self.mapPoints.append(StudentInformation(dictionary: result))
+                        //StudentData().mapPoints.append(StudentInformation(dictionary: result))
+                        StudentData.sharedInstance().mapPoints.append(StudentInformation(dictionary: result))
+                        Swifty().printString(input: " LOOP TO POPULATE DICTIOARY")
+                        Swifty().report(input: result as AnyObject)
                     }
+                    
+                    Swifty().printString(input: "Map Pionts Loaded from Map Parse")
+                    //Swifty().report(input: StudentData.sharedInstance().mapPoints as AnyObject)
                     
                     //Setting this flag to true lets the TabViewController know that the views need to be reloaded.
                     self.needToRefreshData = true
