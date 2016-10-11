@@ -59,7 +59,12 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         // remove any spaces or add missing http in url string
         let cleanUrl = MapPoints.sharedInstance().cleanUrl(url: urlArray[indexPath.row])
-        UIApplication.shared.openURL(URL(string: cleanUrl)!)
+        if cleanUrl == "" {
+            // show alert that there is no URL
+            SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Error", message: "No Url was Shared")
+        } else {
+            UIApplication.shared.openURL(URL(string: cleanUrl)!)
+        }
     }
     
     // MARK: Reloads the data on the Map and Table views. EROOR UNWRAPPING OPTIONAL
