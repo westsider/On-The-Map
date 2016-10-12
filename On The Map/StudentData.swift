@@ -11,7 +11,7 @@ import Foundation
 class StudentData: NSObject {
     //Each point on the map is a StudentInformation object. They are stored in this array.
     var mapPoints = [StudentInformation]()
-    
+    var isloggedInFacebook = false
     //Allows other classes to reference a common instance of the mapPoints array.
     class func sharedInstance() -> StudentData {
         

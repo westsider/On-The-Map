@@ -47,6 +47,9 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     // MARK: Login with Email Function
     @IBAction func logInAction(_ sender: AnyObject) {
         
+        userEmail.text = "whansen1@mac.com"
+        userPassword.text = "wh2403wh"
+        
         if textInputIncomplete() {
             return
             
@@ -187,6 +190,7 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
                         if let userDetails = result as? [String:String] {
                             let firstName = userDetails["first_name"]!
                             let lastName = userDetails["last_name"]!
+                            StudentData().isloggedInFacebook = true
                             //setNameFromFacebook
                             UdacityLogin.sharedInstance().firstName = firstName
                             UdacityLogin.sharedInstance().lastName = lastName
@@ -208,6 +212,18 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
                 })
             }
         })
+    }
+    
+    // MARK: Lifecycle Function
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //self.setUIEnabled(enabled: true)
+        //Swifty().printString(input: "View Did Load Yo")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.setUIEnabled(enabled: true)
     }
     
     // MARK: hide keyboard with return or on click away from text

@@ -116,7 +116,7 @@ class addLocationViewController: UIViewController, MKMapViewDelegate, UITextFiel
     
     // MARK: Cancel
     @IBAction func cancelAction(_ sender: AnyObject) {
-        self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK:  URL Post Complete Dismiss VC

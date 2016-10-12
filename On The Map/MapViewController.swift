@@ -70,8 +70,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         logoutFacebook()
         MapPoints.sharedInstance().logOut() { (success, errorString) in
             if success {
-                let controller = self.storyboard!.instantiateViewController(withIdentifier: "LogOnStoryEntry") //as! UIViewController
-                self.present(controller, animated: true, completion: nil)
+                DispatchQueue.main.async(execute: {
+                    self.dismiss(animated: true, completion: nil)
+                })
             } else {
                 self.setUIEnabled(enabled: true)
                 SPSwiftAlert.sharedObject.showNormalAlert(controller: self, title: "Oh Snap!", message: errorString!)
@@ -173,6 +174,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     //# MARK: Logout FaceBook
     func logoutFacebook() {
-        FBSDKLoginManager().logOut()
+        if StudentData().isloggedInFacebook {
+             FBSDKLoginManager().logOut()
+        }
+       
     }
 }
