@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UdacityLogin: NSObject {
+class UdacityLogin {
     
     //MARK: Info about the user, provided through authentication
     var userKey = ""
@@ -108,7 +108,7 @@ class UdacityLogin: NSObject {
     class func sharedInstance() -> UdacityLogin {
         
         struct Singleton {
-            static var sharedInstance = UdacityLogin()
+            static let sharedInstance = UdacityLogin()
         }
         
         return Singleton.sharedInstance

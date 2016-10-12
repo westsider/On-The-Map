@@ -133,10 +133,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     self.setUIEnabled(enabled: true)
                 })
             }
-            else {
-                self.reloadViewController()
-                //The re-enabled refresh button indicates that the refresh is complete.
-                self.setUIEnabled(enabled: true)
+            if success {
+                DispatchQueue.main.async(execute: {
+                    self.reloadViewController()
+                    //The re-enabled refresh button indicates that the refresh is complete.
+                    self.setUIEnabled(enabled: true)
+                })
             }
         }
     }
