@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  Map ViewController.swift
 //  On The Map
 //
 //  Created by Warren Hansen on 9/18/16.
@@ -28,6 +28,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var activityCircle:
     UIActivityIndicatorView!
+ 
+    //# MARK: Lifecycle Functions
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mapView.delegate = self
+        //Call to getStudents then Draw the annotations on the map.
+        reloadViewController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.reloadViewController()
+    }
     
     //# MARK: Add Pin To Map
     @IBAction func tapPinButton(_ sender: AnyObject) {
@@ -80,16 +92,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    //# MARK: Lifecycle Functions
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        mapView.delegate = self
-        //Call to getStudents then Draw the annotations on the map.
-        reloadViewController()
-    }
-    
     //# MARK: Required to conform to the ReloadableTab protocol.
     func reloadViewController() {
+        // clear previous annotations
+        let allAnnotations = self.mapView.annotations
+        self.mapView.removeAnnotations(allAnnotations)
+        
         activityCircle.startAnimating()
         for result in StudentData.sharedInstance().mapPoints {
             //Creates an annotation and coordinate.
@@ -132,10 +140,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
-    // Mark: Reload Map on return to this VC from other controllers especialy Add Location
-    override func viewWillAppear(_ animated: Bool) {
-        self.reloadViewController()
-    }
+
     //# MARK: Configure UI
     private func setUIEnabled(enabled: Bool) {
         refreshButton.isEnabled = true

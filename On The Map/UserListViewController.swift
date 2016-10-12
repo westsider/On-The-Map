@@ -1,5 +1,5 @@
 //
-//  UserListViewController.swift
+//  UserList ViewController.swift
 //  On The Map
 //
 //  Created by Warren Hansen on 10/6/16.

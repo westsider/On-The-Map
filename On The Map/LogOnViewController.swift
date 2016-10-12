@@ -63,6 +63,9 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
                             MapPoints.sharedInstance().fetchData() { (success, errorString) in
                                 if success {
                                     self.textDisplay("Login Complete")
+                                    // reset email and password fields
+                                    self.userEmail.text = "email"
+                                    self.userPassword.text = "password"
                                     self.completeLogin()
                                 } else {
                                     // MARK: Error Getting Users From Udacity
