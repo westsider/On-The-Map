@@ -177,6 +177,5 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if StudentData().isloggedInFacebook {
              FBSDKLoginManager().logOut()
         }
-       
     }
 }

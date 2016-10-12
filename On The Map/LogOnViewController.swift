@@ -47,9 +47,6 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     // MARK: Login with Email Function
     @IBAction func logInAction(_ sender: AnyObject) {
         
-        userEmail.text = "whansen1@mac.com"
-        userPassword.text = "wh2403wh"
-        
         if textInputIncomplete() {
             return
             
@@ -217,8 +214,6 @@ class LogOnViewController: UIViewController, UITextFieldDelegate, UINavigationCo
     // MARK: Lifecycle Function
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.setUIEnabled(enabled: true)
-        //Swifty().printString(input: "View Did Load Yo")
     }
     
     override func viewWillAppear(_ animated: Bool) {
