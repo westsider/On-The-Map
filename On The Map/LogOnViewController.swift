@@ -13,7 +13,7 @@
 //          Url Scrubbing:
 //          Check incomming Url - remove blank spaces and add missing http
 //          Check outgoing Url for proper formatting
-//          Updated Git Commits with more detail
+//          Updated Git Commits with more detail and bonus features
 
 import UIKit
 import Foundation
